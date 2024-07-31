@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         primary: "#22C55E",
         secondary: "",
+        green01: "#0A110B",
       },
       fontFamily: {
         calSans: "Cal Sans",
