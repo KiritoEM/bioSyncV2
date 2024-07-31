@@ -15,21 +15,26 @@ const LandingHero: FC = (): JSX.Element => {
             Rejoignez la Révolution verte avec BioSync
           </h2>
           <p className="text-secondary01 text-center w-[600px]">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque
-            corrupti quisquam minus voluptatum quis dignissimos eligendi quo
-            quaerat suscipit ipsa distinctio unde est ut libero qui, facere
-            voluptate temporibus modi!
+            Notre application innovante vous permet de participer activement à
+            la préservation de notre planète en faisant du recyclage tout en
+            optimisant votre mode de vie.
           </p>
           <div className="buttons mt-2 flex items-center gap-8">
             <Button variant="white" className="w-max">
               Nous rejoindre
             </Button>
-            <Button variant="borderedSecondary" className="w-max gap-1 items-center">
+            <Button
+              variant="borderedSecondary"
+              className="w-max gap-1 items-center"
+            >
               Nous rejoindre
               <img src="/icons/arrow-right.svg" className="w-5" />
             </Button>
           </div>
         </div>
+      </div>
+      <div className="hero-illustration w-full">
+        <img src="/hero-frame.svg" className="object-cover w-full" />
       </div>
     </section>
   );
