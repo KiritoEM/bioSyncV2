@@ -12,8 +12,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#22C55E",
-        secondary: "",
-        green01: "#0A110B",
+        secondary: "#0A110B",
+        secondary01: "rgba(10, 17, 11, 0.81)",
       },
       fontFamily: {
         calSans: "Cal Sans",

@@ -7,8 +7,8 @@ const Landing = (): JSX.Element => {
   return (
     <Fragment>
       <Title title="Bienvenue sur BioSync, contribuez à un avenir durable avec notre application" />
-      <LandingNav />
       <section className="landing">
+        <LandingNav />
         <LandingHero />
       </section>
     </Fragment>

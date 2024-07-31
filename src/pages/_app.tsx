@@ -3,11 +3,14 @@ import "cal-sans";
 import "@fontsource/lato";
 import "@/styles/index.scss";
 import { NextUIProvider } from "@nextui-org/react";
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NextUIProvider>
-      <Component {...pageProps} />
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </NextUIProvider>
   );
 }
