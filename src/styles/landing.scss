@@ -20,4 +20,13 @@
             }
         }
     }
+
+    &__hero {
+        .hero-bg {
+            opacity: 77%;
+            mask: url("./../../public/splash.png");
+            mask-size: 53%;
+            mask-repeat: no-repeat;
+        }
+    }
 }

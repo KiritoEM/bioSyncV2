@@ -4,17 +4,66 @@
  */
 
 import { Button } from "@/components/UI/button";
-import { FC } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 
 const LandingHero: FC = (): JSX.Element => {
+  const [hover, setHover] = useState<boolean>(false);
+  const [maskPosition, setMaskPosition] = useState<{ x: string; y: string }>({
+    x: "calc(100% - 75px)",
+    y: "top",
+  });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!hover) return;
+
+      const x = (e.clientX / window.innerWidth) * 100 - 20;
+      const y = (e.clientY / window.innerHeight) * 100 - 30;
+
+      setMaskPosition({ x: `${x}%`, y: `${y}%` });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [hover]);
+
   return (
-    <section className="landing__hero w-full bg-gray01 relative top-[75px] overflow-hidden">
-      <div className="container mx-auto flex justify-center mt-[21vh]">
-        <div className="hero-container  flex flex-col items-center gap-5">
-          <h2 className="text-[3.4rem] text-center font-calSans text-secondary max-w-[700px] leading-tight">
+    <section
+      className="landing__hero w-full bg-gray01 relative top-[75px] overflow-hidden"
+      onMouseEnter={() =>
+        setTimeout(() => {
+          setHover(true);
+        }, 2000)
+      }
+      onMouseLeave={() => setHover(false)}
+    >
+      <Fragment>
+        <img
+          src="/hero-bg.jpeg"
+          className="hero-bg absolute top-0 left-0"
+          style={{
+            maskPosition: hover
+              ? `${maskPosition.x} ${maskPosition.y}`
+              : "calc(100% - 75px) top",
+            WebkitMaskPosition: hover
+              ? `${maskPosition.x} ${maskPosition.y}`
+              : "calc(100% - 75px) top",
+          }}
+        />
+        <img
+          src="/splash.png"
+          className="hero-bg absolute top-0 left-0 z-4 mix-blend-screen"
+        />
+      </Fragment>
+      <div className="container mx-auto flex justify-start mt-[21vh] relative z-5 px-[80px]">
+        <div className="hero-container  flex flex-col items-start gap-5">
+          <h2 className="text-[3.4rem] text-start font-calSans text-secondary max-w-[620px] leading-tight">
             Rejoignez la Révolution verte avec BioSync
           </h2>
-          <p className="text-secondary01 text-center w-[600px]">
+          <p className="text-secondary01 text-start w-[470px]">
             Notre application innovante vous permet de participer activement à
             la préservation de notre planète en faisant du recyclage tout en
             optimisant votre mode de vie.
@@ -33,7 +82,7 @@ const LandingHero: FC = (): JSX.Element => {
           </div>
         </div>
       </div>
-      <div className="hero-illustration w-full">
+      <div className="hero-illustration w-full relative z-6 mt-[12vh]">
         <img src="/hero-frame.svg" className="object-cover w-full" />
       </div>
     </section>

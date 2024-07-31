@@ -27,7 +27,7 @@ const LandingNav: FC = (): JSX.Element => {
           ))}
         </ul>
         {/* navbar actions */}
-        <Button variant="primary" className="w-max font-medium">
+        <Button variant="primary" className="w-max font-me">
           Nous contacter
         </Button>
       </div>
