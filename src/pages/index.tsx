@@ -1,7 +1,7 @@
 const Landing = (): JSX.Element => {
   return (
     <section className="landing">
-      <h1>Hello world</h1>
+      <h1 className="font-lato">Hello world</h1>
     </section>
   );
 };
