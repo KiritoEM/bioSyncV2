@@ -8,7 +8,7 @@ import { FC } from "react";
 
 const LandingHero: FC = (): JSX.Element => {
   return (
-    <section className="landing__hero w-full bg-primary relative top-[75px] overflow-hidden">
+    <section className="landing__hero w-full bg-gray01 relative top-[75px] overflow-hidden">
       <div className="container mx-auto flex justify-center mt-[21vh]">
         <div className="hero-container  flex flex-col items-center gap-5">
           <h2 className="text-[3.4rem] text-center font-calSans text-secondary max-w-[700px] leading-tight">
@@ -20,12 +20,12 @@ const LandingHero: FC = (): JSX.Element => {
             optimisant votre mode de vie.
           </p>
           <div className="buttons mt-2 flex items-center gap-8">
-            <Button variant="white" className="w-max">
+            <Button variant="primary" className="w-max px-5">
               Nous rejoindre
             </Button>
             <Button
               variant="borderedSecondary"
-              className="w-max gap-1 items-center"
+              className="w-max gap-1 items-center px-5"
             >
               Nous rejoindre
               <img src="/icons/arrow-right.svg" className="w-5" />
