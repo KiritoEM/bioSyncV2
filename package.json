@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
+    "@dotlottie/player-component": "^2.7.12",
+    "@dotlottie/react-player": "^1.6.19",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@fontsource/lato": "^5.0.21",
