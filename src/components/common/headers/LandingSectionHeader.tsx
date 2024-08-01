@@ -10,7 +10,7 @@ const LandingSectionHeader: FC<{ subtitle: string; title: string }> = ({
         {subtitle}
       </h5>
       <h2
-        className="font-calSans text-[35px] mt-3 leading-tight"
+        className="font-calSans text-[33px] mt-3 leading-tight"
         dangerouslySetInnerHTML={{ __html: title }}
       />
     </header>

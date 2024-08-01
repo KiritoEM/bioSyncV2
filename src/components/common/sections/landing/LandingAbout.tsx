@@ -24,7 +24,7 @@ const LandingAbout = (): JSX.Element => {
           </p>
           <div className="buttons">
             <Button variant="primary" className="w-max px-5 bg-linearPrimary">
-              En apprendre plus
+              En savoir plus
             </Button>
             <Button variant="light" className="w-max gap-1 items-center px-5">
               Nous rejoindre
