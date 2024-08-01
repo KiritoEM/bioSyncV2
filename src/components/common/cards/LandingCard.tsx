@@ -10,14 +10,14 @@ const LandingCard: FC = () => {
           src="/lotties/UI-lottie.json"
           loop
           autoplay
-          style={{ width: "6em", height: "6em" }}
+          style={{ width: "8.5em", height: "8.5em" }}
         />
       </CardHeader>
       <CardBody className="mt-3">
         <h5 className="font-calSans text-xl">
           Interface utilisateur flexible et fluide
         </h5>
-        <p className="text-secondary01 mt-2">
+        <p className="text-secondary01 mt-1">
           Mise en place d’une interface utilisateur adaptée et utilisable sur
           tous les appareils.
         </p>
