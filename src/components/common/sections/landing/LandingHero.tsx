@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/UI/button";
-import { FC, Fragment, useEffect, useState } from "react";
+import { FC, Fragment, useEffect, useRef, useState } from "react";
 
 const LandingHero: FC = (): JSX.Element => {
   const [hover, setHover] = useState<boolean>(false);
@@ -12,13 +12,18 @@ const LandingHero: FC = (): JSX.Element => {
     x: "calc(100% - 75px)",
     y: "top",
   });
+  const maskRef = useRef<any>(null);
+
+  if (hover) {
+    console.log(hover);
+  }
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!hover) return;
 
-      const x = (e.clientX / window.innerWidth) * 100 - 20;
-      const y = (e.clientY / window.innerHeight) * 100 - 30;
+      const x = (e.clientX / window.innerWidth) * 100 - 8;
+      const y = (e.clientY / window.innerHeight) * 100 - 8;
 
       setMaskPosition({ x: `${x}%`, y: `${y}%` });
     };
@@ -31,19 +36,12 @@ const LandingHero: FC = (): JSX.Element => {
   }, [hover]);
 
   return (
-    <section
-      className="landing__hero w-full bg-gray01 relative top-[75px] overflow-hidden"
-      onMouseEnter={() =>
-        setTimeout(() => {
-          setHover(true);
-        }, 2000)
-      }
-      onMouseLeave={() => setHover(false)}
-    >
+    <section className="landing__hero w-full bg-gray01 relative top-[75px] overflow-hidden">
       <Fragment>
         <img
           src="/hero-bg.jpeg"
           className="hero-bg absolute top-0 left-0"
+          ref={maskRef}
           style={{
             maskPosition: hover
               ? `${maskPosition.x} ${maskPosition.y}`
@@ -52,6 +50,8 @@ const LandingHero: FC = (): JSX.Element => {
               ? `${maskPosition.x} ${maskPosition.y}`
               : "calc(100% - 75px) top",
           }}
+          onMouseEnter={() => setHover(true)}
+          onMouseDown={() => setHover(false)}
         />
         <img
           src="/splash.png"
