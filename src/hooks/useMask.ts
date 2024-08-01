@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 const useMask = () => {
   const [maskPosition, setMaskPosition] = useState<{ x: string; y: string }>({
-    x: "calc(100% - 75px)",
+    x: "calc(100% - 80px)",
     y: "top",
   });
   const [hover, setHover] = useState<boolean>(false);

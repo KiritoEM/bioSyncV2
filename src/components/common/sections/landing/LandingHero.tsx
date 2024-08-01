@@ -11,7 +11,7 @@ const LandingHero: FC = (): JSX.Element => {
   const { handleMouseDown, handleMouseEnter, hover, maskPosition, maskRef } =
     useMask();
   return (
-    <section className="landing__hero w-full bg-gray01 relative top-[75px] overflow-hidden">
+    <section className="landing__hero w-full bg-gray01 relative  z-6 top-[75px] overflow-hidden">
       <Fragment>
         <img
           src="/hero-bg.jpeg"
@@ -20,10 +20,11 @@ const LandingHero: FC = (): JSX.Element => {
           style={{
             maskPosition: hover
               ? `${maskPosition.x} ${maskPosition.y}`
-              : "calc(100% - 75px) top",
+              : "calc(100% - 80px) top",
             WebkitMaskPosition: hover
               ? `${maskPosition.x} ${maskPosition.y}`
-              : "calc(100% - 75px) top",
+              : "calc(100% - 80px) top",
+            maskSize: hover ? "43%" : "55%",
           }}
           onMouseEnter={handleMouseEnter}
           onMouseDown={handleMouseDown}
