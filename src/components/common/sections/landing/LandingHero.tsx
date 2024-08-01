@@ -5,7 +5,7 @@
 
 import { Button } from "@/components/UI/button";
 import useMask from "@/hooks/useMask";
-import { FC, Fragment, useEffect, useRef, useState } from "react";
+import { FC, Fragment } from "react";
 
 const LandingHero: FC = (): JSX.Element => {
   const { handleMouseDown, handleMouseEnter, hover, maskPosition, maskRef } =

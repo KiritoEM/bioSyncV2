@@ -21,6 +21,10 @@ const config: Config = {
         calSans: "Cal Sans",
         lato: "Lato",
       },
+      backgroundImage: {
+        linearPrimary:
+          "linear-gradient(103deg, #064121 19.49%, #22C55E 109.34%)",
+      },
     },
   },
   darkMode: "class",
