@@ -37,7 +37,8 @@ const LandingHero: FC = (): JSX.Element => {
       <div className="container mx-auto flex justify-start mt-[21vh] relative z-5 px-[80px]">
         <div className="hero-container  flex flex-col items-start gap-5">
           <h2 className="text-[3.4rem] text-start font-calSans text-secondary max-w-[620px] leading-tight">
-            Rejoignez la Révolution verte avec BioSync
+            Rejoignez la Révolution verte avec{" "}
+            <span className="text-yellow01 font-calSans">BioSync</span>
           </h2>
           <p className="text-secondary01 text-start w-[470px]">
             Notre application innovante vous permet de participer activement à
@@ -52,13 +53,13 @@ const LandingHero: FC = (): JSX.Element => {
               variant="borderedSecondary"
               className="w-max gap-1 items-center px-5"
             >
-              Nous rejoindre
+              Nous contacter
               <img src="/icons/arrow-right.svg" className="w-5" />
             </Button>
           </div>
         </div>
       </div>
-      <div className="hero-illustration w-full relative z-6 mt-[12vh]">
+      <div className="hero-illustration w-full relative z-6 mt-[14vh]">
         <img src="/hero-frame.svg" className="object-cover w-full" />
       </div>
     </section>
