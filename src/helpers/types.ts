@@ -3,4 +3,13 @@ interface IlandingMenuList {
   sectionId?: string;
 }
 
-export type { IlandingMenuList };
+interface IfeaturesList {
+  lottieSrc: string;
+  title: string;
+  describ: string;
+  bg: string;
+  grid: number;
+  width?: number;
+}
+
+export type { IlandingMenuList, IfeaturesList };

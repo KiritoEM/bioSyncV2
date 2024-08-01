@@ -4,7 +4,7 @@
  */
 
 import { Button } from "@/components/UI/button";
-import useMask from "@/hooks/useMask";
+import useMask from "@/core/hooks/useMask";
 import { FC, Fragment } from "react";
 
 const LandingHero: FC = (): JSX.Element => {

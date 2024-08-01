@@ -23,7 +23,7 @@ const LandingAbout = (): JSX.Element => {
             recyclage.
           </p>
           <div className="buttons">
-            <Button variant="primary" className="w-max px-5 bg-linearPrimary">
+            <Button variant="primary" className="w-max px-5">
               En savoir plus
             </Button>
             <Button variant="light" className="w-max gap-1 items-center px-5">
