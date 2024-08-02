@@ -2,6 +2,7 @@ import LandingNav from "@/components/common/navbars/LandingNav";
 import LandingAbout from "@/components/common/sections/landing/LandingAbout";
 import LandingFeatures from "@/components/common/sections/landing/LandingFeatures";
 import LandingHero from "@/components/common/sections/landing/LandingHero";
+import LandingJoin from "@/components/common/sections/landing/LandingJoin";
 import Title from "@/components/meta/Title";
 import { Fragment } from "react";
 
@@ -14,6 +15,7 @@ const Landing = (): JSX.Element => {
         <LandingHero />
         <LandingAbout />
         <LandingFeatures />
+        <LandingJoin />
       </section>
     </Fragment>
   );

@@ -7,8 +7,8 @@ import { useEffect, useRef, useState } from "react";
 
 const useMask = () => {
   const [maskPosition, setMaskPosition] = useState<{ x: string; y: string }>({
-    x: "calc(100% - 80px)",
-    y: "top",
+    x: "53%",
+    y: "30%",
   });
   const [hover, setHover] = useState<boolean>(false);
   const maskRef = useRef<HTMLImageElement | null>(null);

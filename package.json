@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/standalone": "^7.25.3",
     "@chakra-ui/react": "^2.8.2",
     "@dotlottie/player-component": "^2.7.12",
     "@dotlottie/react-player": "^1.6.19",
@@ -16,6 +17,7 @@
     "@emotion/styled": "^11.13.0",
     "@fontsource/lato": "^5.0.21",
     "@nextui-org/react": "^2.4.6",
+    "axios": "^1.7.3",
     "cal-sans": "^1.0.1",
     "classname": "^0.0.0",
     "clsx": "^2.1.1",

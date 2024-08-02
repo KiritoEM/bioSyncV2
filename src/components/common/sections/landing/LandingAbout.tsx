@@ -9,9 +9,9 @@ import LandingSectionHeader from "../../headers/LandingSectionHeader";
 
 const LandingAbout = (): JSX.Element => {
   return (
-    <section className="landing__about bg-gray01 relative z-4">
-      <div className="container mx-auto flex gap-7 h-full items-center px-[80px] mt-[50px] pt-[35px]">
-        <div className="about-content w-[45%] h-full flex flex-col gap-5">
+    <section className="landing__about bg-gray01 relative">
+      <div className="container mx-auto flex gap-7 h-full items-center px-[80px] mt-[50px] pt-[5px]">
+        <div className="about-content w-[45%] h-full flex flex-col gap-6">
           <LandingSectionHeader
             subtitle="A propos"
             title={`Parlons un peu de notre application <span class="font-calSans text-yellow01">BioSync</span>`}
