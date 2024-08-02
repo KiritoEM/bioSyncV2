@@ -22,8 +22,20 @@ const LandingJoin = (): JSX.Element => {
           </label>
           <Input
             radius="full"
-            className="h-10"
-            endContent={<Button variant="secondary"></Button>}
+            size="lg"
+            classNames={{
+              input: "h-[50px] pr-[5px] mr-[4px]",
+            }}
+            placeholder="Entrez votre email"
+            endContent={
+              <Button
+                variant="secondary"
+                className="h-[70%] relative left-3 w-max flex gap-[5px]"
+              >
+                Envoyer
+                <img src="/icons/arrow-right-white.svg" className="w-4" />
+              </Button>
+            }
           />
         </div>
       </div>

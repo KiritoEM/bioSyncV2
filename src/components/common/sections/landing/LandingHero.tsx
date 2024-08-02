@@ -21,10 +21,10 @@ const LandingHero: FC = (): JSX.Element => {
           style={{
             maskPosition: hover
               ? `${maskPosition.x} ${maskPosition.y}`
-              : "53% 30%",
+              : "56% 25%",
             WebkitMaskPosition: hover
               ? `${maskPosition.x} ${maskPosition.y}`
-              : "53% 30%",
+              : "56% 25%",
             maskSize: hover ? "38%" : "40%",
           }}
           onMouseEnter={handleMouseEnter}
