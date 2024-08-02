@@ -14,9 +14,9 @@ const Button = extendVariants(NextButtonUI, {
         "bg-transparent border border-secondary text-secondary hover:scale-95",
     },
     size: {
-      xs: "px-2 min-w-12 text-tiny gap-1",
-      sm: "px-3 min-w-20 text-small gap-3",
-      md: "px-4 min-w-28 text-medium gap-4",
+      xs: "px-2 text-tiny gap-1",
+      sm: "px-3 text-small gap-3",
+      md: "px-4 text-small md:text-medium gap-4",
     },
   },
 

@@ -6,7 +6,7 @@ import { featuresList } from "@/helpers/constant";
 
 const LandingFeatures: FC = () => {
   return (
-    <section className="landing__features overflow-hidden">
+    <section className="landing__features overflow-hidden bg-gray01">
       <div className="container mx-auto px-[80px] pt-[15px] pb-10">
         <header className="features-header flex justify-between items-end">
           <LandingSectionHeader
