@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 interface IlandingMenuList {
   label: string;
   sectionId?: string;
@@ -12,4 +14,9 @@ interface IfeaturesList {
   width?: number;
 }
 
-export type { IlandingMenuList, IfeaturesList };
+interface IhorizontalWrapper {
+  children: ReactNode;
+  direction: number;
+}
+
+export type { IlandingMenuList, IfeaturesList, IhorizontalWrapper };

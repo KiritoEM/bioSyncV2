@@ -14,18 +14,20 @@ const LandingHero: FC = (): JSX.Element => {
   return (
     <section className="landing__hero w-full bg-gray01 relative z-6 top-[75px] pb-[10px] overflow-hidden">
       <Fragment>
-        <img
-          src="/hero-bg.jpeg"
-          className="hero-bg absolute top-0 left-0"
+        <div
+          className="hero-bg absolute top-0 left-0 w-full h-screen"
           ref={maskRef}
           style={{
+            backgroundImage: `url("/hero-bg.jpeg")`,
+            backgroundAttachment: "fixed",
+            backgroundSize: "cover",
             maskPosition: hover
               ? `${maskPosition.x} ${maskPosition.y}`
-              : "56% 25%",
+              : "58% 40%",
             WebkitMaskPosition: hover
               ? `${maskPosition.x} ${maskPosition.y}`
-              : "56% 25%",
-            maskSize: hover ? "38%" : "40%",
+              : "58% 40%",
+            maskSize: hover ? "34%" : "38%",
           }}
           onMouseEnter={handleMouseEnter}
           onMouseDown={handleMouseDown}
@@ -66,7 +68,7 @@ const LandingHero: FC = (): JSX.Element => {
           </div>
         </div>
       </div>
-      <div className="hero-illustration w-full relative z-6 mt-[1vh]">
+      <div className="hero-illustration w-full relative z-6 -mt-[12vh]">
         <img src="/hero-frame.svg" className="object-cover w-full" />
       </div>
     </section>
