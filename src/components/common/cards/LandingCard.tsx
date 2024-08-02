@@ -10,15 +10,12 @@ const LandingCard: FC<IfeaturesList> = ({
   describ,
   lottieSrc,
   title,
-  width,
 }) => {
   const gridClass = clsx({
-    "lg:col-span-2": grid === 2,
-    "lg:col-span-3": grid === 3,
-    "lg:col-span-4": grid === 4,
+    "md:col-span-1 lg:col-span-2": grid === 2,
+    "md:col-span-1 lg:col-span-3": grid === 3,
+    "md:col-span-1 lg:col-span-4": grid === 4,
   });
-
-  const widthStyle = width ? { width: `${width}%` } : {};
 
   return (
     <Card
@@ -31,11 +28,11 @@ const LandingCard: FC<IfeaturesList> = ({
           src={`/lotties/${lottieSrc}`}
           loop
           autoplay
-          style={{ width: "8.5em", height: "8.5em" }}
+          className="w-[7em] md:w-[8.5em] h-[7em] md:h-[8.5em]"
         />
       </CardHeader>
-      <CardBody className={`mt-3`} style={widthStyle}>
-        <h5 className="font-calSans text-2xl">{title}</h5>
+      <CardBody className="mt-3">
+        <h5 className="font-calSans text-xl lg:text-2xl">{title}</h5>
         <p className="text-secondary01 mt-1">{describ}</p>
       </CardBody>
     </Card>

@@ -28,4 +28,14 @@
             mask-repeat: no-repeat;
         }
     }
+
+    &__join {
+        background-image: url("/community-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+        @media screen and (max-width: 1024px) {
+            background-size: cover;
+        }
+    }
 }

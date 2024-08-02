@@ -11,7 +11,6 @@ interface IfeaturesList {
   describ: string;
   bg: string;
   grid: number;
-  width?: number;
 }
 
 interface IhorizontalWrapper {

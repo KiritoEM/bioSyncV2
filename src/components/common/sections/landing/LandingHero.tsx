@@ -39,7 +39,7 @@ const LandingHero: FC = (): JSX.Element => {
       <div className="container mx-auto flex justify-start mt-[12vh] lg:mt-[21vh] relative z-4 px-7 lg:px-[80px]">
         <div className="hero-container  w-full flex flex-col md:flex-row justify-between items-start gap-5">
           <div className="content flex flex-col items-start gap-5 w-full lg:w-auto">
-            <h2 className="text-[2em] lg:text-[3.4rem] text-start font-calSans text-secondary max-w-[400px] lg:max-w-[620px] leading-tight">
+            <h2 className="text-[2em] md:text-[2.3em] lg:text-[3.4rem] text-start font-calSans text-secondary max-w-[400px] lg:max-w-[620px] leading-tight">
               Rejoignez la Révolution verte avec{" "}
               <span className="text-yellow01 font-calSans">BioSync</span>
             </h2>
@@ -75,7 +75,7 @@ const LandingHero: FC = (): JSX.Element => {
         </div>
       </div>
       <HorizontalScrollWrapper direction={-800}>
-        <div className="flex gap-7 w-max mt-[75px]">
+        <div className="flex gap-7 w-max mt-[75px] lg:-mt-5">
           {imageSliding.map((img, index) => (
             <Image
               key={index}

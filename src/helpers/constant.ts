@@ -36,7 +36,6 @@ const featuresList: IfeaturesList[] = [
       "Intégration de map dans l’ application pour effectuer les recherches de produits recyclables à proximité, avec précision pour éviter une perte de temps.",
     bg: "#FF9B85",
     grid: 3,
-    width: 85,
   },
   {
     lottieSrc: "bell-lottie.json",
@@ -45,7 +44,6 @@ const featuresList: IfeaturesList[] = [
       "Ajout de fonctionnalités de realtime dans l' application pour une amélioration de l' expérience utilisateur.",
     bg: "#59B9FF",
     grid: 3,
-    width: 85,
   },
   {
     lottieSrc: "heart-lottie.json",
