@@ -9,24 +9,18 @@ const HorizontalScrollWrapper: FC<IhorizontalWrapper> = ({
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: scrollRef,
-    offset: ["start end", "end end"],
+    offset: ["start end", "end start"],
   });
 
-  const xtranslate = useTransform(
-    scrollYProgress,
-    [0, 0.1, 1],
-    [0, 0, direction]
-  );
+  const xtranslate = useTransform(scrollYProgress, [0, 1], [0, direction]);
+
   return (
-    // wrapper
-    <section ref={scrollRef}>
-      {/* container */}
+    <section ref={scrollRef} className="w-full">
       <motion.div
         style={{
           translateX: xtranslate,
           position: "relative",
           zIndex: 6,
-          height: "max-content",
         }}
       >
         {children}

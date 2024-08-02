@@ -71,10 +71,15 @@ const LandingHero: FC = (): JSX.Element => {
           </div>
         </div>
       </div>
-      <HorizontalScrollWrapper direction={-900}>
-        <div className="flex gap-2">
+      <HorizontalScrollWrapper direction={-800}>
+        <div className="flex gap-7 w-max">
           {imageSliding.map((img, index) => (
-            <Image src={img} />
+            <Image
+              key={index}
+              src={img}
+              isZoomed
+              style={{ width: "400px", height: "310px" }}
+            />
           ))}
         </div>
       </HorizontalScrollWrapper>

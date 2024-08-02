@@ -64,8 +64,17 @@ const socialIcons: string[] = [
 
 const imageSliding: string[] = [
   "/hero-card-1.jpg",
+  "/hero-card-2.jpg",
+  "/hero-card-3.jpg",
+  "/hero-card-4.jpg",
+  "/hero-card-5.jpg",
+  "/hero-card-6.jpg",
   "/hero-card-1.jpg",
-  "/hero-card-1.jpg",
+  "/hero-card-2.jpg",
+  "/hero-card-3.jpg",
+  "/hero-card-4.jpg",
+  "/hero-card-5.jpg",
+  "/hero-card-6.jpg",
 ];
 
 export { landingMenuList, featuresList, socialIcons, imageSliding };
