@@ -1,3 +1,4 @@
+import { Button } from "@/components/UI/button";
 import { Input } from "@nextui-org/react";
 
 const LandingJoin = (): JSX.Element => {
@@ -19,7 +20,11 @@ const LandingJoin = (): JSX.Element => {
           >
             Abonnez-vous à la newsletter
           </label>
-          <Input radius="full" className="h-10" />
+          <Input
+            radius="full"
+            className="h-10"
+            endContent={<Button variant="secondary"></Button>}
+          />
         </div>
       </div>
     </section>

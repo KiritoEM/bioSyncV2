@@ -58,10 +58,10 @@ const LandingHero: FC = (): JSX.Element => {
           </div>
           <div className="lottie relative -top-[11vh]">
             <DotLottiePlayer
-              src="/lotties/recycle-lottie.json"
+              src="/lotties/earth2-lottie.json"
               autoplay
               loop
-              style={{ width: "calc(25em + 6vw)", height: "calc(25em + 6vh)" }}
+              style={{ width: "calc(30em + 4vw)", height: "calc(30em + 4vh)" }}
             />
           </div>
         </div>
