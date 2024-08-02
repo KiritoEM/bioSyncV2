@@ -36,7 +36,7 @@ const LandingHero: FC = (): JSX.Element => {
           onMouseDown={handleMouseDown}
         />
       </Fragment>
-      <div className="container mx-auto flex justify-start mt-[21vh] relative z-5 px-[80px]">
+      <div className="container mx-auto flex justify-start mt-[21vh] relative z-4 px-[80px]">
         <div className="hero-container  w-full flex justify-between items-start gap-5">
           <div className="content flex flex-col items-start gap-5">
             <h2 className="text-[3.4rem] text-start font-calSans text-secondary max-w-[620px] leading-tight">
@@ -78,7 +78,7 @@ const LandingHero: FC = (): JSX.Element => {
               key={index}
               src={img}
               isZoomed
-              style={{ width: "400px", height: "310px" }}
+              style={{ width: "340px", height: "310px" }}
             />
           ))}
         </div>

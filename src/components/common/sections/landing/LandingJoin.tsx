@@ -11,7 +11,7 @@ const LandingJoin = (): JSX.Element => {
         backgroundSize: "100% 100%",
       }}
     >
-      <div className="container mx-auto py-[165px] px-[82px] flex justify-between items-center">
+      <div className="container mx-auto py-[165px] px-[82px] flex justify-between items-center overflow-hidden">
         <h3 className="font-calSans text-4xl">Rejoignez la communauté</h3>
         <div className="input flex flex-col gap-4 w-[40%]">
           <label

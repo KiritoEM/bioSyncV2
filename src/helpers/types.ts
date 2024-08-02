@@ -19,4 +19,15 @@ interface IhorizontalWrapper {
   direction: number;
 }
 
-export type { IlandingMenuList, IfeaturesList, IhorizontalWrapper };
+interface InavContext {
+  openNav: boolean;
+  changeNavState: (state: boolean) => void;
+  toogleNav: () => void;
+}
+
+export type {
+  IlandingMenuList,
+  IfeaturesList,
+  IhorizontalWrapper,
+  InavContext,
+};

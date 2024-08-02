@@ -9,7 +9,7 @@ import LandingSectionHeader from "../../headers/LandingSectionHeader";
 
 const LandingAbout = (): JSX.Element => {
   return (
-    <section className="landing__about bg-gray01 relative">
+    <section className="landing__about bg-gray01 relative overflow-hidden">
       <div className="container mx-auto flex gap-7 h-full items-center px-[80px] mt-[50px] pt-[5px]">
         <div className="about-content w-[45%] h-full flex flex-col gap-6">
           <LandingSectionHeader
