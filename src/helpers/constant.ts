@@ -56,4 +56,10 @@ const featuresList: IfeaturesList[] = [
   },
 ];
 
-export { landingMenuList, featuresList };
+const socialIcons: string[] = [
+  "/icons/Facebook-icon",
+  "/icons/Linkedin-icon",
+  "/icons/Twitter-icon",
+];
+
+export { landingMenuList, featuresList, socialIcons };

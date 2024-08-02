@@ -1,6 +1,7 @@
 import LandingNav from "@/components/common/navbars/LandingNav";
 import LandingAbout from "@/components/common/sections/landing/LandingAbout";
 import LandingFeatures from "@/components/common/sections/landing/LandingFeatures";
+import LandingFooter from "@/components/common/sections/landing/LandingFooter";
 import LandingHero from "@/components/common/sections/landing/LandingHero";
 import LandingJoin from "@/components/common/sections/landing/LandingJoin";
 import Title from "@/components/meta/Title";
@@ -16,6 +17,7 @@ const Landing = (): JSX.Element => {
         <LandingAbout />
         <LandingFeatures />
         <LandingJoin />
+        <LandingFooter />
       </section>
     </Fragment>
   );

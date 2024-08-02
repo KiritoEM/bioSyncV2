@@ -6,6 +6,7 @@
 import { Button } from "@/components/UI/button";
 import { landingMenuList } from "@/helpers/constant";
 import { FC } from "react";
+import Logo from "../Logo";
 
 const LandingNav: FC = (): JSX.Element => {
   return (
@@ -15,9 +16,7 @@ const LandingNav: FC = (): JSX.Element => {
     >
       <div className="container mx-auto py-5 px-[80px] flex justify-between items-center overflow-hidden">
         {/* Logo */}
-        <div className="logo">
-          <img src="/logo.svg" alt="" />
-        </div>
+        <Logo />
         {/* Elements du menu */}
         <ul className="menu-items flex gap-8">
           {landingMenuList.map((item, index) => (
