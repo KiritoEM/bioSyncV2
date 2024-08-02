@@ -7,6 +7,9 @@ import { Button } from "@/components/UI/button";
 import useMask from "@/core/hooks/useMask";
 import { DotLottiePlayer } from "@dotlottie/react-player";
 import { FC, Fragment } from "react";
+import HorizontalScrollWrapper from "../../animations/HorizontalScrollWrapper";
+import { Image } from "@nextui-org/react";
+import { imageSliding } from "@/helpers/constant";
 
 const LandingHero: FC = (): JSX.Element => {
   const { handleMouseDown, handleMouseEnter, hover, maskPosition, maskRef } =
@@ -68,9 +71,13 @@ const LandingHero: FC = (): JSX.Element => {
           </div>
         </div>
       </div>
-      <div className="hero-illustration w-full relative z-6 -mt-[12vh]">
-        <img src="/hero-frame.svg" className="object-cover w-full" />
-      </div>
+      <HorizontalScrollWrapper direction={-900}>
+        <div className="flex gap-2">
+          {imageSliding.map((img, index) => (
+            <Image src={img} />
+          ))}
+        </div>
+      </HorizontalScrollWrapper>
     </section>
   );
 };

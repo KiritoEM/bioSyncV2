@@ -62,4 +62,10 @@ const socialIcons: string[] = [
   "/icons/Twitter-icon",
 ];
 
-export { landingMenuList, featuresList, socialIcons };
+const imageSliding: string[] = [
+  "/hero-card-1.jpg",
+  "/hero-card-1.jpg",
+  "/hero-card-1.jpg",
+];
+
+export { landingMenuList, featuresList, socialIcons, imageSliding };
