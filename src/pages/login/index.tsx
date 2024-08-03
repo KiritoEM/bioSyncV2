@@ -12,7 +12,7 @@ const login = (): JSX.Element => {
       <Title title="Se connecter à votre compte" />
       <section className="login flex">
         <div className="login__form w-[50%] flex justify-center items-center">
-          <div className="login__form-container max-w-[420px] md:w-[410px] flex flex-col items-start gap-6 my-12">
+          <div className="login__form-container max-w-[420px] md:w-[410px] flex flex-col items-start gap-9 my-12">
             <Logo />
             <h3 className="title text-4xl font-calSans">
               Se connecter à{" "}
