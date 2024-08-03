@@ -7,9 +7,9 @@ const HorizontalScrollWrapper: FC<IhorizontalWrapper> = ({
   direction,
   ...props
 }): JSX.Element => {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const wrapRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
-    target: scrollRef,
+    target: wrapRef,
     offset: ["start end", "end start"],
   });
 
@@ -17,8 +17,8 @@ const HorizontalScrollWrapper: FC<IhorizontalWrapper> = ({
 
   return (
     <section
-      ref={scrollRef}
-      className="w-full relative z-2 bg-transparent"
+      ref={wrapRef}
+      className="w-full relative z-2 bg-transparent overflow-hidden"
       {...props}
     >
       <motion.div

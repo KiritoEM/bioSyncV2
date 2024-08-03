@@ -1,15 +1,27 @@
-/**
- * Section hero du landing
- * @returns {JSX.Element}
- */
-
 import { Button } from "@/components/UI/button";
 import useMask from "@/core/hooks/useMask";
 import { DotLottiePlayer } from "@dotlottie/react-player";
-import { FC, Fragment } from "react";
+import { FC, Fragment, ReactNode } from "react";
 import HorizontalScrollWrapper from "../../animations/HorizontalScrollWrapper";
 import { Image } from "@nextui-org/react";
 import { imageSliding } from "@/helpers/constant";
+import { motion } from "framer-motion";
+
+export const FadeBottom: FC<{ children: ReactNode }> = ({
+  children,
+}): JSX.Element => {
+  return (
+    <div className="w-fit relative overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.54, duration: 0.84 }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
+};
 
 const LandingHero: FC = (): JSX.Element => {
   const { handleMouseDown, handleMouseEnter, hover, maskPosition, maskRef } =
@@ -39,30 +51,36 @@ const LandingHero: FC = (): JSX.Element => {
       <div className="container mx-auto flex justify-start mt-[12vh] lg:mt-[21vh] relative z-4 px-7 lg:px-[80px]">
         <div className="hero-container  w-full flex flex-col md:flex-row justify-between items-start gap-5">
           <div className="content flex flex-col items-start gap-5 w-full lg:w-auto">
-            <h2 className="text-[2em] md:text-[2.3em] lg:text-[3.4rem] text-start font-calSans text-secondary max-w-[400px] lg:max-w-[620px] leading-tight">
-              Rejoignez la Révolution verte avec{" "}
-              <span className="text-yellow01 font-calSans">BioSync</span>
-            </h2>
-            <p className="text-secondary01 text-start max-w-[370px] lg:w-[470px]">
-              Notre application innovante vous permet de participer activement à
-              la préservation de notre planète en faisant du recyclage tout en
-              optimisant votre mode de vie.
-            </p>
-            <div className="w-full lg:w-max buttons mt-2 flex items-center gap-4 md:gap-8">
-              <Button variant="primary" className="md:w-max px-5">
-                Nous rejoindre
-              </Button>
-              <Button
-                variant="borderedSecondary"
-                className="md:w-max gap-1 items-center px-5"
-              >
-                Nous contacter
-                <img
-                  src="/icons/arrow-right.svg"
-                  className="w-5 hidden md:flex"
-                />
-              </Button>
-            </div>
+            <FadeBottom>
+              <h2 className="text-[2em] md:text-[2.3em] lg:text-[3.4rem] text-start font-calSans text-secondary max-w-[400px] lg:max-w-[620px] leading-tight">
+                Rejoignez la Révolution verte avec{" "}
+                <span className="text-yellow01 font-calSans">BioSync</span>
+              </h2>
+            </FadeBottom>
+            <FadeBottom>
+              <p className="text-secondary01 text-start max-w-[370px] lg:w-[470px]">
+                Notre application innovante vous permet de participer activement
+                à la préservation de notre planète en faisant du recyclage tout
+                en optimisant votre mode de vie.
+              </p>
+            </FadeBottom>
+            <FadeBottom>
+              <div className="w-full lg:w-max buttons mt-2 flex items-center gap-4 md:gap-8">
+                <Button variant="primary" className="md:w-max px-5">
+                  Nous rejoindre
+                </Button>
+                <Button
+                  variant="borderedSecondary"
+                  className="md:w-max gap-1 items-center px-5"
+                >
+                  Nous contacter
+                  <img
+                    src="/icons/arrow-right.svg"
+                    className="w-5 hidden md:flex"
+                  />
+                </Button>
+              </div>
+            </FadeBottom>
           </div>
           <div className="lottie relative top-[20px] lg:-top-[11vh] flex justify-center">
             <DotLottiePlayer

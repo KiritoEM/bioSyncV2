@@ -5,7 +5,7 @@ const LandingNavReponsive = (): JSX.Element => {
   const { openNav } = useNav();
   return (
     <section
-      className={`landing-nav__responsive fixed w-full bg-gray01 ${
+      className={`landing-nav__responsive fixed bg-gray01 ${
         openNav
           ? " w-screen h-screen transition-all duration-700 ease-in-out overflow-hidden"
           : "w-0 h-0 overflow-hidden p-0 transition-all duration-700 ease-in-out"
