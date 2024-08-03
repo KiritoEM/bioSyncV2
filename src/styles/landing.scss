@@ -1,0 +1,41 @@
+.landing {
+    &__nav {
+        li {
+            transition: 0.3s ease-in;
+
+            &::after {
+                content: "";
+                width: 0;
+            }
+
+            &:hover::after {
+                content: "";
+                position: absolute;
+                width: 95%;
+                transition: 0.3s ease-in;
+                background-color: $secondary;
+                height: 1px;
+                left: 0;
+                top: 24px;
+            }
+        }
+    }
+
+    &__hero {
+        .hero-bg {
+            opacity: 77%;
+            mask: url("./../../public/splash.png");
+            mask-repeat: no-repeat;
+        }
+    }
+
+    &__join {
+        background-image: url("/community-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+        @media screen and (max-width: 1024px) {
+            background-size: cover;
+        }
+    }
+}
