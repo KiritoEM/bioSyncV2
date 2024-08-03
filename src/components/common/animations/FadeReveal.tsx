@@ -1,11 +1,14 @@
+import { Ifade } from "@/helpers/types";
 import { motion, useAnimation } from "framer-motion";
 import { FC, ReactNode, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-const FadeReveal: FC<{
-  children: ReactNode;
-  direction?: "left" | "right" | "top";
-}> = ({ children, direction = "left" }) => {
+const FadeReveal: FC<Ifade> = ({
+  children,
+  direction = "left",
+  delay = 0.54,
+  className,
+}) => {
   const { inView, ref } = useInView();
   const controls = useAnimation();
 
@@ -20,7 +23,7 @@ const FadeReveal: FC<{
     hidden: {
       opacity: 0,
       x: direction === "left" ? -80 : direction === "right" ? 80 : 0,
-      y: direction === "top" ? -80 : 0,
+      y: direction === "top" ? -80 : direction === "bottom" ? 80 : 0,
     },
   };
 
@@ -30,6 +33,8 @@ const FadeReveal: FC<{
       initial="hidden"
       variants={variants}
       animate={controls}
+      transition={{ delay: delay, duration: 0.6 }}
+      className={className}
     >
       {children}
     </motion.div>

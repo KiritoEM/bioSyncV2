@@ -6,6 +6,8 @@ import HorizontalScrollWrapper from "../../animations/HorizontalScrollWrapper";
 import { Image } from "@nextui-org/react";
 import { imageSliding } from "@/helpers/constant";
 import { motion } from "framer-motion";
+import { scrollToSection } from "@/helpers/scrollHelper";
+import { useRouter } from "next/router";
 
 export const FadeBottom: FC<{ children: ReactNode }> = ({
   children,
@@ -26,6 +28,7 @@ export const FadeBottom: FC<{ children: ReactNode }> = ({
 const LandingHero: FC = (): JSX.Element => {
   const { handleMouseDown, handleMouseEnter, hover, maskPosition, maskRef } =
     useMask();
+    const router = useRouter()
   return (
     <section className="landing__hero w-full bg-gray01 relative z-6 top-[75px] pb-[10px] overflow-hidden">
       <Fragment>
@@ -65,13 +68,14 @@ const LandingHero: FC = (): JSX.Element => {
               </p>
             </FadeBottom>
             <FadeBottom>
-              <div className="w-full lg:w-max buttons mt-2 flex items-center gap-4 md:gap-8">
-                <Button variant="primary" className="md:w-max px-5">
+              <div className="w-full buttons mt-3 flex items-center gap-4 md:gap-8 px-2 pb-2">
+                <Button variant="primary" className="md:w-max px-5" onClick={()=>router.push("/login")}>
                   Nous rejoindre
                 </Button>
                 <Button
                   variant="borderedSecondary"
                   className="md:w-max gap-1 items-center px-5"
+                  onClick={() => scrollToSection("landing-contact")}
                 >
                   Nous contacter
                   <img
@@ -93,7 +97,7 @@ const LandingHero: FC = (): JSX.Element => {
         </div>
       </div>
       <HorizontalScrollWrapper direction={-800}>
-        <div className="flex gap-7 w-max mt-[75px] lg:-mt-5">
+        <div className="flex gap-7 w-max mt-[45px] lg:-mt-0">
           {imageSliding.map((img, index) => (
             <Image
               key={index}

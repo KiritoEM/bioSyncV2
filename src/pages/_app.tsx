@@ -4,7 +4,7 @@ import "@fontsource/lato";
 import "@/styles/index.scss";
 import { NextUIProvider } from "@nextui-org/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { NavProvider } from "@/core/hooks/useNav";
+import { NavProvider } from "@/core/contexts/useNav";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

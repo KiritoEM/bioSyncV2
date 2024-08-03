@@ -24,9 +24,17 @@ interface InavContext {
   toogleNav: () => void;
 }
 
+interface Ifade {
+  children: ReactNode;
+  direction?: "left" | "right" | "top" | "bottom";
+  delay?: number;
+  className?: string
+}
+
 export type {
   IlandingMenuList,
   IfeaturesList,
   IhorizontalWrapper,
   InavContext,
+  Ifade,
 };
