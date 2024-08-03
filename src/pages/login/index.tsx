@@ -3,6 +3,7 @@ import Title from "@/components/meta/Title";
 import { Fragment, useState } from "react";
 import { Input } from "@/components/UI/input";
 import { Image } from "@nextui-org/react";
+import { Button } from "@/components/UI/button";
 
 const login = (): JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -25,7 +26,7 @@ const login = (): JSX.Element => {
                 placeholder="Votre email"
               />
               <Input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 label="Mot de passe"
                 labelPlacement="outside"
                 placeholder="Votre mot de passe"
@@ -37,11 +38,35 @@ const login = (): JSX.Element => {
                   />
                 }
               />
+              <Button radius="md" className="h-[48px] mt-5">
+                Se connecter
+              </Button>
             </form>
+            <div className="or w-full flex items-center gap-4">
+              <div className="line h-[1px] flex-1 bg-gray03"></div>
+              <p className="text-secondary01">OU</p>
+              <div className="line h-[1px] flex-1 bg-gray03"></div>
+            </div>
+            <Button
+              className="h-[48px] w-full"
+              variant="borderedSecondary"
+              radius="md"
+            >
+              <img src="/icons/google-icon.svg" className="w-6" /> Se connecter
+              avec Google
+            </Button>
+            <div className="forgot-password w-full flex justify-center">
+              <p className="mt-4 text-center text-secondary">
+                Pas encore de compte?{" "}
+                <span className="font-semibold text-blue-500">
+                  Créer un compte
+                </span>
+              </p>
+            </div>
           </div>
         </div>
         <div
-          className="login_image w-[50%] h-screen bg-cover bg-center bg-no-repeat flex items-end justify-center p-7"
+          className="login_image w-[50%] min-h-screen bg-cover bg-center bg-no-repeat flex items-end justify-center p-7"
           style={{ backgroundImage: `url("/login-bg.svg")` }}
         >
           <p className="font-calSans text-white text-[26px] text-center leading-tight">

@@ -21,7 +21,7 @@ const Input = extendVariants(NextUiInput, {
         inputWrapper: "rounded",
       },
       sm: {
-        inputWrapper: "rounded-[4px]",
+        inputWrapper: "rounded-md",
       },
     },
     textSize: {
