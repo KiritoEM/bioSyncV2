@@ -8,7 +8,10 @@ const SignupLayout: FC<{ children: ReactNode }> = ({
       <div className="top-shape fixed top-0 left-0 z-2">
         <img src="/illustrations/frame-top.svg" />
       </div>
-      <div className="signup__content max-w-[420px] flex flex-col gap-8 items-center my-14 relative z-4">
+      <div
+        className="signup__content max-w-[420px] flex flex-col gap-8 items-center relative z-4"
+        style={{ marginBottom: "3rem", marginTop: "3rem" }}
+      >
         {children}
       </div>
       <div className="bottom-shape fixed bottom-0 z-2" style={{ right: 0 }}>
