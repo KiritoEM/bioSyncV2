@@ -28,8 +28,14 @@ interface Ifade {
   children: ReactNode;
   direction?: "left" | "right" | "top" | "bottom";
   delay?: number;
-  className?: string
+  className?: string;
 }
+
+type Itoast = {
+  title: string;
+  description: string;
+  status: "error" | "warning" | "success";
+};
 
 export type {
   IlandingMenuList,
@@ -37,4 +43,5 @@ export type {
   IhorizontalWrapper,
   InavContext,
   Ifade,
+  Itoast,
 };

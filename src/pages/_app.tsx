@@ -4,16 +4,17 @@ import "@fontsource/lato";
 import "@/styles/index.scss";
 import { NextUIProvider } from "@nextui-org/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { NavProvider } from "@/core/contexts/useNav";
+import { Provider } from "react-redux";
+import { store } from "@/core/redux/store.config";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <NextUIProvider>
-      <ChakraProvider>
-        <NavProvider>
+    <Provider store={store}>
+      <NextUIProvider>
+        <ChakraProvider>
           <Component {...pageProps} />
-        </NavProvider>
-      </ChakraProvider>
-    </NextUIProvider>
+        </ChakraProvider>
+      </NextUIProvider>
+    </Provider>
   );
 }
