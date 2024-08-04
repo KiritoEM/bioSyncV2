@@ -4,14 +4,17 @@ import SignupHeader from "@/components/common/headers/SignupHeader";
 import Title from "@/components/meta/Title";
 import { Button } from "@/components/UI/button";
 import { Input } from "@/components/UI/input";
+import { RootState } from "@/core/redux/store.config";
 import SignupLayout from "@/layouts/SignupLayout";
-import { Image } from "@nextui-org/react";
+import { Divider, Image, useSelect } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { FC, Fragment, useState } from "react";
+import { useSelector } from "react-redux";
 
 const signupFinalisation: FC = (): JSX.Element => {
   const { register } = authActions();
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const loading = useSelector((state: RootState) => state.loading.loadingState);
   const router = useRouter();
 
   const { email } = router.query;
@@ -41,6 +44,7 @@ const signupFinalisation: FC = (): JSX.Element => {
             name="user-name"
             autoComplete="off"
           />
+          <Divider orientation="horizontal" />
           <Input
             type={showPassword ? "text" : "password"}
             label="Mot de passe"
@@ -55,9 +59,20 @@ const signupFinalisation: FC = (): JSX.Element => {
               />
             }
           />
-          <Button className="h-[48px] w-full" radius="md" type="submit">
-            Créer un compte
-          </Button>
+          {loading ? (
+            <Button
+              className="h-[48px] w-full"
+              radius="md"
+              isLoading
+              isDisabled
+            >
+              Création du compte...
+            </Button>
+          ) : (
+            <Button className="h-[48px] w-full" radius="md" type="submit">
+              Créer un compte
+            </Button>
+          )}
         </form>
       </SignupLayout>
     </Fragment>

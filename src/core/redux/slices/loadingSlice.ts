@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Loading {
-  loading: boolean;
+  loadingState: boolean;
 }
 
 const initialState: Loading = {
-  loading: false,
+  loadingState: false,
 };
 
 export const loadingSlice = createSlice({
@@ -14,10 +14,10 @@ export const loadingSlice = createSlice({
   initialState,
   reducers: {
     startLoading: (state) => {
-      state.loading = true;
+      state.loadingState = true;
     },
     stopLoading: (state) => {
-      state.loading = false;
+      state.loadingState = false;
     },
   },
 });

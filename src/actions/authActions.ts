@@ -2,16 +2,20 @@ import { Toast } from "@/components/UI/toast";
 import { emailValid } from "@/helpers/regex";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
 
 const authActions = () => {
   const router = useRouter();
   const { addToast } = Toast();
+  const dispatch = useDispatch();
 
   const submitEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     console.log(form);
     const email = form["email"].value;
+    dispatch(startLoading());
 
     if (emailValid(email)) {
       router.push({
@@ -27,6 +31,7 @@ const authActions = () => {
         status: "error",
       });
     }
+    dispatch(stopLoading());
   };
 
   const register = async (
@@ -40,6 +45,7 @@ const authActions = () => {
       const userName = form["user-name"].value;
       console.log(email);
       const password = form["password"].value;
+      dispatch(startLoading());
 
       const response = await axios.post(
         "http://localhost:3000/api/auth/register",
@@ -66,6 +72,8 @@ const authActions = () => {
         description: "Un erreur s' est produit",
         status: "error",
       });
+    } finally {
+      dispatch(stopLoading());
     }
   };
 

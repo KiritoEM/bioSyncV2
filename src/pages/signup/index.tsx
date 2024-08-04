@@ -5,11 +5,14 @@ import Title from "@/components/meta/Title";
 import { Button } from "@/components/UI/button";
 import { Input } from "@/components/UI/input";
 import { NavProvider } from "@/core/contexts/useNav";
+import { RootState } from "@/core/redux/store.config";
 import SignupLayout from "@/layouts/SignupLayout";
 import { FC } from "react";
+import { useSelector } from "react-redux";
 
 const signup: FC = (): JSX.Element => {
   const { submitEmail } = authActions();
+  const loading = useSelector((state: RootState) => state.loading.loadingState);
   return (
     <NavProvider>
       <Title title="Créez votre compte BioSync" />
@@ -30,9 +33,20 @@ const signup: FC = (): JSX.Element => {
             name="email"
             autoComplete="off"
           />
-          <Button className="h-[48px] w-full" radius="md" type="submit">
-            Envoyer
-          </Button>
+          {loading ? (
+            <Button
+              className="h-[48px] w-full"
+              radius="md"
+              isLoading
+              isDisabled
+            >
+              Envoie...
+            </Button>
+          ) : (
+            <Button className="h-[48px] w-full" radius="md" type="submit">
+              Envoyer
+            </Button>
+          )}
         </form>
         <Google />
         <div className="signup w-full flex justify-center">

@@ -3,7 +3,7 @@ import loadingReducer from "./slices/loadingSlice";
 
 export const store = configureStore({
   reducer: {
-    loadingReducer,
+    loading: loadingReducer,
   },
 });
 

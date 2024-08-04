@@ -7,9 +7,12 @@ import { Input } from "@/components/UI/input";
 import { Image } from "@nextui-org/react";
 import { Button } from "@/components/UI/button";
 import Google from "@/components/common/Google";
+import { useSelector } from "react-redux";
+import { RootState } from "@/core/redux/store.config";
 
 const Login: FC = (): JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const loading = useSelector((state: RootState) => state.loading.loadingState);
 
   return (
     <Fragment>
@@ -42,9 +45,20 @@ const Login: FC = (): JSX.Element => {
                   />
                 }
               />
-              <Button radius="md" className="h-[48px] mt-5">
-                Se connecter
-              </Button>
+              {loading ? (
+                <Button
+                  className="h-[48px] w-full"
+                  radius="md"
+                  isLoading
+                  isDisabled
+                >
+                  Connexion...
+                </Button>
+              ) : (
+                <Button className="h-[48px] w-full" radius="md" type="submit">
+                  Se connecter
+                </Button>
+              )}
             </form>
             <Google />
             <div className="signup w-full flex justify-center">
