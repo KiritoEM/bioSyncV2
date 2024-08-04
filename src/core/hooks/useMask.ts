@@ -1,8 +1,3 @@
-/**
- * custom hook pour le mask
- * @return {object}
- */
-
 import { useEffect, useRef, useState } from "react";
 
 const useMask = () => {

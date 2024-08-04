@@ -28,7 +28,20 @@ interface Ifade {
   children: ReactNode;
   direction?: "left" | "right" | "top" | "bottom";
   delay?: number;
-  className?: string
+  className?: string;
+}
+
+type Itoast = {
+  title: string;
+  description: string;
+  status: "error" | "warning" | "success";
+};
+
+interface Imodal {
+  title: string;
+  describ: string;
+  action?: () => void;
+  open: boolean;
 }
 
 export type {
@@ -37,4 +50,6 @@ export type {
   IhorizontalWrapper,
   InavContext,
   Ifade,
+  Itoast,
+  Imodal,
 };
