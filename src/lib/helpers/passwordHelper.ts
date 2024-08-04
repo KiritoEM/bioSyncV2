@@ -11,7 +11,15 @@ class passwordHelper {
       const hashedPassword = bcrypt.hash(password, this.salt);
       return hashedPassword;
     } catch (err) {
-      throw Error(err as string);
+      throw new Error(err as string);
+    }
+  }
+
+  async comparePassword(password: string, hashedPassword: string) {
+    try {
+      return bcrypt.compare(password, hashedPassword);
+    } catch (err) {
+      throw new Error(err as string);
     }
   }
 }

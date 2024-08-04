@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const secretKey = process.env.SECRET_KEY;
+const secretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 
 class tokenHelper {
   public secretKey: string;
@@ -15,7 +15,7 @@ class tokenHelper {
       const token = jwt.sign(payload, this.secretKey, { expiresIn: "365d" });
       return token;
     } catch (err) {
-      throw Error(err as string);
+      throw new Error(err as string);
     }
   }
 }
