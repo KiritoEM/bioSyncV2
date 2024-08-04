@@ -6,7 +6,7 @@ import { Button } from "@/components/UI/button";
 import { Input } from "@/components/UI/input";
 import { RootState } from "@/core/redux/store.config";
 import SignupLayout from "@/layouts/SignupLayout";
-import { Divider, Image, useSelect } from "@nextui-org/react";
+import { Divider, Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { FC, Fragment, useState } from "react";
 import { useSelector } from "react-redux";

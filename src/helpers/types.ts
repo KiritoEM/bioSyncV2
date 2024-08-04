@@ -37,6 +37,13 @@ type Itoast = {
   status: "error" | "warning" | "success";
 };
 
+interface Imodal {
+  title: string;
+  describ: string;
+  action?: () => void;
+  open: boolean;
+}
+
 export type {
   IlandingMenuList,
   IfeaturesList,
@@ -44,4 +51,5 @@ export type {
   InavContext,
   Ifade,
   Itoast,
+  Imodal,
 };

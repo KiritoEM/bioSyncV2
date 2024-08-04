@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 const signup: FC = (): JSX.Element => {
   const { submitEmail } = authActions();
   const loading = useSelector((state: RootState) => state.loading.loadingState);
+
   return (
     <NavProvider>
       <Title title="Créez votre compte BioSync" />
