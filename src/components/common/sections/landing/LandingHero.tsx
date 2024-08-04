@@ -28,7 +28,7 @@ export const FadeBottom: FC<{ children: ReactNode }> = ({
 const LandingHero: FC = (): JSX.Element => {
   const { handleMouseDown, handleMouseEnter, hover, maskPosition, maskRef } =
     useMask();
-    const router = useRouter()
+  const router = useRouter();
   return (
     <section className="landing__hero w-full bg-gray01 relative z-6 top-[75px] pb-[10px] overflow-hidden">
       <Fragment>
@@ -69,7 +69,11 @@ const LandingHero: FC = (): JSX.Element => {
             </FadeBottom>
             <FadeBottom>
               <div className="w-full buttons mt-3 flex items-center gap-4 md:gap-8 px-2 pb-2">
-                <Button variant="primary" className="md:w-max px-5" onClick={()=>router.push("/login")}>
+                <Button
+                  variant="primary"
+                  className="md:w-max px-5"
+                  onClick={() => router.push("/login")}
+                >
                   Nous rejoindre
                 </Button>
                 <Button

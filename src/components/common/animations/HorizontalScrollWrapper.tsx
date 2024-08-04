@@ -5,7 +5,6 @@ import { FC, useRef } from "react";
 const HorizontalScrollWrapper: FC<IhorizontalWrapper> = ({
   children,
   direction,
-  ...props
 }): JSX.Element => {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
@@ -19,7 +18,6 @@ const HorizontalScrollWrapper: FC<IhorizontalWrapper> = ({
     <section
       ref={wrapRef}
       className="w-full relative z-2 bg-transparent overflow-hidden"
-      {...props}
     >
       <motion.div
         style={{

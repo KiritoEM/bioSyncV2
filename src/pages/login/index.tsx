@@ -1,3 +1,5 @@
+"use client";
+
 import Logo from "@/components/common/Logo";
 import Title from "@/components/meta/Title";
 import { Fragment, useState } from "react";
@@ -5,8 +7,9 @@ import { Input } from "@/components/UI/input";
 import { Image } from "@nextui-org/react";
 import { Button } from "@/components/UI/button";
 
-const login = (): JSX.Element => {
+const Login = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
   return (
     <Fragment>
       <Title title="Se connecter à votre compte" />
@@ -18,7 +21,7 @@ const login = (): JSX.Element => {
               Se connecter à{" "}
               <span className="text-primary font-calSans">BioSync</span>
             </h3>
-            <form action="post" className="w-full flex flex-col gap-5">
+            <form method="post" className="w-full flex flex-col gap-5">
               <Input
                 type="email"
                 label="Email"
@@ -72,7 +75,7 @@ const login = (): JSX.Element => {
           <p className="font-calSans text-white text-[26px] text-center leading-tight">
             <span className="font-calSans text-[40px]">“</span>Rejoignez{" "}
             <span className="text-yellow01 font-calSans">bioSync</span> et
-            contibuez à un avenir plus durable pour notre planète.
+            contribuez à un avenir plus durable pour notre planète.
           </p>
         </div>
       </section>
@@ -80,4 +83,4 @@ const login = (): JSX.Element => {
   );
 };
 
-export default login;
+export default Login;
