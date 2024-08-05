@@ -2,7 +2,7 @@
  *données statiques utilisées dans toutes l' application stockées avec des Structure de données
  */
 
-import { IfeaturesList, IlandingMenuList } from "./types";
+import { IdashboarsNavList, IfeaturesList, IlandingMenuList } from "./types";
 
 const landingMenuList: IlandingMenuList[] = [
   {
@@ -75,4 +75,26 @@ const imageSliding: string[] = [
   "/hero-card-6.jpg",
 ];
 
-export { landingMenuList, featuresList, socialIcons, imageSliding };
+const dashboardNavList: IdashboarsNavList[] = [
+  {
+    icon: "home.svg",
+    activeIcon: "home-active.svg",
+    url: "/dashboard",
+  },
+  {
+    icon: "add.svg",
+    activeIcon: "add-active.svg",
+  },
+  {
+    icon: "location.svg",
+    activeIcon: "location-active.svg",
+  },
+];
+
+export {
+  landingMenuList,
+  featuresList,
+  socialIcons,
+  imageSliding,
+  dashboardNavList,
+};

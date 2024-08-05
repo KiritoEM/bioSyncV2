@@ -9,14 +9,14 @@ const protectedHOC = (Component: ComponentType<any>) => {
     const router = useRouter();
     const { getAccessToken } = useAuth();
     const dispatch = useDispatch();
-    dispatch(startLoading());
 
     useEffect(() => {
       if (getAccessToken() === "unknown") {
-        router.push("/");
+        dispatch(startLoading());
+        router.replace("/");
         dispatch(stopLoading());
       }
-    }, [router, getAccessToken]);
+    }, [router, getAccessToken, dispatch]);
 
     return <Component {...props} />;
   };
@@ -27,14 +27,14 @@ const freeHOC = (Component: ComponentType<any>) => {
     const router = useRouter();
     const { getAccessToken } = useAuth();
     const dispatch = useDispatch();
-    dispatch(startLoading());
 
     useEffect(() => {
+      dispatch(startLoading());
       if (getAccessToken() === "authentificated") {
         router.push("/dashboard");
-        dispatch(stopLoading());
       }
-    }, [router, getAccessToken]);
+      dispatch(stopLoading());
+    }, [router, getAccessToken, dispatch]);
 
     return <Component {...props} />;
   };

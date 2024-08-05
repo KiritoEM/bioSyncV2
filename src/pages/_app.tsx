@@ -9,14 +9,18 @@ import Loading from "@/components/common/Loading";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 
-export default function App({ Component, pageProps }: AppProps) {
+const AppLoading = () => {
   const loading = useSelector((state: RootState) => state.loading.loadingState);
+  return <>{loading && <Loading />}</>;
+};
+
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <RootLayout>
       <NextUIProvider>
         <ChakraProvider>
+          <AppLoading />
           <Component {...pageProps} />
-          {loading === true && <Loading />}
         </ChakraProvider>
       </NextUIProvider>
     </RootLayout>

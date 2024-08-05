@@ -44,6 +44,12 @@ interface IauthContext {
   getAccessToken: () => "authentificated" | "unknown";
 }
 
+interface IdashboarsNavList {
+  icon?: string;
+  activeIcon?: string;
+  url?: string
+}
+
 export type {
   IlandingMenuList,
   IfeaturesList,
@@ -52,4 +58,5 @@ export type {
   Itoast,
   Imodal,
   IauthContext,
+  IdashboarsNavList,
 };

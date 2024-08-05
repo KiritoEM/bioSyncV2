@@ -49,18 +49,14 @@ const authActions = () => {
       const password = form["password"].value;
       dispatch(startLoading());
 
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
-        {
-          pseudo: pseudo,
-          name: userName,
-          password: password,
-          email: email,
-        }
-      );
+      const response = await axios.post("/api/auth/register", {
+        pseudo: pseudo,
+        name: userName,
+        password: password,
+        email: email,
+      });
 
       if (response.status === 200) {
-        console.log(response.data.token);
         addAccessToken(response.data.token as string);
         router.push("/dashboard");
         addToast({
@@ -81,6 +77,39 @@ const authActions = () => {
     }
   };
 
-  return { submitEmail, register };
+  const login = async (e: React.FormEvent<HTMLFormElement>) => {
+    try {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const email = form["email"].value;
+      const password = form["password"].value;
+
+      const response = await axios.post("/api/auth/login", {
+        email: email,
+        password: password,
+      });
+
+      if (response.status === 200) {
+        addAccessToken(response.data.token as string);
+        router.push("/dashboard");
+        addToast({
+          title: "succés",
+          description: "Compte créé avec succés",
+          status: "success",
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      addToast({
+        title: "Erreur",
+        description: "Un erreur s' est produit",
+        status: "error",
+      });
+    } finally {
+      dispatch(stopLoading());
+    }
+  };
+
+  return { submitEmail, register, login };
 };
 export default authActions;

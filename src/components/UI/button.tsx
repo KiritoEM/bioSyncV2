@@ -1,7 +1,3 @@
-/**
- * Customs buttons avec next UI
- */
-
 import { Button as NextButtonUI, extendVariants } from "@nextui-org/react";
 
 const Button = extendVariants(NextButtonUI, {

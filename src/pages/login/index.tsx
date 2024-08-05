@@ -1,6 +1,6 @@
 import Logo from "@/components/common/Logo";
 import Title from "@/components/meta/Title";
-import { FC, Fragment, useState } from "react";
+import React, { FC, Fragment, useState } from "react";
 import { Input } from "@/components/UI/input";
 import { Image } from "@nextui-org/react";
 import { Button } from "@/components/UI/button";
@@ -9,11 +9,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 import { useRouter } from "next/router";
 import { freeHOC } from "@/core/HOC/authHOC";
+import authActions from "@/actions/authActions";
 
 const Login: FC = (): JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const loading = useSelector((state: RootState) => state.loading.loadingState);
   const router = useRouter();
+  const { login } = authActions();
 
   return (
     <Fragment>
@@ -26,16 +28,22 @@ const Login: FC = (): JSX.Element => {
               Se connecter à{" "}
               <span className="text-primary font-calSans">BioSync</span>
             </h3>
-            <form method="post" className="w-full flex flex-col gap-6">
+            <form
+              method="post"
+              className="w-full flex flex-col gap-6"
+              onSubmit={(e: React.FormEvent<HTMLFormElement>) => login(e)}
+            >
               <Input
                 type="email"
                 label="Email"
+                name="email"
                 labelPlacement="outside"
                 placeholder="Votre email"
               />
               <Input
                 type={showPassword ? "text" : "password"}
                 label="Mot de passe"
+                name="password"
                 labelPlacement="outside"
                 placeholder="Votre mot de passe"
                 endContent={

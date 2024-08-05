@@ -1,6 +1,6 @@
 import { Ifade } from "@/helpers/types";
 import { motion, useAnimation } from "framer-motion";
-import { FC, ReactNode, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const FadeReveal: FC<Ifade> = ({
