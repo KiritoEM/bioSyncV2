@@ -45,7 +45,6 @@ const authActions = () => {
       const form = e.currentTarget;
       const pseudo = form["pseudo"].value;
       const userName = form["user-name"].value;
-      console.log(email);
       const password = form["password"].value;
       dispatch(startLoading());
 
@@ -58,7 +57,7 @@ const authActions = () => {
 
       if (response.status === 200) {
         addAccessToken(response.data.token as string);
-        router.push("/dashboard");
+        router.replace("/dashboard");
         addToast({
           title: "succés",
           description: "Compte créé avec succés",
@@ -91,7 +90,7 @@ const authActions = () => {
 
       if (response.status === 200) {
         addAccessToken(response.data.token as string);
-        router.push("/dashboard");
+        router.replace("/dashboard");
         addToast({
           title: "succés",
           description: "Compte créé avec succés",

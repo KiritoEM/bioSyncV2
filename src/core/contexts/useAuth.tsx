@@ -7,8 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store.config";
+import { useDispatch } from "react-redux";
 import { startLoading, stopLoading } from "../redux/slices/loadingSlice";
 
 const AuthContext = createContext<IauthContext | null>(null);
@@ -16,6 +15,7 @@ export const storageKey = "@biosync_token";
 
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
+  const [loadToken, setLoadToken] = useState<boolean>(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
       const token = localStorage.getItem(storageKey);
       setAccessToken(token);
     }
+    setLoadToken(false);
     dispatch(stopLoading());
   }, [dispatch]);
 
@@ -44,7 +45,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ accessToken, addAccessToken, getAccessToken }}
+      value={{ accessToken, addAccessToken, getAccessToken, loadToken }}
     >
       {children}
     </AuthContext.Provider>

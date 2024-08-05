@@ -1,4 +1,5 @@
 import { extendVariants, Input as NextUiInput } from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 
 const Input = extendVariants(NextUiInput, {
   variants: {
@@ -44,4 +45,18 @@ const Input = extendVariants(NextUiInput, {
   },
 });
 
-export { Input };
+const SearchInput = () => {
+  return (
+    <div className="search-input">
+      <Input
+        placeholder="Recherchez"
+        classNames={{
+          input: ["w-[300px]"],
+        }}
+        endContent={<Image src="/icons/search.svg" className="w-[21px]" />}
+      />
+    </div>
+  );
+};
+
+export { Input, SearchInput };

@@ -19,8 +19,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <RootLayout>
       <NextUIProvider>
         <ChakraProvider>
-          <AppLoading />
           <Component {...pageProps} />
+          <AppLoading />
         </ChakraProvider>
       </NextUIProvider>
     </RootLayout>

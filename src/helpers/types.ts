@@ -40,6 +40,7 @@ interface Imodal {
 
 interface IauthContext {
   accessToken: string | null;
+  loadToken: boolean;
   addAccessToken: (token: string) => void;
   getAccessToken: () => "authentificated" | "unknown";
 }
@@ -47,7 +48,12 @@ interface IauthContext {
 interface IdashboarsNavList {
   icon?: string;
   activeIcon?: string;
-  url?: string
+  url?: string;
+}
+
+interface Imap {
+  position: [number, number];
+  zoom: number;
 }
 
 export type {
@@ -59,4 +65,5 @@ export type {
   Imodal,
   IauthContext,
   IdashboarsNavList,
+  Imap,
 };
