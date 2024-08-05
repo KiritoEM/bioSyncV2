@@ -4,6 +4,7 @@ import SignupHeader from "@/components/common/headers/SignupHeader";
 import Title from "@/components/meta/Title";
 import { Button } from "@/components/UI/button";
 import { Input } from "@/components/UI/input";
+import { freeHOC } from "@/core/HOC/authHOC";
 import { RootState } from "@/core/redux/store.config";
 import SignupLayout from "@/layouts/SignupLayout";
 import { useRouter } from "next/router";
@@ -67,4 +68,4 @@ const signup: FC = (): JSX.Element => {
   );
 };
 
-export default signup;
+export default freeHOC(signup);

@@ -9,7 +9,7 @@ import {
 } from "react";
 
 const AuthContext = createContext<IauthContext | null>(null);
-const storageKey = "@biosync_token";
+export const storageKey = "@biosync_token";
 
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
@@ -24,6 +24,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const addAccessToken = (token: string) => {
     try {
       if (typeof window !== null) {
+        localStorage.setItem(storageKey, token as string);
         setAccessToken(token as string);
       }
     } catch (err) {
@@ -32,7 +33,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   const getAccessToken = () => {
-    return accessToken ? "Authentificated" : "unknown";
+    return accessToken ? "authentificated" : "unknown";
   };
 
   return (

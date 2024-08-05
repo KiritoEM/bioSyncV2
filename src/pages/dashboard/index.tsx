@@ -1,3 +1,5 @@
+import { protectedHOC } from "@/core/HOC/authHOC";
+
 const dashboardHome = () => {
     return (
         <div>
@@ -6,4 +8,4 @@ const dashboardHome = () => {
     );
 };
 
-export default dashboardHome;
+export default protectedHOC(dashboardHome);

@@ -41,7 +41,7 @@ interface Imodal {
 interface IauthContext {
   accessToken: string | null;
   addAccessToken: (token: string) => void;
-  getAccessToken: () => string;
+  getAccessToken: () => "authentificated" | "unknown";
 }
 
 export type {

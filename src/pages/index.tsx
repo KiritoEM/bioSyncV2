@@ -5,6 +5,7 @@ import LandingFooter from "@/components/common/sections/landing/LandingFooter";
 import LandingHero from "@/components/common/sections/landing/LandingHero";
 import LandingJoin from "@/components/common/sections/landing/LandingJoin";
 import Title from "@/components/meta/Title";
+import { freeHOC } from "@/core/HOC/authHOC";
 import { Fragment } from "react";
 
 const Landing = (): JSX.Element => {
@@ -23,4 +24,4 @@ const Landing = (): JSX.Element => {
   );
 };
 
-export default Landing;
+export default freeHOC(Landing);

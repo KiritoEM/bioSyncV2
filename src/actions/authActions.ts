@@ -4,11 +4,13 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
+import { useAuth } from "@/core/contexts/useAuth";
 
 const authActions = () => {
   const router = useRouter();
   const { addToast } = Toast();
   const dispatch = useDispatch();
+  const { addAccessToken } = useAuth();
 
   const submitEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,7 +60,9 @@ const authActions = () => {
       );
 
       if (response.status === 200) {
-        console.log(response.data);
+        console.log(response.data.token);
+        addAccessToken(response.data.token as string);
+        router.push("/dashboard");
         addToast({
           title: "succés",
           description: "Compte créé avec succés",

@@ -1,5 +1,3 @@
-"use client";
-
 import Logo from "@/components/common/Logo";
 import Title from "@/components/meta/Title";
 import { FC, Fragment, useState } from "react";
@@ -10,6 +8,7 @@ import Google from "@/components/common/Google";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 import { useRouter } from "next/router";
+import { freeHOC } from "@/core/HOC/authHOC";
 
 const Login: FC = (): JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -91,4 +90,4 @@ const Login: FC = (): JSX.Element => {
   );
 };
 
-export default Login;
+export default freeHOC(Login);
