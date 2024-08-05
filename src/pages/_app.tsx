@@ -4,17 +4,16 @@ import "@fontsource/lato";
 import "@/styles/index.scss";
 import { NextUIProvider } from "@nextui-org/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Provider } from "react-redux";
-import { store } from "@/core/redux/store.config";
+import RootLayout from "@/layouts/RootLayout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
+    <RootLayout>
       <NextUIProvider>
         <ChakraProvider>
           <Component {...pageProps} />
         </ChakraProvider>
       </NextUIProvider>
-    </Provider>
+    </RootLayout>
   );
 }

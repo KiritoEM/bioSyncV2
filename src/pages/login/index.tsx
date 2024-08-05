@@ -9,10 +9,12 @@ import { Button } from "@/components/UI/button";
 import Google from "@/components/common/Google";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
+import { useRouter } from "next/router";
 
 const Login: FC = (): JSX.Element => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const loading = useSelector((state: RootState) => state.loading.loadingState);
+  const router = useRouter();
 
   return (
     <Fragment>
@@ -64,7 +66,10 @@ const Login: FC = (): JSX.Element => {
             <div className="signup w-full flex justify-center">
               <p className="mt-4 text-center text-secondary">
                 Pas encore de compte?{" "}
-                <span className="font-semibold text-blue-500">
+                <span
+                  className="font-semibold text-blue-500 cursor-pointer"
+                  onClick={() => router.replace("/signup")}
+                >
                   Créer un compte
                 </span>
               </p>

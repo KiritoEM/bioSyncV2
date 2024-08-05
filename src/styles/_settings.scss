@@ -1,7 +1,16 @@
 $secondary: #0A110B;
+$gray01: #F3F9FA;
 
 * {
     margin: 0;
     padding: 0;
-    font-family: "Lato", sans-serif;    
+    font-family: "Lato"
+}
+
+body {
+    background-color: $gray01;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+    width: 100%;
 }

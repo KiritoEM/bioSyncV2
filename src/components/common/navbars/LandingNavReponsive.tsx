@@ -1,15 +1,16 @@
-import { useNav } from "@/core/contexts/useNav";
 import { landingMenuList } from "@/helpers/constant";
 import FadeReveal from "../animations/FadeReveal";
 import { Button } from "@/components/UI/button";
 import { scrollToSection } from "@/helpers/scrollHelper";
+import { useSelector } from "react-redux";
+import { RootState } from "@/core/redux/store.config";
 
 const LandingNavReponsive = (): JSX.Element => {
-  const { openNav } = useNav();
+  const navState = useSelector((state: RootState) => state.nav.navState);
   return (
     <section
       className={`landing-nav__responsive fixed bg-gray01 ${
-        openNav
+        navState
           ? " w-screen h-screen transition-all duration-700 ease-in-out overflow-hidden"
           : "w-0 h-0 overflow-hidden p-0 transition-all duration-700 ease-in-out"
       } flex justify-center mt-[76px] z-50`}

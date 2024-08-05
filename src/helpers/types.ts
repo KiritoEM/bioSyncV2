@@ -18,12 +18,6 @@ interface IhorizontalWrapper {
   direction: number;
 }
 
-interface InavContext {
-  openNav: boolean;
-  changeNavState: (state: boolean) => void;
-  toogleNav: () => void;
-}
-
 interface Ifade {
   children: ReactNode;
   direction?: "left" | "right" | "top" | "bottom";
@@ -44,12 +38,18 @@ interface Imodal {
   open: boolean;
 }
 
+interface IauthContext {
+  accessToken: string | null;
+  addAccessToken: (token: string) => void;
+  getAccessToken: () => string;
+}
+
 export type {
   IlandingMenuList,
   IfeaturesList,
   IhorizontalWrapper,
-  InavContext,
   Ifade,
   Itoast,
   Imodal,
+  IauthContext,
 };
