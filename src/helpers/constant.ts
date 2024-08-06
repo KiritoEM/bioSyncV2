@@ -88,6 +88,7 @@ const dashboardNavList: IdashboarsNavList[] = [
   {
     icon: "location.svg",
     activeIcon: "location-active.svg",
+    url: "/dashboard/map",
   },
 ];
 

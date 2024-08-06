@@ -18,14 +18,15 @@ const DashboardBottomButtons: FC = (): JSX.Element => {
   );
 };
 
-const DashboardLayout: FC<{ children: ReactNode }> = ({
+const DashboardLayout: FC<{ children: ReactNode; addButton?: boolean }> = ({
   children,
+  addButton = false,
 }): JSX.Element => {
   return (
     <Fragment>
       <DashboardNav />
       {children}
-      <DashboardBottomButtons />
+      {addButton && <DashboardBottomButtons />}
     </Fragment>
   );
 };

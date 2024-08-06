@@ -18,6 +18,7 @@ const DashboardNav: FC = (): JSX.Element => {
               className={`p-[10px] hover:bg-primary/90 hover:rounded-lg cursor-pointer ${
                 router.pathname === item.url ? "bg-primary rounded-lg" : ""
               }`}
+              onClick={() => router.push(item.url as string)}
             >
               <img
                 src={

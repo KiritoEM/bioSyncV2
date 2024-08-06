@@ -4,14 +4,14 @@ import DashboardProfile from "@/components/common/sections/dashboard/DashboardPr
 import Title from "@/components/meta/Title";
 import { protectedHOC } from "@/core/HOC/authHOC";
 import DashboardLayout from "@/layouts/DashboardLayout";
-import { Fragment } from "react";
+import { FC, Fragment } from "react";
 
-const dashboardHome = () => {
+const dashboardHome: FC = (): JSX.Element => {
   return (
     <Fragment>
       <Title title="BioSync | Accueil" />
       <section className="dashboard-home bg-gray01 h-max">
-        <DashboardLayout>
+        <DashboardLayout addButton>
           <div className="dashboard-home__container container mx-auto flex gap-9 mt-8">
             <DashboardMap />
             <DashboardHomePost />

@@ -6,13 +6,13 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
-const Map: FC<Imap> = ({ position, zoom }): JSX.Element => {
+const Map: FC<Imap> = ({ position, zoom, wheelZoom = false }): JSX.Element => {
   console.log(position);
   return (
     <MapContainer
       center={position}
       zoom={zoom}
-      scrollWheelZoom={false}
+      scrollWheelZoom={wheelZoom}
       className="w-full h-full"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />

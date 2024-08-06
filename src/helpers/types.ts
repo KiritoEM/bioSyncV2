@@ -54,6 +54,7 @@ interface IdashboarsNavList {
 interface Imap {
   position: [number, number];
   zoom: number;
+  wheelZoom?: boolean;
 }
 
 export type {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useGeolocalisation = () => {
-  const [coords, setCoords] = useState<[number, number]>([-18.8792, 47.5079]);
+  const [coords, setCoords] = useState<[number, number]>([0, 0]);
 
   useEffect(() => {
     if (navigator.geolocation) {
