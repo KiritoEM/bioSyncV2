@@ -24,7 +24,8 @@ const HomeBanner: FC = (): JSX.Element => {
       <div className="banner-illustration h-full flex items-end relative -right-2">
         <Image
           src="/illustrations/map.svg"
-          className="w-[250px] object-cover"
+          className="object-cover"
+          width={280}
         />
       </div>
     </div>
