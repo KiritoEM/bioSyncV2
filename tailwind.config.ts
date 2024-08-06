@@ -19,6 +19,7 @@ const config: Config = {
         gray02: "rgba(10, 17, 11, 0.81)",
         gray03: "rgba(10, 17, 11, 0.30)",
         yellow01: "#FFC957",
+        blue01: "#3da5d9",
       },
       fontFamily: {
         calSans: "Cal Sans",
