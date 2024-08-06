@@ -9,4 +9,13 @@ interface Iuser extends Document {
   localisation?: string;
 }
 
-export type { Iuser };
+interface Ipost extends Document {
+  picture?: any;
+  title: string;
+  description: string;
+  price: string;
+  likes: number;
+  location: [number, number];
+}
+
+export type { Iuser, Ipost };
