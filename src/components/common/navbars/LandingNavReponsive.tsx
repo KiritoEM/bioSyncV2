@@ -27,7 +27,7 @@ const LandingNavReponsive = (): JSX.Element => {
           <FadeReveal delay={0.7 * landingMenuList.length}>
             <Button
               variant="light"
-              className="w-max font-medium text-secondary01"
+              className="w-max font-medium text-green02"
             >
               Se connecter
             </Button>

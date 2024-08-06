@@ -35,7 +35,7 @@ const LandingNav: FC = (): JSX.Element => {
           <div className="actions gap-3 items-center hidden lg:flex">
             <Button
               variant="light"
-              className="w-max font-medium text-secondary01 hidden lg:flex"
+              className="w-max font-medium text-green02 hidden lg:flex"
               onClick={() => router.push("/login")}
             >
               Se connecter

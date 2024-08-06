@@ -6,7 +6,7 @@ const Google: FC = (): JSX.Element => {
     <Fragment>
       <div className="or w-full flex items-center gap-4">
         <div className="line h-[1px] flex-1 bg-gray03"></div>
-        <p className="text-secondary01">OU</p>
+        <p className="text-green02">OU</p>
         <div className="line h-[1px] flex-1 bg-gray03"></div>
       </div>
       <Button

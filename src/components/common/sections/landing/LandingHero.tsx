@@ -61,7 +61,7 @@ const LandingHero: FC = (): JSX.Element => {
               </h2>
             </FadeBottom>
             <FadeBottom>
-              <p className="text-secondary01 text-start max-w-[370px] lg:w-[470px]">
+              <p className="text-green02 text-start max-w-[370px] lg:w-[470px]">
                 Notre application innovante vous permet de participer activement
                 à la préservation de notre planète en faisant du recyclage tout
                 en optimisant votre mode de vie.

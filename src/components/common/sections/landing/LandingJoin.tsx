@@ -14,7 +14,7 @@ const LandingJoin = (): JSX.Element => {
         <div className="input flex flex-col gap-4 md:w-[45%] :w-[40%]">
           <label
             htmlFor=""
-            className="text-secondary01 font-semibold text-[18px]"
+            className="text-green02 font-semibold text-[18px]"
           >
             Abonnez-vous à la newsletter
           </label>

@@ -14,6 +14,7 @@ const config: Config = {
         primary: "#22C55E",
         green01: "#6CE89A",
         secondary: "rgba(10, 17, 11, 0.90)",
+        green02: "rgba(10, 17, 11, 0.81)",
         gray01: "#F3F9FA",
         gray02: "rgba(10, 17, 11, 0.81)",
         gray03: "rgba(10, 17, 11, 0.30)",

@@ -33,7 +33,7 @@ const LandingCard: FC<IfeaturesList> = ({
       </CardHeader>
       <CardBody className="mt-3">
         <h5 className="font-calSans text-xl lg:text-2xl">{title}</h5>
-        <p className="text-secondary01 mt-1">{describ}</p>
+        <p className="text-green02 mt-1">{describ}</p>
       </CardBody>
     </Card>
   );
