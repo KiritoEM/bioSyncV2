@@ -6,12 +6,12 @@ import {
   CardHeader,
   Divider,
 } from "@nextui-org/react";
-import { FC } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 export const ProfileDetailsItem: FC<{
   stat: number | string;
   label: string;
-}> = ({ stat, label }): JSX.Element => {
+}> = ({ stat, label }) => {
   return (
     <div className="profile-details__item flex flex-col items-center">
       <h4 className="text-primary text-3xl font-calSans">{stat}</h4>
@@ -20,7 +20,16 @@ export const ProfileDetailsItem: FC<{
   );
 };
 
-const DashboardProfile: FC = (): JSX.Element => {
+const DashboardProfile: FC = () => {
+  const imageRef = useRef<HTMLImageElement | null>(null);
+  const [imageWidth, setImageWidth] = useState<number>(0);
+
+  useEffect(() => {
+    if (imageRef.current) {
+      setImageWidth(imageRef.current.offsetWidth);
+    }
+  }, [imageRef.current]);
+
   return (
     <Card className="dashboard-home__profile sticky top-0 w-[350px] bg-white h-max rounded-lg overflow-x-hidden overflow-y-auto p-1">
       <CardHeader className="flex flex-col h-max">
@@ -50,13 +59,19 @@ const DashboardProfile: FC = (): JSX.Element => {
       </CardBody>
       <CardFooter className="flex flex-col items-start">
         <Divider />
-        <div className="profile-pictures mt-3">
+        <div className="profile-pictures mt-3 w-full">
           <header>
-            <h5>Vos photos</h5>
+            <h5 className="font-medium">Vos photos</h5>
           </header>
-          <div className="gallery grid grid-cols-3">
+          <div className="gallery grid grid-cols-3 mt-2 gap-1">
             {imageSliding.map((image, index) => (
-              <img key={index} src={image} />
+              <img
+                key={index}
+                ref={imageRef}
+                src={image}
+                className="object-cover rounded-md"
+                style={{ height: imageWidth, width: "100%" }}
+              />
             ))}
           </div>
         </div>
