@@ -4,12 +4,18 @@ import useGeolocalisation from "@/core/hooks/useGeolocalisation";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
-import { FC, Fragment } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
 
 const dashboardMap: FC = (): JSX.Element => {
   const { coords } = useGeolocalisation();
   const router = useRouter();
-  const validCoords = coords[0] !== 0 && coords[1] !== 0;
+  const [validCoords, setCoords] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (coords) {
+      setCoords(coords[0] !== 0 && coords[1] !== 0);
+    }
+  }, [coords]);
   return (
     <Fragment>
       <Title title="BioSync | map" />

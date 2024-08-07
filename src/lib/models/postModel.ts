@@ -1,4 +1,4 @@
-import { model, Schema } from "mongoose";
+import { model, models, Schema } from "mongoose";
 import { Ipost } from "../utils/schemaTypes";
 
 const postSchema = new Schema<Ipost>({
@@ -36,6 +36,6 @@ const postSchema = new Schema<Ipost>({
   },
 });
 
-const postModel = model<Ipost>("Post", postSchema);
+const postModel = models.Post || model<Ipost>("Post", postSchema);
 
 export default postModel;
