@@ -1,5 +1,6 @@
 import { Map } from "@/components/common/sections/dashboard/DashboardMap";
 import Title from "@/components/meta/Title";
+import { protectedHOC } from "@/core/HOC/authHOC";
 import useGeolocalisation from "@/core/hooks/useGeolocalisation";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { Image } from "@nextui-org/react";
@@ -26,7 +27,11 @@ const dashboardMap: FC = (): JSX.Element => {
             style={{ zIndex: 60 }}
             onClick={() => router.push("/dashboard/")}
           >
-            <Image src="/icons/close.svg" width={18} />
+            <Image
+              src="/icons/close.svg"
+              className="cursor-pointer"
+              width={18}
+            />
           </div>
           <div
             className="map w-screen h-screen relative"
@@ -40,4 +45,4 @@ const dashboardMap: FC = (): JSX.Element => {
   );
 };
 
-export default dashboardMap;
+export default protectedHOC(dashboardMap);

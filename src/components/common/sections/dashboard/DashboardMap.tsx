@@ -12,6 +12,7 @@ const DashboardMap: FC = (): JSX.Element => {
       setCoords(coords[0] !== 0 && coords[1] !== 0);
     }
   }, [coords]);
+
   return (
     <div className="dashboard-home__map w-[300px] bg-white h-[calc(100vh-145px)] sticky top-0 rounded-lg overflow-hidden">
       {validCoords && <Map position={coords} zoom={7} />}

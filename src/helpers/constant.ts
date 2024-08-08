@@ -79,16 +79,26 @@ const dashboardNavList: IdashboarsNavList[] = [
   {
     icon: "home.svg",
     activeIcon: "home-active.svg",
-    url: "/dashboard",
+    url: ["/dashboard"],
   },
   {
     icon: "add.svg",
     activeIcon: "add-active.svg",
+    url: ["/dashboard/post/first", "/dashboard/post/second"],
   },
   {
     icon: "location.svg",
     activeIcon: "location-active.svg",
-    url: "/dashboard/map",
+    url: ["/dashboard/map"],
+  },
+];
+
+const steps = [
+  {
+    title: "Informations personnelles",
+  },
+  {
+    title: "Ajouter localisation",
   },
 ];
 
@@ -98,4 +108,5 @@ export {
   socialIcons,
   imageSliding,
   dashboardNavList,
+  steps,
 };

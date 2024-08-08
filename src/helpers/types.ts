@@ -48,7 +48,7 @@ interface IauthContext {
 interface IdashboarsNavList {
   icon?: string;
   activeIcon?: string;
-  url?: string;
+  url?: string[];
 }
 
 interface Imap {

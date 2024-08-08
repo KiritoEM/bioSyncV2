@@ -16,13 +16,15 @@ const DashboardNav: FC = (): JSX.Element => {
             <li
               key={index}
               className={`p-[10px] hover:bg-primary/90 hover:rounded-lg cursor-pointer ${
-                router.pathname === item.url ? "bg-primary rounded-lg" : ""
+                Array.isArray(item.url) && item.url.includes(router.pathname)
+                  ? "bg-primary rounded-lg"
+                  : ""
               }`}
-              onClick={() => router.push(item.url as string)}
+              onClick={() => router.push(item.url ? item.url[0] : "")}
             >
               <img
                 src={
-                  router.pathname === item.url
+                  Array.isArray(item.url) && item.url.includes(router.pathname)
                     ? `/icons/${item.activeIcon}`
                     : `/icons/${item.icon}`
                 }
