@@ -37,6 +37,7 @@ const signupFinalisation: FC = (): JSX.Element => {
             labelPlacement="outside"
             name="pseudo"
             autoComplete="off"
+            radius="md"
           />
           <Input
             placeholder="Votre nom complet"

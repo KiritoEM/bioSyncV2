@@ -18,13 +18,18 @@ const Input = extendVariants(NextUiInput, {
         input: ["placeholder: text-gray-400", "text-secondary"],
         label: ["text-secondary"],
       },
-    },
-    radius: {
-      xs: {
-        inputWrapper: "rounded",
-      },
-      sm: {
-        inputWrapper: "rounded-md",
+      white: {
+        inputWrapper: [
+          "bg-white01",
+          "data-[hover=true]: bg-white01",
+          "group-data-[focus=true]:bg-white01",
+          "group-data-[focus=true]:ring-2",
+          "group-data-[focus=true]:ring-primary",
+          "border",
+          "h-[54px]",
+        ],
+        input: ["placeholder: text-gray-400", "text-secondary"],
+        label: ["text-secondary"],
       },
     },
     textSize: {
@@ -42,6 +47,7 @@ const Input = extendVariants(NextUiInput, {
   defaultVariants: {
     color: "default",
     textSize: "base",
+    radius:"md"
   },
 });
 

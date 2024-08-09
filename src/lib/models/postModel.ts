@@ -14,7 +14,7 @@ const postSchema = new Schema<Ipost>({
       type: String,
     },
   },
-  title: {
+  name: {
     type: String,
     required: true,
   },

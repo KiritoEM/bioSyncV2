@@ -84,7 +84,7 @@ const dashboardNavList: IdashboarsNavList[] = [
   {
     icon: "add.svg",
     activeIcon: "add-active.svg",
-    url: ["/dashboard/post/first", "/dashboard/post/second"],
+    url: ["/dashboard/post", "/dashboard/post/second"],
   },
   {
     icon: "location.svg",
@@ -95,7 +95,7 @@ const dashboardNavList: IdashboarsNavList[] = [
 
 const steps = [
   {
-    title: "Informations personnelles",
+    title: "Informations de la publication",
   },
   {
     title: "Ajouter localisation",

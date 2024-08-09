@@ -9,12 +9,13 @@ import {
   StepTitle,
   useSteps,
   Stepper as ChakraStepper,
+  StepIcon,
 } from "@chakra-ui/react";
 import { steps } from "@/helpers/constant";
 
-const Stepper: FC = (): JSX.Element => {
+const Stepper: FC<{ index?: number }> = ({ index }): JSX.Element => {
   const { activeStep } = useSteps({
-    index: 1,
+    index: index,
     count: steps.length,
   });
 
@@ -26,7 +27,7 @@ const Stepper: FC = (): JSX.Element => {
             <StepStatus
               active={<StepNumber />}
               incomplete={<StepNumber />}
-              complete={<StepNumber />}
+              complete={<StepIcon />}
             />
           </StepIndicator>
 

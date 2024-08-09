@@ -11,7 +11,7 @@ interface Iuser extends Document {
 
 interface Ipost extends Document {
   picture?: any;
-  title: string;
+  name: string;
   description: string;
   price: string;
   likes: number;
