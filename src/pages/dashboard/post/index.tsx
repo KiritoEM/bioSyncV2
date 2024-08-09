@@ -12,7 +12,7 @@ const DashboardPost: FC = (): JSX.Element => {
       <Title title="Biosync | créér un post" />
       <section className="dashboard-post bg-gray01 h-screen overflow-x-hidden overflow-y-auto">
         <DashboardLayout>
-          <div className="dashboard-post__container container mx-auto mt-8 flex flex-col items-center">
+          <div className="dashboard-post__container container mx-auto mt-8 flex flex-col items-center mb-12">
             <div className="stepper w-[700px]">
               <Stepper index={1} />
             </div>
