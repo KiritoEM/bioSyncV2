@@ -17,7 +17,7 @@ const DashboardPost: FC = (): JSX.Element => {
       <section className="dashboard-post bg-gray01 h-screen overflow-x-hidden overflow-y-auto">
         <DashboardLayout>
           <div className="dashboard-post__container container mx-auto mt-8 flex flex-col items-center mb-12">
-            <div className="stepper w-[700px]">
+            <div className="stepper w-[800px]">
               <Stepper index={1} />
             </div>
             <div className="post-form mt-[60px] w-[380px] flex flex-col items-center gap-7">

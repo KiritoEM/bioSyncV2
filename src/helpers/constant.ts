@@ -103,6 +103,7 @@ const steps = [
 ];
 
 const labels = ["continuer(en kilos)", "continuer(en nombre)"];
+const productLabels = ["plastique", "fer"];
 
 export {
   landingMenuList,
@@ -112,4 +113,5 @@ export {
   dashboardNavList,
   steps,
   labels,
+  productLabels
 };

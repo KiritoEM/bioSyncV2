@@ -36,7 +36,7 @@ const second: FC = (): JSX.Element => {
             <div className="stepper w-[700px]">
               <Stepper index={1} />
             </div>
-            <div className="map mt-8 w-[700px] h-[400px] rounded-lg overflow-hidden">
+            <div className="map mt-[60px] w-[700px] h-[400px] rounded-lg overflow-hidden">
               {validCoords && (
                 <Map wheelZoom position={selectedCoords} zoom={12} />
               )}

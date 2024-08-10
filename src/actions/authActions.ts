@@ -120,6 +120,7 @@ const authActions = () => {
       const productName = form["product-name"].value;
       const description = form["product-description"].value;
       const price = form["price"].value;
+      const productType = form["type"].value;
       const quantity = form["quantity"].value;
 
       if (
@@ -127,6 +128,7 @@ const authActions = () => {
         description !== "" &&
         price !== 0 &&
         quantity !== 0 &&
+        productType !== "" &&
         file !== null
       ) {
         const infoPost = {
@@ -137,6 +139,7 @@ const authActions = () => {
           fileType: file.type,
           fileSize: file.size,
           quantityType,
+          productType,
         };
         console.log(infoPost);
         router.push({

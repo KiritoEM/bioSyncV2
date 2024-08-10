@@ -6,10 +6,12 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Image,
+  Select,
   Selection,
+  SelectItem,
 } from "@nextui-org/react";
 import { ArLogo } from "@/pages/dashboard/post";
-import { labels } from "@/helpers/constant";
+import { labels, productLabels } from "@/helpers/constant";
 import { verifyTypePicture } from "@/helpers/uploadHelper";
 import { Toast } from "@/components/UI/toast";
 import { Button } from "@/components/UI/button";
@@ -62,6 +64,19 @@ const PostForm: FC = (): JSX.Element => {
         name="quantity"
         required
       />
+      <Select
+        classNames={{
+          label: "font-secondary",
+          trigger: "h-[52px] bg-white01",
+          value: "text-secondary pr-10",
+        }}
+        label="Type de produit"
+        name="type"
+      >
+        {productLabels.map((label) => (
+          <SelectItem key={label}>{label}</SelectItem>
+        ))}
+      </Select>
       <textarea
         required
         className="h-[125px] border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:outline-none px-4 py-3 text-base shadow-sm"
