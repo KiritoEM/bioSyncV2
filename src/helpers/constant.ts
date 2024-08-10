@@ -102,6 +102,8 @@ const steps = [
   },
 ];
 
+const labels = ["continuer(en kilos)", "continuer(en nombre)"];
+
 export {
   landingMenuList,
   featuresList,
@@ -109,4 +111,5 @@ export {
   imageSliding,
   dashboardNavList,
   steps,
+  labels,
 };

@@ -1,10 +1,10 @@
-import useGeolocalisation from "@/core/hooks/useGeolocalisation";
+import useLocalisation from "@/core/hooks/useLocalisation";
 import dynamic from "next/dynamic";
 import { FC, useEffect, useState } from "react";
 
 export const Map = dynamic(() => import("./../../map/Map"), { ssr: false });
 const DashboardMap: FC = (): JSX.Element => {
-  const { coords } = useGeolocalisation();
+  const { coords } = useLocalisation();
   const [validCoords, setCoords] = useState<boolean>(false);
 
   useEffect(() => {

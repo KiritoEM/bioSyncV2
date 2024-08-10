@@ -1,14 +1,14 @@
 import { Map } from "@/components/common/sections/dashboard/DashboardMap";
 import Title from "@/components/meta/Title";
 import { protectedHOC } from "@/core/HOC/authHOC";
-import useGeolocalisation from "@/core/hooks/useGeolocalisation";
+import useLocalisation from "@/core/hooks/useLocalisation";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { FC, Fragment, useEffect, useState } from "react";
 
 const dashboardMap: FC = (): JSX.Element => {
-  const { coords } = useGeolocalisation();
+  const { coords } = useLocalisation();
   const router = useRouter();
   const [validCoords, setCoords] = useState<boolean>(false);
 
