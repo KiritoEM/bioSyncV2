@@ -1,8 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import tokenHelper from "../helpers/tokenHelper";
+import { Req } from "../utils/schemaTypes";
+import { JwtPayload } from "jsonwebtoken";
 
 const bearer = (handler: Function) => {
-  return async (req: NextApiRequest, res: NextApiResponse) => {
+  return async (req: Req, res: NextApiResponse) => {
     const header = req.headers.authorization;
 
     if (!header?.startsWith("Bearer")) {
@@ -11,13 +13,13 @@ const bearer = (handler: Function) => {
 
     const token = header?.split(" ")[1];
 
-    try {
-      if (tokenHelper.decodeToken(token)) {
-        console.log("authorized");
-        return handler(req, res);
-      }
-    } catch (err) {
-      return res.status(405).json("unauthorized");
+    const decoded = tokenHelper.decodeToken(token);
+
+    if (decoded) {
+      req.user = req.user || {};
+      req.user.userId = (decoded as JwtPayload).userId;
+      console.log("authorized");
+      return handler(req, res);
     }
   };
 };

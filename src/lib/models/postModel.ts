@@ -46,6 +46,11 @@ const postSchema = new Schema<Ipost>({
     type: [Number],
     default: [0, 0],
   },
+  poster: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const postModel = models.Post || model<Ipost>("Post", postSchema);

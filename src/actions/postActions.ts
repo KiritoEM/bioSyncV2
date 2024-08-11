@@ -18,37 +18,46 @@ const postActions = () => {
     quantityType: "kilos" | "nombre"
   ) => {
     try {
-      e.preventDefault();
-      const form = e.currentTarget;
-      const productName = form["product-name"].value;
-      const description = form["product-description"].value;
-      const price = form["price"].value;
-      const productType = form["type"].value;
-      const quantity = form["quantity"].value;
+      if (getAccessToken() === "authentificated") {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const productName = form["product-name"].value;
+        const description = form["product-description"].value;
+        const price = form["price"].value;
+        const productType = form["type"].value;
+        const quantity = form["quantity"].value;
 
-      let formData = new FormData();
+        let formData = new FormData();
 
-      formData.append("image", file!);
-      formData.append("name", productName);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("productType", productType);
-      formData.append("quantity", quantity);
-      formData.append("quantityType", quantityType);
+        formData.append("image", file!);
+        formData.append("name", productName);
+        formData.append("description", description);
+        formData.append("price", price);
+        formData.append("productType", productType);
+        formData.append("quantity", quantity);
+        formData.append("quantityType", quantityType);
 
-      const response = await axios.post("/api/post", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      if (response.status === 200) {
-        console.log(response.data);
-        router.push({
-          pathname: "/dashboard/post/second",
-          query: {
-            id: response.data.newPost._id,
+        const response = await axios.post("/api/post", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${accessToken}`,
           },
+        });
+
+        if (response.status === 200) {
+          console.log(response.data);
+          router.push({
+            pathname: "/dashboard/post/second",
+            query: {
+              id: response.data.newPost._id,
+            },
+          });
+        }
+      } else {
+        addToast({
+          status: "error",
+          title: "Aucun accés",
+          description: "Veuillez assurer que vous avez accés à l' application",
         });
       }
     } catch (err) {
@@ -81,6 +90,11 @@ const postActions = () => {
       return null;
     } catch (err) {
       console.error(err);
+      addToast({
+        title: "Erreur",
+        description: "Un erreur s' est produit",
+        status: "error",
+      });
       return null;
     }
   };
@@ -95,7 +109,6 @@ const postActions = () => {
         });
 
         if (response.status === 200) {
-          console.log(response.data);
           dispatch(setPost(response.data.allPost));
         }
       } else {
@@ -107,10 +120,28 @@ const postActions = () => {
       }
     } catch (err) {
       console.error(err);
+      addToast({
+        title: "Erreur",
+        description: "Un erreur s' est produit",
+        status: "error",
+      });
     }
   }, [dispatch]);
 
-  return { addLocation, addPost, getAllPosts };
+  const likePost = async () => {
+    try {
+      const response = await axios.post("/api/post/like/", {});
+    } catch (err) {
+      console.error(err);
+      addToast({
+        title: "Erreur",
+        description: "Un erreur s' est produit",
+        status: "error",
+      });
+    }
+  };
+
+  return { addLocation, addPost, getAllPosts, likePost };
 };
 
 export default postActions;

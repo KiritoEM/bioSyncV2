@@ -11,6 +11,7 @@ interface Iuser extends Document {
 }
 
 interface Ipost extends Document {
+  poster: Schema.Types.ObjectId;
   picture?: any;
   name: string;
   description: string;
@@ -22,8 +23,11 @@ interface Ipost extends Document {
   quantity: number;
 }
 
-interface MulterReq extends NextApiRequest {
+interface Req extends NextApiRequest {
   file: any;
+  user: {
+    userId: string;
+  };
 }
 
-export type { Iuser, Ipost, MulterReq };
+export type { Iuser, Ipost, Req };

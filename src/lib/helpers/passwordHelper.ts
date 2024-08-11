@@ -11,7 +11,7 @@ class passwordHelper {
       const hashedPassword = bcrypt.hash(password, this.salt);
       return hashedPassword;
     } catch (err) {
-      throw new Error(err as string);
+      throw new Error(err);
     }
   }
 
@@ -19,7 +19,7 @@ class passwordHelper {
     try {
       return bcrypt.compare(password, hashedPassword);
     } catch (err) {
-      throw new Error(err as string);
+      throw new Error(err);
     }
   }
 }

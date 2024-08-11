@@ -1,25 +1,28 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import postServices from "../services/postServices";
-import { MulterReq } from "../utils/schemaTypes";
+import { Req } from "../utils/schemaTypes";
 
 class authController {
-  async addPost(req: MulterReq, res: NextApiResponse) {
+  async addPost(req: Req, res: NextApiResponse) {
     try {
       if (!req.file) {
         res.status(400).json("Aucun image téléchargé");
       }
 
-      console.log(req.body);
       const picture = {
         file_name: req.file.originalname,
         file_size: req.file.size,
         file_path: req.file.path,
       };
 
-      const newPost = await postServices.addPostService({
-        ...req.body,
-        picture,
-      });
+      const newPost = await postServices.addPostService(
+        {
+          ...req.body,
+          picture,
+          poster: req.user.userId,
+        },
+        req.user.userId
+      );
 
       if (!newPost) {
         return res.status(400).json("Error when creating post");

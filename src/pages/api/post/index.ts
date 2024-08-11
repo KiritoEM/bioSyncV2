@@ -2,10 +2,10 @@ import { connectDB } from "@/lib/configs/mongodb";
 import postController from "@/lib/controllers/postController";
 import { NextApiRequest, NextApiResponse } from "next";
 import upload from "@/lib/middlewares/upload";
-import { MulterReq } from "@/lib/utils/schemaTypes";
+import { Req } from "@/lib/utils/schemaTypes";
 import bearer from "@/lib/middlewares/bearer";
 
-const handler = async (req: MulterReq, res: NextApiResponse) => {
+const handler = async (req: Req, res: NextApiResponse) => {
   await connectDB();
   try {
     if (req.method === "POST") {
@@ -19,7 +19,7 @@ const handler = async (req: MulterReq, res: NextApiResponse) => {
         });
       });
 
-      await postController.addPost(req, res);
+      await bearer(postController.addPost)(req, res);
     } else if (req.method === "GET") {
       return bearer(postController.getAllPost)(req, res);
     } else {

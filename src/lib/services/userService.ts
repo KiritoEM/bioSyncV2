@@ -6,7 +6,7 @@ class authService {
       const emailExist = await userModel.findOne({ email });
       return emailExist;
     } catch (err) {
-      throw new Error(err as string);
+      throw new Error(err);
     }
   }
 }

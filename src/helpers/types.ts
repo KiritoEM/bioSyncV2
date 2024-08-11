@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
-interface IlandingMenuList {
+type IlandingMenuList = {
   label: string;
   sectionId?: string;
-}
+};
 
 interface IfeaturesList {
   lottieSrc: string;
@@ -57,6 +57,26 @@ interface Imap {
   wheelZoom?: boolean;
 }
 
+interface IpostCard {
+  poster: {
+    pseudo: string;
+    name: string;
+    email: string;
+    posts?: any[];
+    password: string;
+    localisation?: string;
+  };
+  picture?: any;
+  name: string;
+  description: string;
+  price: string;
+  likes: number;
+  location: [number, number];
+  productType: string;
+  quantityType: string;
+  quantity: number;
+}
+
 export type {
   IlandingMenuList,
   IfeaturesList,
@@ -67,4 +87,5 @@ export type {
   IauthContext,
   IdashboarsNavList,
   Imap,
+  IpostCard,
 };

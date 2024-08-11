@@ -1,7 +1,8 @@
+import { IpostCard } from "@/helpers/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface Post {
-  posts: any[];
+  posts: IpostCard[];
 }
 
 const initialState = {

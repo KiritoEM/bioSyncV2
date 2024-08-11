@@ -8,7 +8,7 @@ class authServices {
       const newUser = new userModel({ ...userData });
       return await newUser.save();
     } catch (err) {
-      throw new Error(err as string);
+      throw new Error(err);
     }
   }
 
@@ -30,7 +30,7 @@ class authServices {
         }
       }
     } catch (err) {
-      throw new Error(err as string);
+      throw new Error(err);
     }
   }
 }
