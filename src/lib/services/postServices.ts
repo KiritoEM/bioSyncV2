@@ -11,6 +11,20 @@ class postServices {
     }
   }
 
+  async addLocationService(
+    location: [number, number],
+    id: string
+  ): Promise<Ipost> {
+    try {
+      const newPost = await postModel.findById(id);
+      console.log(newPost);
+      newPost.location = location;
+      return await newPost.save();
+    } catch (err) {
+      throw new Error(err as string);
+    }
+  }
+
   async getAllpostService(): Promise<Ipost[]> {
     try {
       const allPost = postModel.find();

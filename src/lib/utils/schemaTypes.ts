@@ -1,4 +1,5 @@
 import { Document, Schema } from "mongoose";
+import { NextApiRequest } from "next";
 
 interface Iuser extends Document {
   pseudo: string;
@@ -16,6 +17,13 @@ interface Ipost extends Document {
   price: string;
   likes: number;
   location: [number, number];
+  productType: string;
+  quantityType: string;
+  quantity: number;
 }
 
-export type { Iuser, Ipost };
+interface MulterReq extends NextApiRequest {
+  file: any;
+}
+
+export type { Iuser, Ipost, MulterReq };

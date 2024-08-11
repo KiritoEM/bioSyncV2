@@ -18,6 +18,15 @@ class tokenHelper {
       throw new Error(err as string);
     }
   }
+
+  decodeToken(token: string) {
+    try {
+      const decoded = jwt.decode(token);
+      return decoded;
+    } catch (err) {
+      throw new Error(err as string);
+    }
+  }
 }
 
 export default new tokenHelper(secretKey as string);

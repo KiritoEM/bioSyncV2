@@ -26,6 +26,18 @@ const postSchema = new Schema<Ipost>({
     type: String,
     required: true,
   },
+  productType: {
+    type: String,
+    required: true,
+  },
+  quantityType: {
+    type: String,
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
   likes: {
     type: Number,
     default: 0,

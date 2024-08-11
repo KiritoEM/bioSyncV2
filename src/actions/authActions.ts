@@ -109,66 +109,6 @@ const authActions = () => {
     }
   };
 
-  const addInfoPost = (
-    e: React.FormEvent<HTMLFormElement>,
-    file: File | null,
-    quantityType: "kilos" | "nombre"
-  ) => {
-    try {
-      e.preventDefault();
-      const form = e.currentTarget;
-      const productName = form["product-name"].value;
-      const description = form["product-description"].value;
-      const price = form["price"].value;
-      const productType = form["type"].value;
-      const quantity = form["quantity"].value;
-
-      if (
-        productName !== "" &&
-        description !== "" &&
-        price !== 0 &&
-        quantity !== 0 &&
-        productType !== "" &&
-        file !== null
-      ) {
-        const infoPost = {
-          productName,
-          description,
-          price,
-          fileName: file.name,
-          fileType: file.type,
-          fileSize: file.size,
-          quantityType,
-          productType,
-        };
-        console.log(infoPost);
-        router.push({
-          pathname: "/dashboard/post/second",
-          query: {
-            infoPost: JSON.stringify(infoPost), //sérialisation de l' objet en JSON
-          },
-        });
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const addPost = async (): Promise<boolean> => {
-    try {
-      const response = await axios.post("/api/post");
-
-      if (response.status === 200) {
-        console.log(response.data);
-        return true;
-      }
-      return false;
-    } catch (err) {
-      console.error(err);
-      return false;
-    }
-  };
-
-  return { submitEmail, register, login, addInfoPost, addPost };
+  return { submitEmail, register, login };
 };
 export default authActions;

@@ -16,13 +16,13 @@ import { verifyTypePicture } from "@/helpers/uploadHelper";
 import { Toast } from "@/components/UI/toast";
 import { Button } from "@/components/UI/button";
 import { Input, UploadInput } from "@/components/UI/input";
-import authActions from "@/actions/authActions";
+import postActions from "@/actions/postActions";
 
 const PostForm: FC = (): JSX.Element => {
   const [file, setFile] = useState<File | null>(null);
   const [selectedOption, setOption] = useState(new Set<string>([labels[0]]));
   const { addToast } = Toast();
-  const { addInfoPost } = authActions();
+  const { addPost } = postActions();
 
   let quantityType: "kilos" | "nombre" = Array.from(selectedOption).includes(
     "kilos"
@@ -39,7 +39,7 @@ const PostForm: FC = (): JSX.Element => {
       action="post"
       className="w-full flex flex-col gap-6"
       onSubmit={(e: React.FormEvent<HTMLFormElement>) =>
-        addInfoPost(e, file, quantityType)
+        addPost(e, file, quantityType)
       }
     >
       <Input
