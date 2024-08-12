@@ -8,6 +8,10 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
   Image,
 } from "@nextui-org/react";
 import path from "path";
@@ -64,7 +68,19 @@ const PostCard: FC<InewPostCard> = ({
             </p>
           </div>
         </div>
-        <Image src="/icons/more.svg" className="w-6" />
+        <Dropdown>
+          <DropdownTrigger className="cursor-pointer">
+            <Image src="/icons/more.svg" className="w-6" />
+          </DropdownTrigger>
+          <DropdownMenu>
+            <DropdownItem key="delete">
+              <div className="flex items-center gap-2">
+                <Image src="/icons/trash.svg" width={20} />{" "}
+                <p className="text-red-500">Supprimer</p>
+              </div>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </CardHeader>
       <CardBody>
         <div
