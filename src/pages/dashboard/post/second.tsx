@@ -53,7 +53,12 @@ const second: FC = (): JSX.Element => {
             >
               <div className="map mt-[60px] w-[700px] h-[400px] rounded-lg overflow-hidden">
                 {validCoords && (
-                  <Map wheelZoom position={selectedCoords} zoom={14} />
+                  <Map
+                    wheelZoom
+                    position={selectedCoords}
+                    zoom={14}
+                    events={true}
+                  />
                 )}
               </div>
               <Button className="mt-6" radius="md" type="submit">

@@ -3,7 +3,14 @@ import Logo from "../Logo";
 import { dashboardNavList } from "@/helpers/constant";
 import { useRouter } from "next/router";
 import { SearchInput } from "@/components/UI/input";
-import { Avatar } from "@nextui-org/react";
+import {
+  Avatar,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Image,
+} from "@nextui-org/react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 import userActions from "@/actions/userActions";
@@ -51,7 +58,18 @@ const DashboardNav: FC = (): JSX.Element => {
             <Avatar src="/avatar.png" className="h-[39px] w-[39px]" />
             <p className="text-secondary flex items-center gap-2">
               {user?.pseudo}{" "}
-              <img src="/icons/chevron-down.svg" className="w-3" />
+              <Dropdown>
+                <DropdownTrigger className="cursor-pointer">
+                  <Image src="/icons/chevron-down.svg" className="w-3" />
+                </DropdownTrigger>
+                <DropdownMenu>
+                  <DropdownItem>
+                    <div className="flex items-center gap-2">
+                      <Image src="/icons/logout.svg" width={21} radius="none"/> Se déconnecter
+                    </div>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </p>
           </div>
         </div>

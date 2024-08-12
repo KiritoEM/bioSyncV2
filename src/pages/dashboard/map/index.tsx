@@ -47,7 +47,14 @@ const dashboardMap: FC = (): JSX.Element => {
             style={{ zIndex: 20 }}
           >
             {validCoords && (
-              <Map position={coords} zoom={14} wheelZoom posts={posts} geolocalisation={false} />
+              <Map
+                position={coords}
+                zoom={14}
+                wheelZoom
+                posts={posts}
+                geolocalisation={false}
+                events={false}
+              />
             )}
           </div>
         </DashboardLayout>
