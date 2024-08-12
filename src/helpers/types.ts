@@ -57,6 +57,8 @@ interface Imap {
   position: [number, number];
   zoom: number;
   wheelZoom?: boolean;
+  posts?: IpostCard[];
+  geolocalisation?: boolean;
 }
 
 interface IpostCard {

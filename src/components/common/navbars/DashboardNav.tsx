@@ -39,10 +39,7 @@ const DashboardNav: FC = (): JSX.Element => {
             <img src="/icons/bell.svg" className="w-5" />
           </div>
           <div className="profile flex items-center gap-3">
-            <Avatar
-              src="/avatar.png"
-              className="h-[45px] w-[45px]"
-            />
+            <Avatar src="/avatar.png" className="h-[45px] w-[45px]" />
             <p className="text-secondary flex items-center gap-2">
               Johan <img src="/icons/chevron-down.svg" className="w-3" />
             </p>
