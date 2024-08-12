@@ -18,13 +18,13 @@ const useUpload = (onChange: (file: File) => void) => {
     setDrag(false);
   };
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setDrag(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      console.log("File dropped:", e.dataTransfer.files[0]);
       onChange(e.dataTransfer.files[0]);
-      e.dataTransfer.clearData();
     }
   };
 

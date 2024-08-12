@@ -29,13 +29,13 @@ const DashboardProfile: FC = () => {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [imageWidth, setImageWidth] = useState<number>(0);
   const { getCurrentUser } = userActions();
+
   const currentUser = useSelector((state: RootState) => state.user.user);
-  const totalLikes = (currentUser?.posts as IpostCard[]).reduce(
-    (acc, post) => acc + post.likers.length,
-    0
-  );
-  const totalPictures = (currentUser?.posts as IpostCard[]).length;
-  const allImages = (currentUser?.posts as IpostCard[]).map(
+
+  const posts = currentUser?.posts as IpostCard[] | undefined;
+  const totalLikes = posts?.reduce((acc, post) => acc + post.likers.length, 0);
+  const totalPictures = posts?.length;
+  const allImages = posts?.map(
     (post) => `/uploads/${path.basename(post.picture.file_path)}`
   );
 
@@ -76,8 +76,8 @@ const DashboardProfile: FC = () => {
               label="Publications"
               stat={currentUser?.posts?.length as number}
             />
-            <ProfileDetailsItem label="Likes" stat={totalLikes} />
-            <ProfileDetailsItem label="Photos" stat={totalPictures} />
+            <ProfileDetailsItem label="Likes" stat={totalLikes as number} />
+            <ProfileDetailsItem label="Photos" stat={totalPictures as number} />
           </div>
         </CardBody>
         <CardFooter className="flex flex-col items-start">
@@ -86,9 +86,9 @@ const DashboardProfile: FC = () => {
             <header>
               <h5 className="font-medium">Vos photos</h5>
             </header>
-            {allImages.length !== 0 ? (
+            {allImages?.length !== 0 ? (
               <div className="gallery grid grid-cols-3 mt-2 gap-1">
-                {allImages.map((image, index) => (
+                {allImages?.map((image, index) => (
                   <img
                     key={index}
                     ref={imageRef}

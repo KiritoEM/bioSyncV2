@@ -19,9 +19,13 @@ const DashboardHomePost: FC = (): JSX.Element => {
   return (
     <div className="dashboard-home__post w-[calc(100%-600px)] flex flex-col gap-10 mb-10">
       <HomeBanner />
-      {posts.map((post: IpostCard, index) => (
-        <PostCard key={index} {...post} id={currentUserId as string} />
-      ))}
+      {posts.length > 0 ? (
+        posts.map((post: IpostCard, index) => (
+          <PostCard key={index} {...post} id={currentUserId as string} />
+        ))
+      ) : (
+        <h5 className="text-secondary01">Aucune publications</h5>
+      )}
     </div>
   );
 };

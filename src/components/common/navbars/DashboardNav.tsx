@@ -40,7 +40,6 @@ const DashboardNav: FC = (): JSX.Element => {
           </div>
           <div className="profile flex items-center gap-3">
             <Avatar
-              radius="sm"
               src="/avatar.png"
               className="h-[45px] w-[45px]"
             />

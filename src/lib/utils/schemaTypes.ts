@@ -11,7 +11,6 @@ interface Iuser extends Document {
 }
 
 interface Ipost extends Document {
-  poster: Schema.Types.ObjectId;
   picture?: any;
   name: string;
   description: string;
@@ -21,6 +20,7 @@ interface Ipost extends Document {
   quantityType: string;
   quantity: number;
   likers: Schema.Types.ObjectId[];
+  poster: Schema.Types.ObjectId;
 }
 
 interface Req extends NextApiRequest {

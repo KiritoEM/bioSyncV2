@@ -18,13 +18,14 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [loadToken, setLoadToken] = useState<boolean>(true);
   const [currentUserId, setId] = useState<string | null>(null);
+  console.log(currentUserId);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(startLoading());
     if (typeof window !== "undefined") {
       const token = localStorage.getItem(storageKey);
-      const id = localStorage.getItem(currentUserId as string);
+      const id = localStorage.getItem(currentUserKey);
       setAccessToken(token);
       setId(id);
     }

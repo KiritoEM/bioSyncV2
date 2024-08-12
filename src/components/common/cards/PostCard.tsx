@@ -1,5 +1,6 @@
 import postActions from "@/actions/postActions";
 import { Button } from "@/components/UI/button";
+import { timeAgo } from "@/helpers/date";
 import { IpostCard } from "@/helpers/types";
 import {
   Avatar,
@@ -14,6 +15,7 @@ import { FC, useEffect, useState } from "react";
 
 interface InewPostCard extends IpostCard {
   id?: string;
+  createdAt?: Date;
 }
 
 const PostCard: FC<InewPostCard> = ({
@@ -27,6 +29,7 @@ const PostCard: FC<InewPostCard> = ({
   quantityType,
   quantity,
   id,
+  createdAt,
 }): JSX.Element => {
   const postPicture = path.basename(picture.file_path);
   const [currentLikes, setCurrentLikes] = useState(likers.length);
@@ -53,10 +56,12 @@ const PostCard: FC<InewPostCard> = ({
     <Card radius="sm" className="post-card shadow-none p-1">
       <CardHeader className="flex justify-between">
         <div className="user flex items-center gap-3">
-          <Avatar src="/avatar.png" radius="sm" className="w-[48px] h-[48px]" />
+          <Avatar src="/avatar.png" className="w-[48px] h-[48px]" />
           <div className="user__info flex flex-col gap-1">
             <h5 className="text-secondary font-semibold">{poster.pseudo}</h5>
-            <p className="text-[13px] text-gray02">il y a 3 minutes</p>
+            {/* <p className="text-[13px] text-gray02">
+              il y a {timeAgo(createdAt)}
+            </p> */}
           </div>
         </div>
         <Image src="/icons/more.svg" className="w-6" />
