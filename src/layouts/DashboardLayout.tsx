@@ -1,8 +1,10 @@
 import DashboardNav from "@/components/common/navbars/DashboardNav";
 import { Image } from "@nextui-org/react";
+import { useRouter } from "next/router";
 import { FC, Fragment, ReactNode } from "react";
 
 const DashboardBottomButtons: FC = (): JSX.Element => {
+  const router = useRouter();
   return (
     <div
       className="fixed flex flex-col gap-5"
@@ -11,6 +13,7 @@ const DashboardBottomButtons: FC = (): JSX.Element => {
       <button
         className="bg-yellow01 flex items-center justify-center rounded-full"
         style={{ width: "54px", height: "54px" }}
+        onClick={() => router.push("/dashboard/map")}
       >
         <Image src="/icons/map.svg" width={30} />
       </button>

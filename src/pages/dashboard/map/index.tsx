@@ -1,15 +1,31 @@
+import postActions from "@/actions/postActions";
 import { Map } from "@/components/common/sections/dashboard/DashboardMap";
 import Title from "@/components/meta/Title";
-import useGeolocalisation from "@/core/hooks/useGeolocalisation";
+import { protectedHOC } from "@/core/HOC/authHOC";
+import useLocalisation from "@/core/hooks/useLocalisation";
+import { RootState } from "@/core/redux/store.config";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
-import { FC, Fragment } from "react";
+import { FC, Fragment, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const dashboardMap: FC = (): JSX.Element => {
-  const { coords } = useGeolocalisation();
+  const { coords } = useLocalisation();
   const router = useRouter();
-  const validCoords = coords[0] !== 0 && coords[1] !== 0;
+  const [validCoords, setCoords] = useState<boolean>(false);
+  const posts = useSelector((state: RootState) => state.post.posts);
+  const { getAllPosts } = postActions();
+
+  useEffect(() => {
+    getAllPosts();
+  }, []);
+
+  useEffect(() => {
+    if (coords) {
+      setCoords(coords[0] !== 0 && coords[1] !== 0);
+    }
+  }, [coords]);
   return (
     <Fragment>
       <Title title="BioSync | map" />
@@ -20,13 +36,19 @@ const dashboardMap: FC = (): JSX.Element => {
             style={{ zIndex: 60 }}
             onClick={() => router.push("/dashboard/")}
           >
-            <Image src="/icons/close.svg" width={18} />
+            <Image
+              src="/icons/close.svg"
+              className="cursor-pointer"
+              width={18}
+            />
           </div>
           <div
             className="map w-screen h-screen relative"
             style={{ zIndex: 20 }}
           >
-            {validCoords && <Map position={coords} zoom={14} wheelZoom />}
+            {validCoords && (
+              <Map position={coords} zoom={14} wheelZoom posts={posts} geolocalisation={false} />
+            )}
           </div>
         </DashboardLayout>
       </section>
@@ -34,4 +56,4 @@ const dashboardMap: FC = (): JSX.Element => {
   );
 };
 
-export default dashboardMap;
+export default protectedHOC(dashboardMap);

@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
-interface IlandingMenuList {
+type IlandingMenuList = {
   label: string;
   sectionId?: string;
-}
+};
 
 interface IfeaturesList {
   lottieSrc: string;
@@ -40,21 +40,56 @@ interface Imodal {
 
 interface IauthContext {
   accessToken: string | null;
+  currentUserId: string | null;
   loadToken: boolean;
   addAccessToken: (token: string) => void;
+  addCurrentId: (id: string) => void;
   getAccessToken: () => "authentificated" | "unknown";
 }
 
 interface IdashboarsNavList {
   icon?: string;
   activeIcon?: string;
-  url?: string;
+  url?: string[];
 }
 
 interface Imap {
   position: [number, number];
   zoom: number;
   wheelZoom?: boolean;
+  posts?: IpostCard[];
+  geolocalisation?: boolean;
+  events: boolean
+}
+
+interface IpostCard {
+  _id?: string;
+  poster: {
+    pseudo: string;
+    name: string;
+    email: string;
+    posts?: any[];
+    password: string;
+    localisation?: string;
+  };
+  picture?: any;
+  name: string;
+  description: string;
+  price: string;
+  likers: any[];
+  location: [number, number];
+  productType: string;
+  quantityType: string;
+  quantity: number;
+}
+
+interface Iuser {
+  pseudo: string;
+  name: string;
+  email: string;
+  posts?: IpostCard[];
+  password: string;
+  localisation?: string;
 }
 
 export type {
@@ -67,4 +102,6 @@ export type {
   IauthContext,
   IdashboarsNavList,
   Imap,
+  IpostCard,
+  Iuser,
 };

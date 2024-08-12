@@ -1,4 +1,5 @@
 import { Document, Schema } from "mongoose";
+import { NextApiRequest } from "next";
 
 interface Iuser extends Document {
   pseudo: string;
@@ -11,11 +12,22 @@ interface Iuser extends Document {
 
 interface Ipost extends Document {
   picture?: any;
-  title: string;
+  name: string;
   description: string;
   price: string;
-  likes: number;
   location: [number, number];
+  productType: string;
+  quantityType: string;
+  quantity: number;
+  likers: Schema.Types.ObjectId[];
+  poster: Schema.Types.ObjectId;
 }
 
-export type { Iuser, Ipost };
+interface Req extends NextApiRequest {
+  file: any;
+  user: {
+    userId: string;
+  };
+}
+
+export type { Iuser, Ipost, Req };

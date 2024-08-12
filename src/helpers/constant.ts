@@ -79,18 +79,31 @@ const dashboardNavList: IdashboarsNavList[] = [
   {
     icon: "home.svg",
     activeIcon: "home-active.svg",
-    url: "/dashboard",
+    url: ["/dashboard"],
   },
   {
     icon: "add.svg",
     activeIcon: "add-active.svg",
+    url: ["/dashboard/post", "/dashboard/post/second"],
   },
   {
     icon: "location.svg",
     activeIcon: "location-active.svg",
-    url: "/dashboard/map",
+    url: ["/dashboard/map"],
   },
 ];
+
+const steps = [
+  {
+    title: "Informations de la publication",
+  },
+  {
+    title: "Ajouter localisation",
+  },
+];
+
+const labels = ["continuer(en kilos)", "continuer(en nombre)"];
+const productLabels = ["plastique", "fer"];
 
 export {
   landingMenuList,
@@ -98,4 +111,7 @@ export {
   socialIcons,
   imageSliding,
   dashboardNavList,
+  steps,
+  labels,
+  productLabels
 };

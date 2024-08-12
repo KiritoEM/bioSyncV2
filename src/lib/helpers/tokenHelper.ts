@@ -15,7 +15,16 @@ class tokenHelper {
       const token = jwt.sign(payload, this.secretKey, { expiresIn: "365d" });
       return token;
     } catch (err) {
-      throw new Error(err as string);
+      throw new Error(err);
+    }
+  }
+
+  decodeToken(token: string) {
+    try {
+      const decoded = jwt.decode(token);
+      return decoded;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }

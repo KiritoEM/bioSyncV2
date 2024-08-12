@@ -6,7 +6,16 @@ class authService {
       const emailExist = await userModel.findOne({ email });
       return emailExist;
     } catch (err) {
-      throw new Error(err as string);
+      throw new Error(err);
+    }
+  }
+
+  async getUserService(id: string) {
+    try {
+      const user = await userModel.findById(id).populate("posts").exec();
+      return user;
+    } catch (err) {
+      throw new Error(err);
     }
   }
 }
