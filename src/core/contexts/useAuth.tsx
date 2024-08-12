@@ -12,17 +12,21 @@ import { startLoading, stopLoading } from "../redux/slices/loadingSlice";
 
 const AuthContext = createContext<IauthContext | null>(null);
 export const storageKey = "@biosync_token";
+export const currentUserKey = "@biosync_current";
 
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [loadToken, setLoadToken] = useState<boolean>(true);
+  const [currentUserId, setId] = useState<string | null>(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(startLoading());
     if (typeof window !== "undefined") {
       const token = localStorage.getItem(storageKey);
+      const id = localStorage.getItem(currentUserId as string);
       setAccessToken(token);
+      setId(id);
     }
     setLoadToken(false);
     dispatch(stopLoading());
@@ -43,9 +47,22 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     return accessToken ? "authentificated" : "unknown";
   };
 
+  const addCurrentId = (id: string) => {
+    if (typeof window !== null) {
+      localStorage.setItem(currentUserKey, id);
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ accessToken, addAccessToken, getAccessToken, loadToken }}
+      value={{
+        accessToken,
+        currentUserId,
+        addAccessToken,
+        getAccessToken,
+        loadToken,
+        addCurrentId,
+      }}
     >
       {children}
     </AuthContext.Provider>

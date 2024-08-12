@@ -38,6 +38,34 @@ class postServices {
       throw new Error(err);
     }
   }
+
+  async likePostService(postID: string, userID: string) {
+    try {
+      let post = await postModel.findById(postID);
+
+      if (post && !post.likers.includes(userID)) {
+        post.likers.push(userID);
+      }
+
+      return await post.save();
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  async dislikePostService(postID: string, userID: string) {
+    try {
+      let post = await postModel.findById(postID);
+
+      if (post && post.likers.includes(userID)) {
+        post.likers.pull(userID);
+      }
+
+      return await post.save();
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 export default new postServices();

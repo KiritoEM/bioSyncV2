@@ -38,10 +38,13 @@ const postSchema = new Schema<Ipost>({
     type: Number,
     required: true,
   },
-  likes: {
-    type: Number,
-    default: 0,
-  },
+  likers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      default: [],
+    },
+  ],
   location: {
     type: [Number],
     default: [0, 0],

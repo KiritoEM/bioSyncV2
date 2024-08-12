@@ -1,3 +1,4 @@
+import postActions from "@/actions/postActions";
 import { Button } from "@/components/UI/button";
 import { IpostCard } from "@/helpers/types";
 import {
@@ -9,19 +10,45 @@ import {
   Image,
 } from "@nextui-org/react";
 import path from "path";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
-const PostCard: FC<IpostCard> = ({
+interface InewPostCard extends IpostCard {
+  id?: string;
+}
+
+const PostCard: FC<InewPostCard> = ({
+  _id,
   poster,
   picture,
   name,
   description,
   price,
-  likes,
+  likers,
   quantityType,
   quantity,
+  id,
 }): JSX.Element => {
   const postPicture = path.basename(picture.file_path);
+  const [currentLikes, setCurrentLikes] = useState(likers.length);
+  const [liked, setIsLiked] = useState<boolean>(false);
+  const { likePost, dislikePost } = postActions();
+
+  useEffect(() => {
+    setIsLiked(likers.includes(id));
+  }, [likers, id]);
+
+  const handleLike = async () => {
+    if (!liked) {
+      setCurrentLikes((prevLike) => prevLike + 1);
+      setIsLiked(true);
+      await likePost(_id as string);
+    } else {
+      setCurrentLikes((prevLike) => prevLike - 1);
+      setIsLiked(false);
+      await dislikePost(_id as string);
+    }
+  };
+
   return (
     <Card radius="sm" className="post-card shadow-none p-1">
       <CardHeader className="flex justify-between">
@@ -61,8 +88,15 @@ const PostCard: FC<IpostCard> = ({
       <CardFooter>
         <div className="post-card__footer flex gap-16">
           <div className="likes flex items-center gap-2">
-            <Image src="/icons/like.svg" width={21} />
-            <p className="text-secondary01">{likes !== 0 && likes}</p>
+            <Image
+              src={`${liked ? "/icons/liked.svg" : "/icons/like.svg"} `}
+              className="cursor-pointer"
+              width={21}
+              onClick={handleLike}
+            />
+            <p className="text-secondary01">
+              {currentLikes !== 0 && currentLikes}
+            </p>
           </div>
           <Button
             radius="md"

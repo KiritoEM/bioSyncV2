@@ -111,12 +111,6 @@ const postActions = () => {
         if (response.status === 200) {
           dispatch(setPost(response.data.allPost));
         }
-      } else {
-        addToast({
-          status: "error",
-          title: "Aucun accés",
-          description: "Veuillez assurer que vous avez accés à l' application",
-        });
       }
     } catch (err) {
       console.error(err);
@@ -128,9 +122,23 @@ const postActions = () => {
     }
   }, [dispatch]);
 
-  const likePost = async () => {
+  const likePost = async (postID: string) => {
     try {
-      const response = await axios.post("/api/post/like/", {});
+      if (getAccessToken() === "authentificated") {
+        const response = await axios.post(
+          `/api/post/like/${postID}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          console.log(response.data);
+        }
+      }
     } catch (err) {
       console.error(err);
       addToast({
@@ -141,7 +149,34 @@ const postActions = () => {
     }
   };
 
-  return { addLocation, addPost, getAllPosts, likePost };
+  const dislikePost = async (postID: string) => {
+    try {
+      if (getAccessToken() === "authentificated") {
+        const response = await axios.post(
+          `/api/post/dislikes/${postID}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+
+        if (response.status === 200) {
+          console.log(response.data);
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      addToast({
+        title: "Erreur",
+        description: "Un erreur s' est produit",
+        status: "error",
+      });
+    }
+  };
+
+  return { addLocation, addPost, getAllPosts, likePost, dislikePost };
 };
 
 export default postActions;

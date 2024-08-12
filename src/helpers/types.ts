@@ -40,8 +40,10 @@ interface Imodal {
 
 interface IauthContext {
   accessToken: string | null;
+  currentUserId: string | null;
   loadToken: boolean;
   addAccessToken: (token: string) => void;
+  addCurrentId: (id: string) => void;
   getAccessToken: () => "authentificated" | "unknown";
 }
 
@@ -58,6 +60,7 @@ interface Imap {
 }
 
 interface IpostCard {
+  _id?: string;
   poster: {
     pseudo: string;
     name: string;
@@ -70,11 +73,20 @@ interface IpostCard {
   name: string;
   description: string;
   price: string;
-  likes: number;
+  likers: any[];
   location: [number, number];
   productType: string;
   quantityType: string;
   quantity: number;
+}
+
+interface Iuser {
+  pseudo: string;
+  name: string;
+  email: string;
+  posts?: IpostCard[];
+  password: string;
+  localisation?: string;
 }
 
 export type {
@@ -88,4 +100,5 @@ export type {
   IdashboarsNavList,
   Imap,
   IpostCard,
+  Iuser,
 };

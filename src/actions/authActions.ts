@@ -10,7 +10,7 @@ const authActions = () => {
   const router = useRouter();
   const { addToast } = Toast();
   const dispatch = useDispatch();
-  const { addAccessToken } = useAuth();
+  const { addAccessToken, addCurrentId } = useAuth();
 
   const submitEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -57,6 +57,7 @@ const authActions = () => {
 
       if (response.status === 200) {
         addAccessToken(response.data.token as string);
+        addCurrentId(response.data.newUser._id);
         router.replace("/dashboard");
         addToast({
           title: "succés",
@@ -90,10 +91,11 @@ const authActions = () => {
 
       if (response.status === 200) {
         addAccessToken(response.data.token as string);
+        addCurrentId(response.data.user._id);
         router.replace("/dashboard");
         addToast({
           title: "succés",
-          description: "Compte créé avec succés",
+          description: "Ravis de vous revoir",
           status: "success",
         });
       }

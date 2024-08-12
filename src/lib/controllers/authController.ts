@@ -51,7 +51,7 @@ class authController {
       const token = tokenHelper.generateToken(user._id as string);
       return res
         .status(200)
-        .json({ message: "User login successfully", user, token });
+        .json({ message: "User login successfully✅", user, token });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ err: err });

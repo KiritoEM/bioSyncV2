@@ -16,11 +16,11 @@ interface Ipost extends Document {
   name: string;
   description: string;
   price: string;
-  likes: number;
   location: [number, number];
   productType: string;
   quantityType: string;
   quantity: number;
+  likers: Schema.Types.ObjectId[];
 }
 
 interface Req extends NextApiRequest {

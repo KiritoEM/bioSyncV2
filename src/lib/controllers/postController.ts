@@ -74,6 +74,48 @@ class authController {
       return res.status(500).json({ err: err });
     }
   }
+
+  async likePost(req: Req, res: NextApiResponse) {
+    try {
+      const { postID } = req.query;
+      const likedPost = await postServices.likePostService(
+        postID as string,
+        req.user.userId
+      );
+
+      if (!likedPost) {
+        return res.status(400).json({ message: "Error when liking post" });
+      }
+
+      return res
+        .status(200)
+        .json({ message: "Liking post successfully", likedPost });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ err: err });
+    }
+  }
+
+  async dislikePost(req: Req, res: NextApiResponse) {
+    try {
+      const { postID } = req.query;
+      const dislikedPost = await postServices.dislikePostService(
+        postID as string,
+        req.user.userId
+      );
+
+      if (!dislikedPost) {
+        return res.status(400).json({ message: "Error when disliking post" });
+      }
+
+      return res
+        .status(200)
+        .json({ message: "Disliking post successfully", dislikedPost });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ err: err });
+    }
+  }
 }
 
 export default new authController();

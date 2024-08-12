@@ -1,4 +1,7 @@
+import userActions from "@/actions/userActions";
+import { RootState } from "@/core/redux/store.config";
 import { imageSliding } from "@/helpers/constant";
+import { IpostCard } from "@/helpers/types";
 import {
   Card,
   CardBody,
@@ -6,7 +9,9 @@ import {
   CardHeader,
   Divider,
 } from "@nextui-org/react";
+import path from "path";
 import { FC, useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
 export const ProfileDetailsItem: FC<{
   stat: number | string;
@@ -23,6 +28,20 @@ export const ProfileDetailsItem: FC<{
 const DashboardProfile: FC = () => {
   const imageRef = useRef<HTMLImageElement | null>(null);
   const [imageWidth, setImageWidth] = useState<number>(0);
+  const { getCurrentUser } = userActions();
+  const currentUser = useSelector((state: RootState) => state.user.user);
+  const totalLikes = (currentUser?.posts as IpostCard[]).reduce(
+    (acc, post) => acc + post.likers.length,
+    0
+  );
+  const totalPictures = (currentUser?.posts as IpostCard[]).length;
+  const allImages = (currentUser?.posts as IpostCard[]).map(
+    (post) => `/uploads/${path.basename(post.picture.file_path)}`
+  );
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
 
   useEffect(() => {
     if (imageRef.current) {
@@ -45,17 +64,20 @@ const DashboardProfile: FC = () => {
             />
             <div className="flex flex-col items-center">
               <h5 className="text-secondary font-calSans text-[18px]">
-                Emadisson Loick
+                {currentUser?.name}
               </h5>
-              <p className="text-green02 -mt-1">KiritoEM</p>
+              <p className="text-green02 -mt-1">{currentUser?.pseudo}</p>
             </div>
           </div>
         </CardHeader>
         <CardBody>
           <div className="profile-details flex justify-between mt-3 px-4">
-            <ProfileDetailsItem label="Publications" stat={4} />
-            <ProfileDetailsItem label="Likes" stat={100} />
-            <ProfileDetailsItem label="Contributeurs" stat={4} />
+            <ProfileDetailsItem
+              label="Publications"
+              stat={currentUser?.posts?.length as number}
+            />
+            <ProfileDetailsItem label="Likes" stat={totalLikes} />
+            <ProfileDetailsItem label="Photos" stat={totalPictures} />
           </div>
         </CardBody>
         <CardFooter className="flex flex-col items-start">
@@ -64,17 +86,21 @@ const DashboardProfile: FC = () => {
             <header>
               <h5 className="font-medium">Vos photos</h5>
             </header>
-            <div className="gallery grid grid-cols-3 mt-2 gap-1">
-              {imageSliding.map((image, index) => (
-                <img
-                  key={index}
-                  ref={imageRef}
-                  src={image}
-                  className="object-cover rounded-md"
-                  style={{ height: imageWidth, width: "100%" }}
-                />
-              ))}
-            </div>
+            {allImages.length !== 0 ? (
+              <div className="gallery grid grid-cols-3 mt-2 gap-1">
+                {allImages.map((image, index) => (
+                  <img
+                    key={index}
+                    ref={imageRef}
+                    src={image}
+                    className="object-cover rounded-md"
+                    style={{ height: imageWidth, width: "100%" }}
+                  />
+                ))}
+              </div>
+            ) : (
+              <h5 className="text-secondary01">Aucun image</h5>
+            )}
           </div>
         </CardFooter>
       </Card>
