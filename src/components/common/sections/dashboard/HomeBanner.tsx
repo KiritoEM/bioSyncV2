@@ -1,8 +1,10 @@
 import { Button } from "@/components/UI/button";
 import { Image } from "@nextui-org/react";
+import { useRouter } from "next/router";
 import React, { FC } from "react";
 
 const HomeBanner: FC = (): JSX.Element => {
+  const router = useRouter();
   return (
     <div className="dashboard-home__banner h-max bg-blue01 w-full rounded-lg flex items-end overflow-hidden">
       <div className="banner-content w-[98%] p-6 py-8">
@@ -16,6 +18,7 @@ const HomeBanner: FC = (): JSX.Element => {
           variant="solid"
           className="w-max bg-yellow01 text-secondary mt-[20px] pr-0"
           size="sm"
+          onClick={() => router.push("/dashboard/post")}
         >
           Commencer
           <Image src="/icons/chevron-right.svg" className="-ml-2 w-[31px]" />

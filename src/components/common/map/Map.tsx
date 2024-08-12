@@ -2,12 +2,11 @@ import { Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { FC, useState } from "react";
 import { MapContainer, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import "leaflet-defaulticon-compatibility";
-import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import useLocalisation from "@/core/hooks/useLocalisation";
 import { Imap } from "@/helpers/types";
 import { Image } from "@nextui-org/react";
 import path from "path";
+import { defaultIcon, ferIcon, plasticIcon } from "../icons/MapIcon";
 
 const Map: FC<Imap> = ({
   position,
@@ -15,6 +14,7 @@ const Map: FC<Imap> = ({
   wheelZoom = false,
   posts,
   geolocalisation = true,
+  events = false,
 }): JSX.Element => {
   const { addCoords } = useLocalisation();
   const [markerPosition, setMarkerPosition] = useState(position);
@@ -38,14 +38,18 @@ const Map: FC<Imap> = ({
       className="w-full h-full"
     >
       <TileLayer url={process.env.NEXT_PUBLIC_OPEN_STREETMAP as string} />
-      {geolocalisation && <MapEvents />}
+      {events && <MapEvents />}
       {geolocalisation && (
-        <Marker position={markerPosition}>
+        <Marker position={markerPosition} icon={defaultIcon}>
           <Popup>Votre position actuelle</Popup>
         </Marker>
       )}
       {posts?.map((post, index) => (
-        <Marker key={index} position={post.location}>
+        <Marker
+          key={index}
+          position={post.location}
+          icon={post.productType === "plastique" ? plasticIcon : ferIcon}
+        >
           <Popup maxWidth={500}>
             <Image
               src={`/uploads/${path.basename(post.picture.file_path)}`}

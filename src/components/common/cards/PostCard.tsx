@@ -59,9 +59,9 @@ const PostCard: FC<InewPostCard> = ({
           <Avatar src="/avatar.png" className="w-[48px] h-[48px]" />
           <div className="user__info flex flex-col gap-1">
             <h5 className="text-secondary font-semibold">{poster.pseudo}</h5>
-            {/* <p className="text-[13px] text-gray02">
-              il y a {timeAgo(createdAt)}
-            </p> */}
+            <p className="text-[13px] text-gray02">
+              il y a {timeAgo(createdAt as Date)}
+            </p>
           </div>
         </div>
         <Image src="/icons/more.svg" className="w-6" />

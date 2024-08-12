@@ -1,12 +1,21 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import Logo from "../Logo";
 import { dashboardNavList } from "@/helpers/constant";
 import { useRouter } from "next/router";
 import { SearchInput } from "@/components/UI/input";
 import { Avatar } from "@nextui-org/react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/core/redux/store.config";
+import userActions from "@/actions/userActions";
 
 const DashboardNav: FC = (): JSX.Element => {
   const router = useRouter();
+  const user = useSelector((state: RootState) => state.user.user);
+  const { getCurrentUser } = userActions();
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
   return (
     <nav className="dashboard__nav w-full overflow-hidden bg-white">
       <div className="container mx-auto px-[35px] flex justify-between items-center py-4">
@@ -39,9 +48,10 @@ const DashboardNav: FC = (): JSX.Element => {
             <img src="/icons/bell.svg" className="w-5" />
           </div>
           <div className="profile flex items-center gap-3">
-            <Avatar src="/avatar.png" className="h-[45px] w-[45px]" />
+            <Avatar src="/avatar.png" className="h-[39px] w-[39px]" />
             <p className="text-secondary flex items-center gap-2">
-              Johan <img src="/icons/chevron-down.svg" className="w-3" />
+              {user?.pseudo}{" "}
+              <img src="/icons/chevron-down.svg" className="w-3" />
             </p>
           </div>
         </div>
