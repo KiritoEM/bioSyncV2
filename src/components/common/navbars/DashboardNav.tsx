@@ -14,11 +14,13 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 import userActions from "@/actions/userActions";
+import { useAuth } from "@/core/contexts/useAuth";
 
 const DashboardNav: FC = (): JSX.Element => {
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user.user);
   const { getCurrentUser } = userActions();
+  const { logout } = useAuth();
 
   useEffect(() => {
     getCurrentUser();
@@ -63,9 +65,15 @@ const DashboardNav: FC = (): JSX.Element => {
                   <Image src="/icons/chevron-down.svg" className="w-3" />
                 </DropdownTrigger>
                 <DropdownMenu>
-                  <DropdownItem>
+                  <DropdownItem
+                    onClick={() => {
+                      router.replace("/");
+                      logout();
+                    }}
+                  > 
                     <div className="flex items-center gap-2">
-                      <Image src="/icons/logout.svg" width={21} radius="none"/> Se déconnecter
+                      <Image src="/icons/logout.svg" width={21} radius="none" />{" "}
+                      Se déconnecter
                     </div>
                   </DropdownItem>
                 </DropdownMenu>
