@@ -1,6 +1,7 @@
 import { Toast } from "@/components/UI/toast";
 import { useAuth } from "@/core/contexts/useAuth";
 import { setPost } from "@/core/redux/slices/postSlice";
+import { verifyTypePicture } from "@/helpers/uploadHelper";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
@@ -29,7 +30,15 @@ const postActions = () => {
 
         let formData = new FormData();
 
-        formData.append("image", file!);
+        if (verifyTypePicture(file as File)) {
+          formData.append("image", file!);
+        } else {
+          addToast({
+            title: "Erreur!",
+            description: "Veuillez valider que le fichier est une image",
+            status: "error",
+          });
+        }
         formData.append("name", productName);
         formData.append("description", description);
         formData.append("price", price);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useUpload = (onChange: (file: File) => void) => {
+const useUpload = (onChange: (file: File | null) => void) => {
   const [drag, setDrag] = useState<boolean>(false);
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -23,9 +23,12 @@ const useUpload = (onChange: (file: File) => void) => {
     setDrag(false);
 
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      console.log("File dropped:", e.dataTransfer.files[0]);
       onChange(e.dataTransfer.files[0]);
     }
+  };
+
+  const resetDrop = () => {
+    onChange(null);
   };
 
   return {
@@ -34,6 +37,7 @@ const useUpload = (onChange: (file: File) => void) => {
     handleDragOver,
     handleDragLeave,
     handleDrop,
+    resetDrop,
   };
 };
 

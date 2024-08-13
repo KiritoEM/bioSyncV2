@@ -1,7 +1,7 @@
 import useUpload from "@/core/hooks/useUpload";
 import { extendVariants, Input as NextUiInput } from "@nextui-org/react";
+import { FC, useEffect, useRef } from "react";
 import { Image } from "@nextui-org/react";
-import { FC, useRef } from "react";
 
 const Input = extendVariants(NextUiInput, {
   variants: {
@@ -17,7 +17,7 @@ const Input = extendVariants(NextUiInput, {
           "bordered-gray03",
           "h-[48px]",
         ],
-        input: ["placeholder: text-gray-400", "text-secondary"],
+        input: ["placeholder:text-gray-400", "text-secondary"],
         label: ["text-secondary"],
       },
       white: {
@@ -30,7 +30,7 @@ const Input = extendVariants(NextUiInput, {
           "border",
           "h-[54px]",
         ],
-        input: ["placeholder: text-gray-400", "text-secondary"],
+        input: ["placeholder:text-gray-400", "text-secondary"],
         label: ["text-secondary"],
       },
     },
@@ -53,7 +53,7 @@ const Input = extendVariants(NextUiInput, {
   },
 });
 
-const SearchInput = () => {
+const SearchInput: FC = () => {
   return (
     <div className="search-input">
       <Input
@@ -67,10 +67,19 @@ const SearchInput = () => {
   );
 };
 
-const UploadInput: FC<{ onChange: (file: File) => void }> = ({ onChange }) => {
+const UploadInput: FC<{ onChange: (file: File | null) => void, reset:boolean }> = ({
+  onChange,
+  reset
+}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { handleDragEnter, drag, handleDragLeave, handleDragOver, handleDrop } =
-    useUpload(onChange);
+  const {
+    handleDragEnter,
+    drag,
+    handleDragLeave,
+    handleDragOver,
+    handleDrop,
+    resetDrop,
+  } = useUpload(onChange);
 
   const handleClick = () => {
     if (fileInputRef.current) {
@@ -78,31 +87,39 @@ const UploadInput: FC<{ onChange: (file: File) => void }> = ({ onChange }) => {
     }
   };
 
+  useEffect(()=> {
+    resetDrop()
+  },[reset])
+
   return (
     <div
       className={`upload-input bg-white border border-dashed ${
         drag ? "border-primary" : "border-gray-300"
       } focus:border-primary rounded-xl w-full h-[185px] flex flex-col items-center justify-center cursor-pointer`}
       onClick={handleClick}
-      onDragEnter={handleDragEnter}
       onDragOver={handleDragOver}
+      onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
+      onDrop={(e: React.DragEvent<HTMLDivElement>) => {
+        handleDrop(e);
+      }}
     >
-      <Image src="/icons/upload.svg" width={40} />
-      <label htmlFor="upload" className="flex flex-col items-center">
-        <h5 className="text-secondary mt-4 text-base">Ajouter une image</h5>
-        <p className="text-green02 text-small">ou la déposer ici</p>
-      </label>
       <input
         type="file"
-        className="hidden"
-        id="upload"
         ref={fileInputRef}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          e.target.files && onChange(e.target.files[0])
-        }
+        className="hidden"
+        onChange={(e) => {
+          const selectedFile = e.target.files?.[0];
+          if (selectedFile) {
+            onChange(selectedFile);
+          }
+        }}
       />
+      <Image src="/icons/upload.svg" alt="upload" className="w-[42px]" />
+      <p className="text-secondary font-semibold">Ajouter une photo</p>
+      <span className="text-gray-500 font-secondary">
+        (jpg, png, svg, webp)
+      </span>
     </div>
   );
 };
