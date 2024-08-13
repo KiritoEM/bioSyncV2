@@ -116,6 +116,26 @@ class authController {
       res.status(500).json({ err: err });
     }
   }
+
+  async deletePost(req: Req, res: NextApiResponse) {
+    try {
+      const { postID } = req.query;
+      const deletedPost = await postServices.deletePostService(
+        postID as string
+      );
+
+      if (!deletedPost) {
+        return res.status(400).json({ message: "Error when deleting post" });
+      }
+
+      return res
+        .status(200)
+        .json({ message: "Deleting post successfully", deletedPost });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ err: err });
+    }
+  }
 }
 
 export default new authController();

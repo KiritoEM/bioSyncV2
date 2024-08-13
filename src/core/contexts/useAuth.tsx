@@ -9,6 +9,7 @@ import {
 } from "react";
 import { useDispatch } from "react-redux";
 import { startLoading, stopLoading } from "../redux/slices/loadingSlice";
+import { useRouter } from "next/router";
 
 const AuthContext = createContext<IauthContext | null>(null);
 export const storageKey = "@biosync_token";
@@ -18,6 +19,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [loadToken, setLoadToken] = useState<boolean>(true);
   const [currentUserId, setId] = useState<string | null>(null);
+  const router = useRouter();
   console.log(currentUserId);
   const dispatch = useDispatch();
 
@@ -51,6 +53,8 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const logout = () => {
     if (typeof window !== null) {
       localStorage.removeItem(storageKey);
+      router.push("/");
+      router.reload();
     }
   };
 

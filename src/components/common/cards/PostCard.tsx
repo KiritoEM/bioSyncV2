@@ -39,6 +39,7 @@ const PostCard: FC<InewPostCard> = ({
   const [currentLikes, setCurrentLikes] = useState(likers.length);
   const [liked, setIsLiked] = useState<boolean>(false);
   const { likePost, dislikePost } = postActions();
+  const { deletePost } = postActions();
 
   useEffect(() => {
     setIsLiked(likers.includes(id));
@@ -73,7 +74,10 @@ const PostCard: FC<InewPostCard> = ({
             <Image src="/icons/more.svg" className="w-6" />
           </DropdownTrigger>
           <DropdownMenu>
-            <DropdownItem key="delete">
+            <DropdownItem
+              key="delete"
+              onClick={() => deletePost(_id as string)}
+            >
               <div className="flex items-center gap-2">
                 <Image src="/icons/trash.svg" width={20} />{" "}
                 <p className="text-red-500">Supprimer</p>

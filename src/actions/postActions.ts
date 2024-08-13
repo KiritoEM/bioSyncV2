@@ -176,7 +176,41 @@ const postActions = () => {
     }
   };
 
-  return { addLocation, addPost, getAllPosts, likePost, dislikePost };
+  const deletePost = async (postID: string) => {
+    try {
+      if (getAccessToken() === "authentificated") {
+        const response = await axios.delete(`/api/post/delete/${postID}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+
+        if (response.status === 200) {
+          addToast({
+            title: "Publication",
+            description: "Publication postée avec succés",
+            status: "success",
+          });
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      addToast({
+        title: "Erreur",
+        description: "Un erreur s' est produit",
+        status: "error",
+      });
+    }
+  };
+
+  return {
+    addLocation,
+    addPost,
+    getAllPosts,
+    likePost,
+    dislikePost,
+    deletePost,
+  };
 };
 
 export default postActions;
