@@ -67,10 +67,9 @@ const DashboardNav: FC = (): JSX.Element => {
                 <DropdownMenu>
                   <DropdownItem
                     onClick={() => {
-                      router.replace("/");
                       logout();
                     }}
-                  > 
+                  >
                     <div className="flex items-center gap-2">
                       <Image src="/icons/logout.svg" width={21} radius="none" />{" "}
                       Se déconnecter
