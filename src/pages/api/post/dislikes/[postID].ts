@@ -1,9 +1,11 @@
+import { connectDB } from "@/lib/configs/mongodb";
 import postController from "@/lib/controllers/postController";
 import bearer from "@/lib/middlewares/bearer";
 import { Req } from "@/lib/utils/schemaTypes";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 
-const handler = (req: Req, res: NextApiResponse) => {
+const handler = async (req: Req, res: NextApiResponse) => {
+  await connectDB();
   try {
     if (req.method === "POST") {
       return bearer(postController.dislikePost)(req, res);

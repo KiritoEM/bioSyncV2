@@ -12,8 +12,6 @@ import {
 } from "@nextui-org/react";
 import { ArLogo } from "@/pages/dashboard/post";
 import { labels, productLabels } from "@/helpers/constant";
-import { verifyTypePicture } from "@/helpers/uploadHelper";
-import { Toast } from "@/components/UI/toast";
 import { Button } from "@/components/UI/button";
 import { Input, UploadInput } from "@/components/UI/input";
 import postActions from "@/actions/postActions";
@@ -21,7 +19,7 @@ import postActions from "@/actions/postActions";
 const PostForm: FC = (): JSX.Element => {
   const [file, setFile] = useState<File | null>(null);
   const [selectedOption, setOption] = useState(new Set<string>([labels[0]]));
-  const { addToast } = Toast();
+  const [reset, setReset] = useState<boolean>(false);
   const { addPost } = postActions();
 
   let quantityType: "kilos" | "nombre" = Array.from(selectedOption).includes(
@@ -31,9 +29,12 @@ const PostForm: FC = (): JSX.Element => {
     : "nombre";
 
   const handleSelectionChange = (keys: Selection) => {
-    const selectedValues = Array.from(keys) as unknown as string;
+    const selectedValues = Array.from(keys) as string[];
     setOption(new Set<string>(selectedValues));
   };
+
+  const uploadInputKey = file ? "file-uploaded" : "file-reset";
+
   return (
     <form
       action="post"
@@ -59,7 +60,7 @@ const PostForm: FC = (): JSX.Element => {
       />
       <Input
         color="white"
-        label="Quantité du produit(en kilos ou en nombre)"
+        label="Quantité du produit (en kilos ou en nombre)"
         type="number"
         name="quantity"
         required
@@ -85,15 +86,9 @@ const PostForm: FC = (): JSX.Element => {
       />
       {!file ? (
         <UploadInput
-          onChange={(file: File) =>
-            verifyTypePicture(file)
-              ? setFile(file)
-              : addToast({
-                  title: "Erreur!",
-                  description: "Veuillez valider que le fichier est un image",
-                  status: "error",
-                })
-          }
+          key={uploadInputKey}
+          onChange={(file: File | null) => setFile(file)}
+          reset={reset}
         />
       ) : (
         <div
@@ -107,7 +102,10 @@ const PostForm: FC = (): JSX.Element => {
           <div
             className="close-btn bg-yellow01 opacity-85 w-[42px] h-[42px] flex items-center justify-center rounded-full"
             style={{ zIndex: 60 }}
-            onClick={() => setFile(null)}
+            onClick={() => {
+              setFile(null);
+              setReset(true);
+            }}
           >
             <Image
               src="/icons/close.svg"
@@ -120,7 +118,7 @@ const PostForm: FC = (): JSX.Element => {
 
       <ButtonGroup variant="flat" className="w-full">
         <Button className="w-full" radius="md" type="submit">
-          {selectedOption}
+          {Array.from(selectedOption).join(", ")}
         </Button>
         <Dropdown placement="bottom-end">
           <DropdownTrigger>

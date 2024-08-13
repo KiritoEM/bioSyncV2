@@ -17,12 +17,12 @@ const AppLoading = () => {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <RootLayout>
-      <NextUIProvider>
-        <ChakraProvider>
+      <ChakraProvider>
+        <NextUIProvider>
           <Component {...pageProps} />
           <AppLoading />
-        </ChakraProvider>
-      </NextUIProvider>
+        </NextUIProvider>
+      </ChakraProvider>
     </RootLayout>
   );
 }

@@ -1,10 +1,12 @@
+import { connectDB } from "@/lib/configs/mongodb";
 import userController from "@/lib/controllers/userController";
 import bearer from "@/lib/middlewares/bearer";
 import { Req } from "@/lib/utils/schemaTypes";
 import { NextApiResponse } from "next";
 
-const handler = (req: Req, res: NextApiResponse) => {
+const handler = async (req: Req, res: NextApiResponse) => {
   try {
+    await connectDB();
     if (req.method === "GET") {
       return bearer(userController.getUser)(req, res);
     }

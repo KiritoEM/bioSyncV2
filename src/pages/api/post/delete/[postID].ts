@@ -1,9 +1,11 @@
+import { connectDB } from "@/lib/configs/mongodb";
 import postController from "@/lib/controllers/postController";
 import bearer from "@/lib/middlewares/bearer";
 import { Req } from "@/lib/utils/schemaTypes";
 import { NextApiResponse } from "next";
 
-const handler = (req: Req, res: NextApiResponse) => {
+const handler = async (req: Req, res: NextApiResponse) => {
+  await connectDB();
   try {
     if (req.method === "DELETE") {
       return bearer(postController.deletePost)(req, res);
