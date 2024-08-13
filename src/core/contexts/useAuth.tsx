@@ -48,6 +48,12 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     return accessToken ? "authentificated" : "unknown";
   };
 
+  const logout = () => {
+    if (typeof window !== null) {
+      localStorage.removeItem(storageKey);
+    }
+  };
+
   const addCurrentId = (id: string) => {
     if (typeof window !== null) {
       localStorage.setItem(currentUserKey, id);
@@ -63,6 +69,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
         getAccessToken,
         loadToken,
         addCurrentId,
+        logout,
       }}
     >
       {children}

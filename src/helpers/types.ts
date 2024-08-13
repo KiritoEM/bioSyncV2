@@ -44,6 +44,7 @@ interface IauthContext {
   loadToken: boolean;
   addAccessToken: (token: string) => void;
   addCurrentId: (id: string) => void;
+  logout: () => void;
   getAccessToken: () => "authentificated" | "unknown";
 }
 
@@ -59,7 +60,7 @@ interface Imap {
   wheelZoom?: boolean;
   posts?: IpostCard[];
   geolocalisation?: boolean;
-  events: boolean
+  events: boolean;
 }
 
 interface IpostCard {

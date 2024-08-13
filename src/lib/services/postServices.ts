@@ -66,6 +66,15 @@ class postServices {
       throw new Error(err);
     }
   }
+
+  async deletePostService(postID: string) {
+    try {
+      const postDeleted = await postModel.findByIdAndDelete(postID);
+      return postDeleted;
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 export default new postServices();

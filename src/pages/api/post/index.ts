@@ -22,6 +22,7 @@ const handler = async (req: Req, res: NextApiResponse) => {
       await bearer(postController.addPost)(req, res);
     } else if (req.method === "GET") {
       return bearer(postController.getAllPost)(req, res);
+    } else if (req.method === "DELETE") {
     } else {
       res.status(405).end(`Method ${req.method} Not Allowed`);
     }
