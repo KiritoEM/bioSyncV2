@@ -50,7 +50,7 @@ const DashboardProfile: FC = () => {
   }, [imageRef.current]);
 
   return (
-    <div className="dashboard-home__profile sticky top-0 w-[370px] h-[calc(100vh-0.8rem)] rounded-lg overflow-x-hidden overflow-y-auto">
+    <div className="dashboard-home__profile sticky top-0 w-[370px] h-[calc(100vh-0.8rem)] rounded-lg overflow-x-hidden overflow-y-auto hidden lg:flex">
       <Card className="w-full bg-white h-max rounded-lg p-1 mb-[20vh]">
         <CardHeader className="flex flex-col h-max">
           <img

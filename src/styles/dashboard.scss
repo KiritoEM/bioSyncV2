@@ -19,4 +19,12 @@
 
         }
     }
+
+    &__banner {
+        .banner-illustration {
+            @media screen and (max-width:450px) {
+                display: none;
+            }
+        }
+    }
 }
