@@ -22,11 +22,10 @@ const PostForm: FC = (): JSX.Element => {
   const [reset, setReset] = useState<boolean>(false);
   const { addPost } = postActions();
 
-  let quantityType: "kilos" | "nombre" = Array.from(selectedOption).includes(
-    "kilos"
-  )
-    ? "kilos"
-    : "nombre";
+  let quantityType: "kilos" | "nombre" =
+    Array.from(selectedOption).toString() === "continuer(en kilos)"
+      ? "kilos"
+      : "nombre";
 
   const handleSelectionChange = (keys: Selection) => {
     const selectedValues = Array.from(keys) as string[];

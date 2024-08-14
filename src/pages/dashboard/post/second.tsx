@@ -1,16 +1,16 @@
-import Title from "@/components/meta/Title";
-import { Stepper } from "@/components/UI/stepper";
-import { protectedHOC } from "@/core/HOC/authHOC";
-import DashboardLayout from "@/layouts/DashboardLayout";
-import { useRouter } from "next/router";
 import { FC, Fragment, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import DashboardLayout from "@/layouts/DashboardLayout";
 import { Map } from "@/components/common/sections/dashboard/DashboardMap";
-import useLocalisation from "@/core/hooks/useLocalisation";
 import { Button } from "@/components/UI/button";
 import postActions from "@/actions/postActions";
 import { Toast } from "@/components/UI/toast";
+import Title from "@/components/meta/Title";
+import { Stepper } from "@/components/UI/stepper";
+import { protectedHOC } from "@/core/HOC/authHOC";
+import { useLocalisation } from "@/core/contexts/useLocalisation";
 
-const second: FC = (): JSX.Element => {
+const Second: FC = (): JSX.Element => {
   const router = useRouter();
   const { id } = router.query;
   const { selectedCoords } = useLocalisation();
@@ -20,26 +20,30 @@ const second: FC = (): JSX.Element => {
   const { addToast } = Toast();
 
   useEffect(() => {
-    if (selectedCoords) {
-      setCoords(selectedCoords[0] !== 0 && selectedCoords[1] !== 0);
+    console.log("selectedCoords in useEffect:", selectedCoords);
+    if (selectedCoords[0] !== 0 && selectedCoords[1] !== 0) {
+      setCoords(true);
     }
   }, [selectedCoords]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Submitting with selectedCoords:", selectedCoords);
     if (await addLocation(e, selectedCoords, id as string)) {
       setIndex(true);
       router.push("/dashboard/");
     } else {
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Une erreur s'est produite",
         status: "error",
       });
     }
   };
+
   return (
     <Fragment>
-      <Title title="Biosync | créér un post" />
+      <Title title="Biosync | Créer un post" />
       <section className="dashboard-post bg-gray01 h-screen overflow-x-hidden overflow-y-auto">
         <DashboardLayout>
           <div className="dashboard-post__container container mx-auto mt-8 mb-12 flex flex-col items-center">
@@ -62,7 +66,6 @@ const second: FC = (): JSX.Element => {
                 )}
               </div>
               <Button className="mt-6" radius="md" type="submit">
-                {" "}
                 Créer la publication
               </Button>
             </form>
@@ -73,4 +76,4 @@ const second: FC = (): JSX.Element => {
   );
 };
 
-export default protectedHOC(second);
+export default protectedHOC(Second);

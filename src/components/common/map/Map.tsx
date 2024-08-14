@@ -2,11 +2,11 @@ import { Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { FC, useState } from "react";
 import { MapContainer, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import useLocalisation from "@/core/hooks/useLocalisation";
 import { Imap } from "@/helpers/types";
 import { Image } from "@nextui-org/react";
 import path from "path";
 import { defaultIcon, ferIcon, plasticIcon } from "../icons/MapIcon";
+import { useLocalisation } from "@/core/contexts/useLocalisation";
 
 const Map: FC<Imap> = ({
   position,
@@ -53,7 +53,7 @@ const Map: FC<Imap> = ({
           <Popup maxWidth={500}>
             <Image
               src={`/uploads/${path.basename(post.picture.file_path)}`}
-              width={280}
+              width={300}
               height={150}
               isZoomed
               className="object-cover"
