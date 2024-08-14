@@ -14,6 +14,7 @@ import {
   DropdownTrigger,
   Image,
 } from "@nextui-org/react";
+import { useRouter } from "next/router";
 import path from "path";
 import { FC, useEffect, useState } from "react";
 
@@ -40,6 +41,7 @@ const PostCard: FC<InewPostCard> = ({
   const [liked, setIsLiked] = useState<boolean>(false);
   const { likePost, dislikePost } = postActions();
   const { deletePost } = postActions();
+  const router = useRouter();
 
   useEffect(() => {
     setIsLiked(likers.includes(id));
@@ -132,6 +134,7 @@ const PostCard: FC<InewPostCard> = ({
                 className="ml-1"
               />
             }
+            onClick={() => router.replace("/dashboard/map")}
           >
             Voir sur map
           </Button>

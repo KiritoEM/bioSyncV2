@@ -1,4 +1,4 @@
-import useLocalisation from "@/core/hooks/useLocalisation";
+import { useLocalisation } from "@/core/contexts/useLocalisation";
 import dynamic from "next/dynamic";
 import { FC, useEffect, useState } from "react";
 
@@ -15,7 +15,7 @@ const DashboardMap: FC = (): JSX.Element => {
 
   return (
     <div className="dashboard-home__map w-[300px] bg-white h-[calc(100vh-145px)] sticky top-0 rounded-lg overflow-hidden">
-      {validCoords && <Map position={coords} zoom={7} />}
+      {validCoords && <Map position={coords} zoom={7} events={false} />}
     </div>
   );
 };

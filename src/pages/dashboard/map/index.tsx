@@ -1,8 +1,8 @@
 import postActions from "@/actions/postActions";
 import { Map } from "@/components/common/sections/dashboard/DashboardMap";
 import Title from "@/components/meta/Title";
+import { useLocalisation } from "@/core/contexts/useLocalisation";
 import { protectedHOC } from "@/core/HOC/authHOC";
-import useLocalisation from "@/core/hooks/useLocalisation";
 import { RootState } from "@/core/redux/store.config";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { Image } from "@nextui-org/react";

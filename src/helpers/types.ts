@@ -48,6 +48,12 @@ interface IauthContext {
   getAccessToken: () => "authentificated" | "unknown";
 }
 
+interface ILocalisationContext {
+  coords: [number, number];
+  selectedCoords: [number, number];
+  addCoords: (lat: number, lng: number) => void;
+}
+
 interface IdashboarsNavList {
   icon?: string;
   activeIcon?: string;
@@ -105,4 +111,5 @@ export type {
   Imap,
   IpostCard,
   Iuser,
+  ILocalisationContext,
 };
