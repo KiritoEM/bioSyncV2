@@ -90,7 +90,7 @@ const PostCard: FC<InewPostCard> = ({
       </CardHeader>
       <CardBody>
         <div
-          className="post-card__image h-[400px] flex items-end justify-end p-3"
+          className="post-card__image h-[250px] lg:h-[400px] flex items-end justify-end p-3"
           style={{
             backgroundImage: `url("/uploads/${postPicture}")`,
             backgroundPosition: "center",

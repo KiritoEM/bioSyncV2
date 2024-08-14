@@ -14,7 +14,7 @@ const DashboardMap: FC = (): JSX.Element => {
   }, [coords]);
 
   return (
-    <div className="dashboard-home__map w-[300px] bg-white h-[calc(100vh-145px)] sticky top-0 rounded-lg overflow-hidden">
+    <div className="dashboard-home__map w-[300px] bg-white h-[calc(100vh-145px)] sticky top-0 rounded-lg overflow-hidden hidden lg:flex">
       {validCoords && <Map position={coords} zoom={7} events={false} />}
     </div>
   );

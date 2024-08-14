@@ -55,11 +55,11 @@ const Input = extendVariants(NextUiInput, {
 
 const SearchInput: FC = () => {
   return (
-    <div className="search-input">
+    <div className="search-input hidden lg:flex">
       <Input
         placeholder="Recherchez"
         classNames={{
-          input: ["w-[300px]"],
+          input: ["w-[300px]", "hidden lg:flex"],
         }}
         endContent={<Image src="/icons/search.svg" className="w-[21px]" />}
       />
@@ -67,10 +67,10 @@ const SearchInput: FC = () => {
   );
 };
 
-const UploadInput: FC<{ onChange: (file: File | null) => void, reset:boolean }> = ({
-  onChange,
-  reset
-}) => {
+const UploadInput: FC<{
+  onChange: (file: File | null) => void;
+  reset: boolean;
+}> = ({ onChange, reset }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const {
     handleDragEnter,
@@ -87,9 +87,9 @@ const UploadInput: FC<{ onChange: (file: File | null) => void, reset:boolean }> 
     }
   };
 
-  useEffect(()=> {
-    resetDrop()
-  },[reset])
+  useEffect(() => {
+    resetDrop();
+  }, [reset]);
 
   return (
     <div

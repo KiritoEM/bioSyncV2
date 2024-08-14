@@ -29,7 +29,7 @@ const DashboardNav: FC = (): JSX.Element => {
     <nav className="dashboard__nav w-full overflow-hidden bg-white">
       <div className="container mx-auto px-[35px] flex justify-between items-center py-4">
         <Logo />
-        <ul className="menu-items flex gap-4">
+        <ul className="menu-items gap-4 hidden lg:flex">
           {dashboardNavList.map((item, index) => (
             <li
               key={index}
@@ -53,13 +53,13 @@ const DashboardNav: FC = (): JSX.Element => {
         </ul>
         <div className="actions flex items-center gap-7">
           <SearchInput />
-          <div className="notif p-2 rounded-lg bg-gray01 h-[48px] w-[48px] flex items-center justify-center">
+          <div className="notif p-2 rounded-lg bg-gray01 h-[48px] w-[48px] items-center justify-center hidden lg:flex">
             <img src="/icons/bell.svg" className="w-5" />
           </div>
           <div className="profile flex items-center gap-3">
             <Avatar src="/avatar.png" className="h-[39px] w-[39px]" />
             <p className="text-secondary flex items-center gap-2">
-              {user?.pseudo}{" "}
+              <span className="hidden md:flex">{user?.pseudo}{" "}</span>
               <Dropdown>
                 <DropdownTrigger className="cursor-pointer">
                   <Image src="/icons/chevron-down.svg" className="w-3" />

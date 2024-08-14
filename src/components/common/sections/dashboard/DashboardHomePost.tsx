@@ -17,7 +17,7 @@ const DashboardHomePost: FC = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="dashboard-home__post w-[calc(100%-600px)] flex flex-col gap-10 mb-10">
+    <div className="dashboard-home__post w-full lg:w-[calc(100%-600px)] flex flex-col gap-10 mb-10">
       <HomeBanner />
       {posts.length > 0 ? (
         posts.map((post: IpostCard, index) => (
