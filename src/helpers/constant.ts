@@ -113,5 +113,5 @@ export {
   dashboardNavList,
   steps,
   labels,
-  productLabels
+  productLabels,
 };

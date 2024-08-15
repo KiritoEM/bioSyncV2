@@ -16,11 +16,11 @@ const DashboardPost: FC = (): JSX.Element => {
       <Title title="Biosync | créér un post" />
       <section className="dashboard-post bg-gray01 h-screen overflow-x-hidden overflow-y-auto">
         <DashboardLayout>
-          <div className="dashboard-post__container container mx-auto mt-8 flex flex-col items-center mb-12">
-            <div className="stepper w-[800px]">
+          <div className="dashboard-post__container container mx-auto mt-8 flex flex-col items-center justify-center mb-12 px-7">
+            <div className="stepper w-[600px] lg:w-[800px] hidden md:block">
               <Stepper index={1} />
             </div>
-            <div className="post-form mt-[60px] w-[380px] flex flex-col items-center gap-7">
+            <div className="post-form mt-[60px] max-w-[400px] lg:max-w-[400px] w-full flex flex-col items-center gap-7">
               <h5 className="font-calSans text-[25px] text-secondary">
                 Créer une publication
               </h5>

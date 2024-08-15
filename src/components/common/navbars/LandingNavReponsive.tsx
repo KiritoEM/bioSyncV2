@@ -4,9 +4,11 @@ import { Button } from "@/components/UI/button";
 import { scrollToSection } from "@/helpers/scrollHelper";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
+import { useRouter } from "next/router";
 
 const LandingNavReponsive = (): JSX.Element => {
   const navState = useSelector((state: RootState) => state.nav.navState);
+  const router = useRouter();
   return (
     <section
       className={`landing-nav__responsive fixed bg-gray01 ${
@@ -28,6 +30,7 @@ const LandingNavReponsive = (): JSX.Element => {
             <Button
               variant="light"
               className="w-max font-medium text-green02"
+              onClick={() => router.push("/login")}
             >
               Se connecter
             </Button>
