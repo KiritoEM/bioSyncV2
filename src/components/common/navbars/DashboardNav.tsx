@@ -27,7 +27,7 @@ const DashboardNav: FC = (): JSX.Element => {
   }, []);
   return (
     <nav className="dashboard__nav w-full overflow-hidden bg-white">
-      <div className="container mx-auto px-[35px] flex justify-between items-center py-4">
+      <div className="container mx-auto px-7 lg:px-[35px] flex justify-between items-center py-4">
         <Logo />
         <ul className="menu-items gap-4 hidden lg:flex">
           {dashboardNavList.map((item, index) => (
@@ -59,7 +59,7 @@ const DashboardNav: FC = (): JSX.Element => {
           <div className="profile flex items-center gap-3">
             <Avatar src="/avatar.png" className="h-[39px] w-[39px]" />
             <p className="text-secondary flex items-center gap-2">
-              <span className="hidden md:flex">{user?.pseudo}{" "}</span>
+              <span className="hidden md:flex">{user?.pseudo} </span>
               <Dropdown>
                 <DropdownTrigger className="cursor-pointer">
                   <Image src="/icons/chevron-down.svg" className="w-3" />

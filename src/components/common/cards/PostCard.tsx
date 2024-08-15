@@ -113,7 +113,7 @@ const PostCard: FC<InewPostCard> = ({
         </div>
       </CardBody>
       <CardFooter>
-        <div className="post-card__footer flex gap-16">
+        <div className="post-card__footer w-full flex justify-between lg:gap-16">
           <div className="likes flex items-center gap-2">
             <Image
               src={`${liked ? "/icons/liked.svg" : "/icons/like.svg"} `}

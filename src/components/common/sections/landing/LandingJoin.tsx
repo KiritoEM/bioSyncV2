@@ -1,8 +1,9 @@
 import { Button } from "@/components/UI/button";
 import { Input } from "@nextui-org/react";
 import FadeReveal from "../../animations/FadeReveal";
+import { FC } from "react";
 
-const LandingJoin = (): JSX.Element => {
+const LandingJoin: FC = (): JSX.Element => {
   return (
     <section className="landing__join w-full">
       <div className="container mx-auto w-full py-[180px] md:py-[165px] px-7 lg:px-[82px] flex flex-col md:flex-row gap-5 justify-between items-center overflow-hidden">
@@ -12,10 +13,7 @@ const LandingJoin = (): JSX.Element => {
           </h3>
         </FadeReveal>
         <div className="input flex flex-col gap-4 md:w-[45%] :w-[40%]">
-          <label
-            htmlFor=""
-            className="text-green02 font-semibold text-[18px]"
-          >
+          <label htmlFor="" className="text-green02 font-semibold text-[18px]">
             Abonnez-vous à la newsletter
           </label>
           <Input

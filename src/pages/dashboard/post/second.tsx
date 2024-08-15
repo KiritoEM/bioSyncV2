@@ -46,16 +46,16 @@ const Second: FC = (): JSX.Element => {
       <Title title="Biosync | Créer un post" />
       <section className="dashboard-post bg-gray01 h-screen overflow-x-hidden overflow-y-auto">
         <DashboardLayout>
-          <div className="dashboard-post__container container mx-auto mt-8 mb-12 flex flex-col items-center">
-            <div className="stepper w-[700px]">
+          <div className="dashboard-post__container container w-full mx-auto mt-8 mb-12 flex flex-col items-center px-7">
+            <div className="stepper w-[700px] hidden md:block">
               <Stepper index={changeIndex ? 2 : 1} />
             </div>
             <form
               action="post"
               onSubmit={handleSubmit}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center w-full"
             >
-              <div className="map mt-[60px] w-[700px] h-[400px] rounded-lg overflow-hidden">
+              <div className="map mt-[60px] w-full lg:w-[700px] h-[280px] md:h-[300px] lg:h-[400px] rounded-lg overflow-hidden">
                 {validCoords && (
                   <Map
                     wheelZoom
