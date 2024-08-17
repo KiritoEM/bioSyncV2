@@ -24,7 +24,7 @@ const DashboardHomePost: FC = (): JSX.Element => {
     if (!loading && posts.length === 0) {
       const timer = setTimeout(() => {
         setShowNoPostsMessage(true);
-      }, 2000);
+      }, 1700);
 
       return () => clearTimeout(timer);
     } else {

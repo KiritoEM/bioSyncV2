@@ -122,7 +122,7 @@ const postActions = () => {
         if (response.status === 200) {
           setTimeout(() => {
             dispatch(setPost(response.data.allPost));
-          }, 1600); //await 1.5s
+          }, 1700); //await 1.5s
         }
       }
     } catch (err) {
