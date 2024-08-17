@@ -1,15 +1,15 @@
 import { Button } from "@/components/UI/button";
 import { Fragment } from "react";
 import LandingSectionHeader from "../../headers/LandingSectionHeader";
-import { Fade } from "@chakra-ui/react";
 import FadeReveal from "../../animations/FadeReveal";
 import { scrollToSection } from "@/helpers/scrollHelper";
-import { useRouter } from "next/router";
 
 const LandingAbout = (): JSX.Element => {
-  const router = useRouter();
   return (
-    <section className="landing__about bg-gray01 relative overflow-hidden">
+    <section
+      className="landing__about bg-gray01 relative overflow-hidden"
+      id="landing__about"
+    >
       <div className="container mx-auto flex flex-col lg:flex-row gap-7 h-full items-center px-7 lg:px-[80px] mt-[130px] lg:mt-[50px] pt-[5px]">
         <div className="about-content lg:w-[45%] h-full flex flex-col gap-6">
           <LandingSectionHeader
@@ -31,7 +31,6 @@ const LandingAbout = (): JSX.Element => {
                 className="md:w-max px-5"
                 onClick={() => {
                   scrollToSection("landing-contact");
-                  router.push("/login");
                 }}
               >
                 En savoir plus
