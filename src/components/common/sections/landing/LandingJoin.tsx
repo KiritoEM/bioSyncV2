@@ -5,7 +5,7 @@ import { FC } from "react";
 
 const LandingJoin: FC = (): JSX.Element => {
   return (
-    <section className="landing__join w-full">
+    <section className="landing__join w-full" id="landing__join">
       <div className="container mx-auto w-full py-[180px] md:py-[165px] px-7 lg:px-[82px] flex flex-col md:flex-row gap-5 justify-between items-center overflow-hidden">
         <FadeReveal direction="bottom">
           <h3 className="font-calSans text-3xl lg:text-4xl">

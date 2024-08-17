@@ -28,7 +28,6 @@ const Second: FC = (): JSX.Element => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Submitting with selectedCoords:", selectedCoords);
     if (await addLocation(e, selectedCoords, id as string)) {
       setIndex(true);
       router.push("/dashboard/");
@@ -62,6 +61,7 @@ const Second: FC = (): JSX.Element => {
                     position={selectedCoords}
                     zoom={14}
                     events={true}
+                    geolocalisation
                   />
                 )}
               </div>

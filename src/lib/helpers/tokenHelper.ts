@@ -21,7 +21,7 @@ class tokenHelper {
 
   decodeToken(token: string) {
     try {
-      const decoded = jwt.decode(token);
+      const decoded = jwt.verify(token, this.secretKey);
       return decoded;
     } catch (err) {
       throw new Error(err);

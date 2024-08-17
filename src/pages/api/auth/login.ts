@@ -7,10 +7,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method === "POST") {
       return authController.login(req, res);
+    } else {
+      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Internal Server Error", err });
+    res.status(500).json({ error: err });
   }
 };
 

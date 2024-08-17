@@ -27,6 +27,7 @@ const LandingNav: FC = (): JSX.Element => {
               <li
                 className="text-secondary relative cursor-pointer"
                 key={index}
+                onClick={() => scrollToSection(item.sectionId as string)}
               >
                 {item.label}
               </li>

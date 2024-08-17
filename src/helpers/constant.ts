@@ -10,12 +10,11 @@ const landingMenuList: IlandingMenuList[] = [
   },
   {
     label: "A propos",
+    sectionId: "landing__about",
   },
   {
     label: "Découvrir",
-  },
-  {
-    label: "FAQ",
+    sectionId: "landing__features",
   },
 ];
 

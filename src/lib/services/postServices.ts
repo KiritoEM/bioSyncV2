@@ -39,7 +39,7 @@ class postServices {
     }
   }
 
-  async likePostService(postID: string, userID: string) {
+  async likePostService(postID: string, userID: string): Promise<Ipost> {
     try {
       let post = await postModel.findById(postID);
 
@@ -53,7 +53,7 @@ class postServices {
     }
   }
 
-  async dislikePostService(postID: string, userID: string) {
+  async dislikePostService(postID: string, userID: string): Promise<Ipost> {
     try {
       let post = await postModel.findById(postID);
 
@@ -67,7 +67,7 @@ class postServices {
     }
   }
 
-  async deletePostService(postID: string) {
+  async deletePostService(postID: string): Promise<Ipost> {
     try {
       const postDeleted = await postModel.findByIdAndDelete(postID);
       return postDeleted;

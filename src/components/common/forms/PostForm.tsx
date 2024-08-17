@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import { ButtonGroup } from "@chakra-ui/react";
 import { Image, Select, SelectItem } from "@nextui-org/react";
 import { ArLogo } from "@/pages/dashboard/post";
 import { productLabels } from "@/helpers/constant";

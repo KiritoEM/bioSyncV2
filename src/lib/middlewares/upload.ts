@@ -9,19 +9,19 @@ interface MulterFile {
 const allowedImageTypes = ["image/jpeg", "image/png", "image/jpg"];
 
 const storage = multer.diskStorage({
-  destination: function (
+  destination: (
     req: any,
     file: MulterFile,
     cb: (error: any, destination: string) => void
-  ) {
+  ) => {
     const dir = path.resolve("public/uploads/");
     cb(null, dir);
-  },
-  filename: function (
+  } /*  */,
+  filename: (
     req: any,
     file: MulterFile,
     cb: (error: any, filename: string) => void
-  ) {
+  ) => {
     const ext = path.extname(file.originalname);
     const newFilename = `${file.originalname}-${Date.now()}${ext}`;
     cb(null, newFilename);
@@ -30,11 +30,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  fileFilter: function (
+  fileFilter: (
     req: any,
     file: MulterFile,
     cb: (error: any, acceptFile: boolean) => void
-  ) {
+  ) => {
     if (allowedImageTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {

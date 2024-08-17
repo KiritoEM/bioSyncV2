@@ -11,9 +11,7 @@ const LandingFooter = (): JSX.Element => {
       <FadeReveal direction="bottom">
         <div className="container mx-auto px-7 lg:px-[80px] py-[35px] flex flex-col md:flex-row gap-7 justify-between md:items-center">
           <Logo />
-          <p className="copyright text-green02">
-            BioSync 2024 | by KiritoEM
-          </p>
+          <p className="copyright text-green02">BioSync 2024 | by KiritoEM</p>
           <div className="social-icons flex gap-2">
             {socialIcons.map((icon, index) => (
               <img src={`${icon}.svg`} key={index} />
