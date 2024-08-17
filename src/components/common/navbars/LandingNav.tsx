@@ -1,6 +1,6 @@
 import { Button } from "@/components/UI/button";
 import { landingMenuList } from "@/helpers/constant";
-import { FC, Fragment } from "react";
+import { FC, Fragment, Suspense } from "react";
 import Logo from "../Logo";
 import LandingNavReponsive from "./LandingNavReponsive";
 import { motion } from "framer-motion";
@@ -8,6 +8,7 @@ import { scrollToSection } from "@/helpers/scrollHelper";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { toogleNav } from "@/core/redux/slices/navSlice";
+import { Skeleton } from "@nextui-org/react";
 
 const LandingNav: FC = (): JSX.Element => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const LandingNav: FC = (): JSX.Element => {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="container mx-auto py-5 px-7 lg:px-[80px] flex justify-between items-center overflow-hidden"
         >
-          <Logo />
+            <Logo />
           <ul className="menu-items gap-8 hidden lg:flex">
             {landingMenuList.map((item, index) => (
               <li

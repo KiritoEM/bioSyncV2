@@ -8,9 +8,7 @@ class authController {
       const user = await userService.getUserService(req.user.userId);
 
       if (!user) {
-        return res
-          .status(400)
-          .json({ message: "Error when fetching user", user });
+        return res.status(400).json({ message: "Error when fetching user" });
       }
 
       return res

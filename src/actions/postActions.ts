@@ -1,5 +1,6 @@
 import { Toast } from "@/components/UI/toast";
 import { useAuth } from "@/core/contexts/useAuth";
+import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
 import { setPost } from "@/core/redux/slices/postSlice";
 import { verifyTypePicture } from "@/helpers/uploadHelper";
 import axios from "axios";
@@ -111,6 +112,7 @@ const postActions = () => {
   const getAllPosts = useCallback(async () => {
     try {
       if (getAccessToken() === "authentificated") {
+        dispatch(startLoading());
         const response = await axios.get("/api/post", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -118,7 +120,9 @@ const postActions = () => {
         });
 
         if (response.status === 200) {
-          dispatch(setPost(response.data.allPost));
+          setTimeout(() => {
+            dispatch(setPost(response.data.allPost));
+          }, 1600); //await 1.5s
         }
       }
     } catch (err) {
@@ -128,6 +132,8 @@ const postActions = () => {
         description: "Un erreur s' est produit",
         status: "error",
       });
+    } finally {
+      dispatch(stopLoading());
     }
   }, [dispatch]);
 

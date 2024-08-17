@@ -5,13 +5,14 @@ import "@/styles/index.scss";
 import { NextUIProvider } from "@nextui-org/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import RootLayout from "@/layouts/RootLayout";
-import Loading from "@/components/common/Loading";
+import Loading from "@/components/common/SpinnerLoading";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 
 const AppLoading = () => {
   const loading = useSelector((state: RootState) => state.loading.loadingState);
-  return <>{loading && <Loading />}</>;
+  const type = useSelector((state: RootState) => state.loading.type);
+  return <>{loading && type === "spinner" && <Loading />}</>;
 };
 
 export default function App({ Component, pageProps }: AppProps) {

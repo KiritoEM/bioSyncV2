@@ -24,7 +24,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(startLoading());
+    dispatch(startLoading("skeleton"));
     if (typeof window !== "undefined") {
       const token = localStorage.getItem(storageKey);
       const id = localStorage.getItem(currentUserKey);

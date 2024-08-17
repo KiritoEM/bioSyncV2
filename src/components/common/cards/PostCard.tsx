@@ -13,10 +13,11 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Image,
+  Skeleton,
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import path from "path";
-import { FC, useEffect, useState } from "react";
+import { FC, Suspense, useEffect, useState } from "react";
 
 interface InewPostCard extends IpostCard {
   id?: string;
