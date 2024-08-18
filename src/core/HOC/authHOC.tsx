@@ -19,10 +19,14 @@ const protectedHOC = (Component: ComponentType<any>) => {
         if (router.pathname !== "/") {
           router.replace("/");
         } else {
-          dispatch(stopLoading());
+          setTimeout(() => {
+            dispatch(stopLoading());
+          }, 1600);
         }
       } else {
-        dispatch(stopLoading());
+        setTimeout(() => {
+          dispatch(stopLoading());
+        }, 1600);
       }
     }, [router, getAccessToken, loadToken, dispatch]);
 
@@ -49,10 +53,14 @@ const freeHOC = (Component: ComponentType<any>) => {
         if (router.pathname !== "/dashboard") {
           router.push("/dashboard");
         } else {
-          dispatch(stopLoading());
+          setTimeout(() => {
+            dispatch(stopLoading());
+          }, 1600);
         }
       } else {
-        dispatch(stopLoading());
+        setTimeout(() => {
+          dispatch(stopLoading());
+        }, 1600);
       }
     }, [router, getAccessToken, loadToken, dispatch]);
 

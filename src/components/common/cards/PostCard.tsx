@@ -22,6 +22,7 @@ import { FC, Suspense, useEffect, useState } from "react";
 interface InewPostCard extends IpostCard {
   id?: string;
   createdAt?: Date;
+  index: number;
 }
 
 const PostCard: FC<InewPostCard> = ({
@@ -35,6 +36,7 @@ const PostCard: FC<InewPostCard> = ({
   quantityType,
   quantity,
   id,
+  index,
   createdAt,
 }): JSX.Element => {
   const postPicture = path.basename(picture.file_path);
@@ -135,7 +137,14 @@ const PostCard: FC<InewPostCard> = ({
                 className="ml-1"
               />
             }
-            onClick={() => router.replace("/dashboard/map")}
+            onClick={() =>
+              router.push({
+                pathname: "/dashboard/map",
+                query: {
+                  id: index,
+                },
+              })
+            }
           >
             Voir le map
           </Button>

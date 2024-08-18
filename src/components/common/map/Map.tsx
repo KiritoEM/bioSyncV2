@@ -40,7 +40,12 @@ const Map: FC<Imap> = ({
       <TileLayer url={process.env.NEXT_PUBLIC_OPEN_STREETMAP as string} />
       {events && <MapEvents />}
       {geolocalisation && (
-        <Marker position={markerPosition} icon={defaultIcon}>
+        <Marker
+          position={
+            markerPosition ? markerPosition : (position as [number, number])
+          }
+          icon={defaultIcon}
+        >
           <Popup>Votre position actuelle</Popup>
         </Marker>
       )}
@@ -81,4 +86,3 @@ const Map: FC<Imap> = ({
 };
 
 export default Map;
-

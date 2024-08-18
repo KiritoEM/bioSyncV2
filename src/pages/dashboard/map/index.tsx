@@ -17,6 +17,7 @@ const dashboardMap: FC = (): JSX.Element => {
   const [validCoords, setCoords] = useState<boolean>(false);
   const posts = useSelector((state: RootState) => state.post.posts);
   const { getAllPosts } = postActions();
+  const { id } = router.query;
 
   useEffect(() => {
     getAllPosts();
@@ -52,7 +53,9 @@ const dashboardMap: FC = (): JSX.Element => {
                 zoom={14}
                 wheelZoom
                 posts={posts}
-                position={(posts[0] as IpostCard).location}
+                position={
+                  (posts[(id as unknown as number) ?? 0] as IpostCard).location
+                }
                 geolocalisation={false}
                 events={false}
               />

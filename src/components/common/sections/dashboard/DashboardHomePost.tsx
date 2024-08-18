@@ -41,7 +41,12 @@ const DashboardHomePost: FC = (): JSX.Element => {
         ))
       ) : posts.length > 0 ? (
         posts.map((post: IpostCard, index) => (
-          <PostCard key={index} {...post} id={currentUserId as string} />
+          <PostCard
+            index={index}
+            key={index}
+            {...post}
+            id={currentUserId as string}
+          />
         ))
       ) : showNoPostsMessage ? (
         <h5 className="text-secondary01">Aucune publication</h5>
