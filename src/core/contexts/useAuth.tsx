@@ -53,6 +53,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const logout = () => {
     if (typeof window !== null) {
       localStorage.removeItem(storageKey);
+      localStorage.removeItem(currentUserKey);
       router.push("/");
       router.reload();
     }

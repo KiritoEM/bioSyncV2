@@ -1,5 +1,6 @@
 import userActions from "@/actions/userActions";
 import { UserCardSkeleton } from "@/components/UI/skeleton";
+import useLazyLoad from "@/core/hooks/useLazyLoad";
 import { RootState } from "@/core/redux/store.config";
 import { IpostCard } from "@/helpers/types";
 import {
@@ -30,7 +31,6 @@ const DashboardProfile: FC = () => {
   const [imageWidth, setImageWidth] = useState<number>(0);
   const { getCurrentUser } = userActions();
   const currentUser = useSelector((state: RootState) => state.user.user);
-  const [loading, setLoading] = useState<boolean>(true);
 
   const posts = currentUser?.posts as IpostCard[] | undefined;
   const totalLikes = posts?.reduce((acc, post) => acc + post.likers.length, 0);
@@ -39,15 +39,7 @@ const DashboardProfile: FC = () => {
     (post) => `/uploads/${path.basename(post.picture.file_path)}`
   );
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      await getCurrentUser();
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
-    };
-    fetchUserData();
-  }, [getCurrentUser]);
+  const { loading } = useLazyLoad(getCurrentUser);
 
   useEffect(() => {
     if (imageRef.current) {

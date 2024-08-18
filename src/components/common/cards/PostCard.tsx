@@ -137,7 +137,7 @@ const PostCard: FC<InewPostCard> = ({
             }
             onClick={() => router.replace("/dashboard/map")}
           >
-            Voir sur map
+            Voir le map
           </Button>
         </div>
       </CardFooter>
