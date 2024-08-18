@@ -3,15 +3,7 @@ import Logo from "../Logo";
 import { dashboardNavList } from "@/helpers/constant";
 import { useRouter } from "next/router";
 import { SearchInput } from "@/components/UI/input";
-import {
-  Avatar,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Image,
-  Skeleton,
-} from "@nextui-org/react";
+import { Avatar } from "@nextui-org/react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 import userActions from "@/actions/userActions";
@@ -22,8 +14,6 @@ const DashboardNav: FC = (): JSX.Element => {
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user.user);
   const { getCurrentUser } = userActions();
-  const { logout } = useAuth();
-  const { loading } = useLazyLoad(getCurrentUser);
 
   useEffect(() => {
     getCurrentUser();
@@ -60,40 +50,13 @@ const DashboardNav: FC = (): JSX.Element => {
           <div className="notif p-2 rounded-lg bg-gray01 h-[48px] w-[48px] items-center justify-center hidden lg:flex">
             <img src="/icons/bell.svg" className="w-5" />
           </div>
-          {loading ? (
-            <div className="profile flex items-center gap-3">
-              <Skeleton className="h-[39px] w-[39px] rounded-full" />
-              <p className="text-secondary flex items-center gap-2">
-                <span className="hidden md:flex">{user?.pseudo} </span>
-                <Dropdown>
-                  <DropdownTrigger className="cursor-pointer">
-                    <Image src="/icons/chevron-down.svg" className="w-3" />
-                  </DropdownTrigger>
-                  <DropdownMenu>
-                    <DropdownItem
-                      onClick={() => {
-                        logout();
-                      }}
-                    >
-                      <div className="flex items-center gap-2">
-                        <Image
-                          src="/icons/logout.svg"
-                          width={21}
-                          radius="none"
-                        />{" "}
-                        Se déconnecter
-                      </div>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </p>
-            </div>
-          ) : (
-            <div className="profile flex items-center gap-3">
-              <Avatar src="/avatar.png" className="h-[39px] w-[39px]" />
-              <Skeleton className="h-[39px] w-[60px]"></Skeleton>
-            </div>
-          )}
+          <div className="profile flex items-center gap-3">
+            <Avatar src="/avatar.png" className="h-[39px] w-[39px]" />
+            <p className="text-secondary flex items-center gap-2">
+              {user?.pseudo}{" "}
+              <img src="/icons/chevron-down.svg" className="w-3" />
+            </p>
+          </div>
         </div>
       </div>
     </nav>
