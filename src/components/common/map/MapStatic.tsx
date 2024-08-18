@@ -42,7 +42,7 @@ const MapStatic: FC<Imap> = ({
         <MapSkeleton size={{ width: "full", height: "screen" }} />
       ) : (
         <MapContainer
-          center={markerPosition}
+          center={markerPosition ? markerPosition : position}
           zoom={zoom}
           scrollWheelZoom={wheelZoom}
           className="w-full h-full"
@@ -51,7 +51,10 @@ const MapStatic: FC<Imap> = ({
           <TileLayer url={process.env.NEXT_PUBLIC_OPEN_STREETMAP as string} />
           {events && <MapEvents />}
           {geolocalisation && (
-            <Marker position={markerPosition} icon={defaultIcon}>
+            <Marker
+              position={markerPosition as [number, number]}
+              icon={defaultIcon}
+            >
               <Popup>Votre position actuelle</Popup>
             </Marker>
           )}

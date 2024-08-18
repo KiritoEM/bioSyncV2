@@ -4,6 +4,7 @@ import Title from "@/components/meta/Title";
 import { useLocalisation } from "@/core/contexts/useLocalisation";
 import { protectedHOC } from "@/core/HOC/authHOC";
 import { RootState } from "@/core/redux/store.config";
+import { IpostCard } from "@/helpers/types";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
@@ -46,12 +47,12 @@ const dashboardMap: FC = (): JSX.Element => {
             className="map w-screen h-screen relative"
             style={{ zIndex: 20 }}
           >
-            {validCoords && (
+            {validCoords && posts.length > 0 && (
               <Map
-                position={coords}
                 zoom={14}
                 wheelZoom
                 posts={posts}
+                position={(posts[0] as IpostCard).location}
                 geolocalisation={false}
                 events={false}
               />
