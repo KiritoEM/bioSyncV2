@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { startLoading, stopLoading } from "../redux/slices/loadingSlice";
-import { RootState } from "../redux/store.config";
 
 const useLoadMap = () => {
   const [mapLoaded, setMapLoaded] = useState(false);

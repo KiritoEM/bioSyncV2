@@ -7,7 +7,7 @@ import { Image } from "@nextui-org/react";
 import path from "path";
 import { defaultIcon, ferIcon, plasticIcon } from "../icons/MapIcon";
 import { useLocalisation } from "@/core/contexts/useLocalisation";
-import { MapSkeleton } from "@/components/UI/skeleteon";
+import { MapSkeleton } from "@/components/UI/skeleton";
 import { RootState } from "@/core/redux/store.config";
 import { useSelector } from "react-redux";
 import useLoadMap from "@/core/hooks/useLoadMap";

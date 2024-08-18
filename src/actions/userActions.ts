@@ -1,5 +1,6 @@
 import { Toast } from "@/components/UI/toast";
 import { useAuth } from "@/core/contexts/useAuth";
+import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
 import { getUser } from "@/core/redux/slices/userSlice";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -19,7 +20,11 @@ const userActions = () => {
         });
 
         if (response.status === 200) {
-          dispatch(getUser(response.data.user));
+          if (response.status === 200) {
+            setTimeout(() => {
+              dispatch(getUser(response.data.user));
+            }, 3000); //await 1.5s
+          }
         }
       }
     } catch (err) {
