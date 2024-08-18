@@ -1,7 +1,6 @@
 import { FC, Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import DashboardLayout from "@/layouts/DashboardLayout";
-import { Map } from "@/components/common/sections/dashboard/DashboardMap";
 import { Button } from "@/components/UI/button";
 import postActions from "@/actions/postActions";
 import { Toast } from "@/components/UI/toast";
@@ -9,6 +8,7 @@ import Title from "@/components/meta/Title";
 import { Stepper } from "@/components/UI/stepper";
 import { protectedHOC } from "@/core/HOC/authHOC";
 import { useLocalisation } from "@/core/contexts/useLocalisation";
+import { Map } from "@/components/common/map";
 
 const Second: FC = (): JSX.Element => {
   const router = useRouter();

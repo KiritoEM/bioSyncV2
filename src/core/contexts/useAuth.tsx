@@ -10,7 +10,6 @@ import {
 import { useDispatch } from "react-redux";
 import { startLoading, stopLoading } from "../redux/slices/loadingSlice";
 import { useRouter } from "next/router";
-import { useRouter } from "next/router";
 
 const AuthContext = createContext<IauthContext | null>(null);
 export const storageKey = "@biosync_token";

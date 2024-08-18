@@ -11,7 +11,7 @@ const useLazyLoad = (get: () => Promise<void>) => {
       }, 3000);
     };
     fetchUserData();
-  }, [get]);
+  }, []);
 
   return { loading };
 };

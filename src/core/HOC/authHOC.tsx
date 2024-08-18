@@ -13,7 +13,7 @@ const protectedHOC = (Component: ComponentType<any>) => {
 
     useEffect(() => {
       setIsClient(true);
-      dispatch(startLoading("skeleton"));
+      dispatch(startLoading("spinner"));
 
       if (!loadToken && getAccessToken() === "unknown") {
         if (router.pathname !== "/") {
@@ -43,7 +43,7 @@ const freeHOC = (Component: ComponentType<any>) => {
 
     useEffect(() => {
       setIsClient(true);
-      dispatch(startLoading("skeleton"));
+      dispatch(startLoading("spinner"));
 
       if (!loadToken && getAccessToken() === "authentificated") {
         if (router.pathname !== "/dashboard") {
