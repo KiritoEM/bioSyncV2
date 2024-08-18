@@ -9,6 +9,8 @@ const handler = async (req: Req, res: NextApiResponse) => {
   try {
     if (req.method === "POST") {
       return bearer(postController.likePost)(req, res);
+    } else {
+      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
   } catch (err) {
     console.error(err);

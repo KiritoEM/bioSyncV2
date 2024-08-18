@@ -7,6 +7,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (req.method === "POST") {
       return postController.addLocation(req, res);
+    } else {
+      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
   } catch (err) {
     console.error(err);

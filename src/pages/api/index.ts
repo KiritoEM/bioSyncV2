@@ -6,6 +6,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await connectDB();
     if (req.method === "GET") {
       res.status(200).json("SERVER RUNNING ✅");
+    } else {
+      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
   } catch (err) {
     console.error(err);

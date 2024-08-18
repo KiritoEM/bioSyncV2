@@ -9,6 +9,8 @@ const handler = async (req: Req, res: NextApiResponse) => {
     await connectDB();
     if (req.method === "GET") {
       return bearer(userController.getUser)(req, res);
+    } else {
+      res.status(405).end(`Method ${req.method} Not Allowed`);
     }
   } catch (err) {
     console.error(err);
