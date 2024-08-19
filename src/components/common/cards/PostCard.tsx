@@ -1,5 +1,6 @@
 import postActions from "@/actions/postActions";
 import { Button } from "@/components/UI/button";
+import useLike from "@/core/hooks/useLike";
 import { timeAgo } from "@/helpers/date";
 import { IpostCard } from "@/helpers/types";
 import {
@@ -19,7 +20,7 @@ import { useRouter } from "next/router";
 import path from "path";
 import { FC, Suspense, useEffect, useState } from "react";
 
-interface InewPostCard extends IpostCard {
+export interface InewPostCard extends IpostCard {
   id?: string;
   createdAt?: Date;
   index: number;
@@ -40,27 +41,9 @@ const PostCard: FC<InewPostCard> = ({
   createdAt,
 }): JSX.Element => {
   const postPicture = path.basename(picture.file_path);
-  const [currentLikes, setCurrentLikes] = useState(likers.length);
-  const [liked, setIsLiked] = useState<boolean>(false);
-  const { likePost, dislikePost } = postActions();
   const { deletePost } = postActions();
   const router = useRouter();
-
-  useEffect(() => {
-    setIsLiked(likers.includes(id));
-  }, [likers, id]);
-
-  const handleLike = async () => {
-    if (!liked) {
-      setCurrentLikes((prevLike) => prevLike + 1);
-      setIsLiked(true);
-      await likePost(_id as string);
-    } else {
-      setCurrentLikes((prevLike) => prevLike - 1);
-      setIsLiked(false);
-      await dislikePost(_id as string);
-    }
-  };
+  const { currentLikes, handleLike, liked } = useLike({ _id, likers, id });
 
   return (
     <Card radius="sm" className="post-card shadow-none p-1">
