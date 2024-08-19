@@ -21,12 +21,12 @@ const protectedHOC = (Component: ComponentType<any>) => {
         } else {
           setTimeout(() => {
             dispatch(stopLoading());
-          }, 1600);
+          }, 3500);
         }
       } else {
         setTimeout(() => {
           dispatch(stopLoading());
-        }, 1600);
+        }, 3500);
       }
     }, [router, getAccessToken, loadToken, dispatch]);
 
@@ -55,12 +55,12 @@ const freeHOC = (Component: ComponentType<any>) => {
         } else {
           setTimeout(() => {
             dispatch(stopLoading());
-          }, 1600);
+          }, 3500);
         }
       } else {
         setTimeout(() => {
           dispatch(stopLoading());
-        }, 1600);
+        }, 3500);
       }
     }, [router, getAccessToken, loadToken, dispatch]);
 

@@ -7,7 +7,7 @@ import { scrollToSection } from "@/helpers/scrollHelper";
 const LandingAbout = (): JSX.Element => {
   return (
     <section
-      className="landing__about bg-gray01 relative overflow-hidden"
+      className="landing__about bg-input relative overflow-hidden"
       id="landing__about"
     >
       <div className="container mx-auto flex flex-col lg:flex-row gap-7 h-full items-center px-7 lg:px-[80px] mt-[130px] lg:mt-[50px] pt-[5px]">

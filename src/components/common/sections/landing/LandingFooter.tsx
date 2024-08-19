@@ -5,7 +5,7 @@ import FadeReveal from "../../animations/FadeReveal";
 const LandingFooter = (): JSX.Element => {
   return (
     <footer
-      className="landing__footer overflow-hidden bg-gray01"
+      className="landing__footer overflow-hidden bg-input"
       id="landing-contact"
     >
       <FadeReveal direction="bottom">

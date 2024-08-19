@@ -11,7 +11,7 @@ const LandingNavReponsive = (): JSX.Element => {
   const router = useRouter();
   return (
     <section
-      className={`landing-nav__responsive fixed bg-gray01 ${
+      className={`landing-nav__responsive fixed bg-input ${
         navState
           ? " w-screen h-screen transition-all duration-700 ease-in-out overflow-hidden"
           : "w-0 h-0 overflow-hidden p-0 transition-all duration-700 ease-in-out"

@@ -8,9 +8,9 @@ const Input = extendVariants(NextUiInput, {
     color: {
       default: {
         inputWrapper: [
-          "bg-gray01",
-          "data-[hover=true]: bg-gray01",
-          "group-data-[focus=true]:bg-gray01",
+          "bg-input",
+          "data-[hover=true]: bg-input",
+          "group-data-[focus=true]:bg-input",
           "group-data-[focus=true]:ring-2",
           "group-data-[focus=true]:ring-primary",
           "border",

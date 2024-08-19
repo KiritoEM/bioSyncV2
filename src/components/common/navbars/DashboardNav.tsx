@@ -57,7 +57,7 @@ const DashboardNav: FC = (): JSX.Element => {
         </ul>
         <div className="actions flex items-center gap-7">
           <SearchInput />
-          <div className="notif p-2 rounded-lg bg-gray01 h-[48px] w-[48px] items-center justify-center hidden lg:flex">
+          <div className="notif p-2 rounded-lg bg-input h-[48px] w-[48px] items-center justify-center hidden lg:flex">
             <img src="/icons/bell.svg" className="w-5" />
           </div>
           {loading ? (

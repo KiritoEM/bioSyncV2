@@ -1,5 +1,5 @@
 $secondary: #0A110B;
-$gray01: #F3F9FA;
+$input: #F3F9FA;
 
 * {
     margin: 0;
@@ -8,7 +8,7 @@ $gray01: #F3F9FA;
 }
 
 body {
-    background-color: $gray01;
+    background-color: $input;
     overflow-x: hidden;
     overflow-y: auto;
     height: 100vh;

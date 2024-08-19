@@ -8,7 +8,7 @@ import { scrollToSection } from "@/helpers/scrollHelper";
 
 const LandingFeatures: FC = () => {
   return (
-    <section className="landing__features overflow-hidden bg-gray01" id="landing__features">
+    <section className="landing__features overflow-hidden bg-input" id="landing__features">
       <div className="container mx-auto px-7 lg:px-[80px] pt-[72px] lg:pt-[15px] pb-10">
         <header className="features-header flex justify-between items-end">
           <LandingSectionHeader

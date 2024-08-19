@@ -30,7 +30,7 @@ const LandingHero: FC = (): JSX.Element => {
     useMask();
   const router = useRouter();
   return (
-    <section className="landing__hero w-full bg-gray01 relative z-6 top-[75px] pb-[10px] overflow-hidden">
+    <section className="landing__hero w-full bg-input relative z-6 top-[75px] pb-[10px] overflow-hidden">
       <Fragment>
         <div
           className="hero-bg absolute top-0 left-0 w-full h-screen hidden lg:flex"

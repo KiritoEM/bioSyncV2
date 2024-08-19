@@ -14,7 +14,7 @@ const LandingNav: FC = (): JSX.Element => {
   const dispatch = useDispatch();
   return (
     <Fragment>
-      <div className="landing__nav fixed lg:absolute z-50 w-full top-0 bg-white lg:bg-gray01 overflow-hidden">
+      <div className="landing__nav fixed lg:absolute z-50 w-full top-0 bg-white lg:bg-input overflow-hidden">
         <motion.nav
           initial={{ opacity: 0, y: -80 }}
           animate={{ opacity: 1, y: 0 }}

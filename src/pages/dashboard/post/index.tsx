@@ -14,7 +14,7 @@ const DashboardPost: FC = (): JSX.Element => {
   return (
     <Fragment>
       <Title title="Biosync | créér un post" />
-      <section className="dashboard-post bg-gray01 h-screen overflow-x-hidden overflow-y-auto">
+      <section className="dashboard-post bg-input h-screen overflow-x-hidden overflow-y-auto">
         <DashboardLayout>
           <div className="dashboard-post__container container mx-auto mt-8 flex flex-col items-center justify-center mb-12 px-7">
             <div className="stepper w-[600px] lg:w-[800px] hidden md:block">

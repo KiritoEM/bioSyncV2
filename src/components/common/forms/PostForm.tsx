@@ -1,10 +1,11 @@
 import { FC, useState } from "react";
-import { Image, Select, SelectItem } from "@nextui-org/react";
+import { Image, SelectItem } from "@nextui-org/react";
 import { ArLogo } from "@/pages/dashboard/post";
 import { productLabels } from "@/helpers/constant";
 import { Button } from "@/components/UI/button";
 import { Input, UploadInput } from "@/components/UI/input";
 import postActions from "@/actions/postActions";
+import { Select } from "@/components/UI/select";
 
 const PostForm: FC = (): JSX.Element => {
   const [file, setFile] = useState<File | null>(null);
@@ -41,15 +42,7 @@ const PostForm: FC = (): JSX.Element => {
         name="quantity"
         required
       />
-      <Select
-        classNames={{
-          label: "font-secondary",
-          trigger: "h-[52px] bg-white01",
-          value: "text-secondary pr-10",
-        }}
-        label="Type de produit"
-        name="type"
-      >
+      <Select label="Type de produit" name="type" color="default">
         {productLabels.map((label) => (
           <SelectItem key={label}>{label}</SelectItem>
         ))}

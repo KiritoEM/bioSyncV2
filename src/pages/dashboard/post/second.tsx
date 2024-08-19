@@ -43,7 +43,7 @@ const Second: FC = (): JSX.Element => {
   return (
     <Fragment>
       <Title title="Biosync | Créer un post" />
-      <section className="dashboard-post bg-gray01 h-screen overflow-x-hidden overflow-y-auto">
+      <section className="dashboard-post bg-input h-screen overflow-x-hidden overflow-y-auto">
         <DashboardLayout>
           <div className="dashboard-post__container container w-full mx-auto mt-8 mb-12 flex flex-col items-center px-7">
             <div className="stepper w-[700px] hidden md:block">
