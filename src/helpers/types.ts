@@ -70,6 +70,7 @@ interface Imap {
 }
 
 interface IpostCard {
+  reduce(arg0: (acc: any, post: any) => any, arg1: number): number;
   _id?: string;
   poster: {
     pseudo: string;

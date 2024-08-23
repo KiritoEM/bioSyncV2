@@ -1,7 +1,13 @@
 import userActions from "@/actions/userActions";
 import { UserCardSkeleton } from "@/components/UI/skeleton";
 import useLazyLoad from "@/core/hooks/useLazyLoad";
+import useResponsive from "@/core/hooks/useResponsive";
 import { RootState } from "@/core/redux/store.config";
+import {
+  calculateLikes,
+  getAllImages,
+  totalPicture,
+} from "@/helpers/profilHelper";
 import { IpostCard } from "@/helpers/types";
 import {
   Card,
@@ -10,8 +16,7 @@ import {
   CardHeader,
   Divider,
 } from "@nextui-org/react";
-import path from "path";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC } from "react";
 import { useSelector } from "react-redux";
 
 export const ProfileDetailsItem: FC<{
@@ -27,25 +32,11 @@ export const ProfileDetailsItem: FC<{
 };
 
 const DashboardProfile: FC = () => {
-  const imageRef = useRef<HTMLImageElement | null>(null);
-  const [imageWidth, setImageWidth] = useState<number>(0);
   const { getCurrentUser } = userActions();
   const currentUser = useSelector((state: RootState) => state.user.user);
-
-  const posts = currentUser?.posts as IpostCard[] | undefined;
-  const totalLikes = posts?.reduce((acc, post) => acc + post.likers.length, 0);
-  const totalPictures = posts?.length;
-  const allImages = posts?.map(
-    (post) => `/uploads/${path.basename(post.picture.file_path)}`
-  );
-
   const { loading } = useLazyLoad(getCurrentUser);
-
-  useEffect(() => {
-    if (imageRef.current) {
-      setImageWidth(imageRef.current.offsetWidth);
-    }
-  }, [imageRef.current]);
+  const posts = currentUser?.posts as IpostCard[] | undefined;
+  const { imageRef, imageWidth } = useResponsive();
 
   return (
     <div className="dashboard-home__profile sticky top-0 w-[370px] h-[calc(100vh-0.8rem)] rounded-lg overflow-x-hidden overflow-y-auto hidden lg:flex">
@@ -77,10 +68,13 @@ const DashboardProfile: FC = () => {
                 label="Publications"
                 stat={currentUser?.posts?.length as number}
               />
-              <ProfileDetailsItem label="Likes" stat={totalLikes as number} />
+              <ProfileDetailsItem
+                label="Likes"
+                stat={calculateLikes(posts as IpostCard[]) as number}
+              />
               <ProfileDetailsItem
                 label="Photos"
-                stat={totalPictures as number}
+                stat={totalPicture(posts as IpostCard[]) as number}
               />
             </div>
           </CardBody>
@@ -90,9 +84,9 @@ const DashboardProfile: FC = () => {
               <header>
                 <h5 className="font-medium">Vos photos</h5>
               </header>
-              {allImages?.length !== 0 ? (
+              {getAllImages(posts as IpostCard[])?.length !== 0 ? (
                 <div className="gallery grid grid-cols-3 mt-2 gap-1">
-                  {allImages?.map((image, index) => (
+                  {getAllImages(posts as IpostCard[])?.map((image, index) => (
                     <img
                       key={index}
                       ref={imageRef}
