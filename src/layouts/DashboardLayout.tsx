@@ -1,4 +1,4 @@
-import DashboardNav from "@/components/common/navbars/DashboardNav";
+import { DashboardNav } from "@/components/common/navbars/dashboard-nav";
 import { Image } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import { FC, Fragment, ReactNode } from "react";

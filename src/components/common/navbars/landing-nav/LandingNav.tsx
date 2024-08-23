@@ -1,13 +1,14 @@
 import { Button } from "@/components/UI/button";
 import { landingMenuList } from "@/helpers/constant";
 import { FC, Fragment, Suspense } from "react";
-import Logo from "../Logo";
+import Logo from "../../Logo";
 import LandingNavReponsive from "./LandingNavReponsive";
 import { motion } from "framer-motion";
 import { scrollToSection } from "@/helpers/scrollHelper";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { toogleNav } from "@/core/redux/slices/navSlice";
+import NavMenu from "./NavMenu";
 
 const LandingNav: FC = (): JSX.Element => {
   const router = useRouter();
@@ -22,17 +23,7 @@ const LandingNav: FC = (): JSX.Element => {
           className="container mx-auto py-5 px-7 lg:px-[80px] flex justify-between items-center overflow-hidden"
         >
           <Logo />
-          <ul className="menu-items gap-8 hidden lg:flex">
-            {landingMenuList.map((item, index) => (
-              <li
-                className="text-secondary relative cursor-pointer"
-                key={index}
-                onClick={() => scrollToSection(item.sectionId as string)}
-              >
-                {item.label}
-              </li>
-            ))}
-          </ul>
+          <NavMenu />
           <div className="actions gap-3 items-center hidden lg:flex">
             <Button
               variant="light"

@@ -1,4 +1,4 @@
-import LandingNav from "@/components/common/navbars/LandingNav";
+import LandingNav from "@/components/common/navbars/landing-nav/LandingNav";
 import LandingAbout from "@/components/common/sections/landing/LandingAbout";
 import LandingFeatures from "@/components/common/sections/landing/LandingFeatures";
 import LandingFooter from "@/components/common/sections/landing/LandingFooter";

@@ -100,6 +100,14 @@ interface Iuser {
   localisation?: string;
 }
 
+interface IprofileMenu {
+  loading: boolean;
+  user: {
+    pseudo: string;
+  } | null;
+  onLogout: () => void;
+}
+
 export type {
   IlandingMenuList,
   IfeaturesList,
@@ -113,4 +121,5 @@ export type {
   IpostCard,
   Iuser,
   ILocalisationContext,
+  IprofileMenu,
 };
