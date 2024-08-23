@@ -7,7 +7,7 @@ import { Button } from "@/components/UI/button";
 
 const NavMenu: FC<{ responsive?: boolean; router?: NextRouter }> = ({
   responsive,
-  router,
+  ...props
 }): JSX.Element => {
   return (
     <Fragment>
@@ -37,7 +37,7 @@ const NavMenu: FC<{ responsive?: boolean; router?: NextRouter }> = ({
               <Button
                 variant="light"
                 className="w-max font-medium text-green02"
-                onClick={() => (router as NextRouter).push("/login")}
+                onClick={() => (props.router as NextRouter).push("/login")}
               >
                 Se connecter
               </Button>
