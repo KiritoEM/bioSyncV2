@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { FC, Fragment, useState } from "react";
 import { useSelector } from "react-redux";
 
-const signupFinalisation: FC = (): JSX.Element => {
+const SignupFinalisation: FC = (): JSX.Element => {
   const { register } = authActions();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const loading = useSelector((state: RootState) => state.loading.loadingState);
@@ -81,4 +81,4 @@ const signupFinalisation: FC = (): JSX.Element => {
   );
 };
 
-export default freeHOC(signupFinalisation);
+export default freeHOC(SignupFinalisation);

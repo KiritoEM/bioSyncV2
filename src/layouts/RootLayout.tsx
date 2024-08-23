@@ -1,5 +1,5 @@
-import { AuthProvider } from "@/core/contexts/useAuth";
-import { LocalisationProvider } from "@/core/contexts/useLocalisation";
+import { AuthProvider } from "@/core/contexts/authContext";
+import { LocalisationProvider } from "@/core/contexts/localisationContext";
 import { store } from "@/core/redux/store.config";
 import { ReactNode } from "react";
 import { Provider } from "react-redux";

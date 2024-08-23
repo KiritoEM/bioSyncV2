@@ -6,7 +6,7 @@ import { protectedHOC } from "@/core/HOC/authHOC";
 import DashboardLayout from "@/layouts/DashboardLayout";
 import { FC, Fragment } from "react";
 
-const dashboardHome: FC = (): JSX.Element => {
+const DashboardHome: FC = (): JSX.Element => {
   return (
     <Fragment>
       <Title title="BioSync | Accueil" />
@@ -23,4 +23,4 @@ const dashboardHome: FC = (): JSX.Element => {
   );
 };
 
-export default protectedHOC(dashboardHome);
+export default protectedHOC(DashboardHome);

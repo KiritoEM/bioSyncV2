@@ -1,0 +1,3 @@
+.eslintrc.js
+*.log
+node_modules/

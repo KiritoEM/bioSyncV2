@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { ComponentType, useEffect, useState } from "react";
-import { useAuth } from "../contexts/useAuth";
+import { useAuth } from "../contexts/authContext";
 import { useDispatch } from "react-redux";
 import { startLoading, stopLoading } from "../redux/slices/loadingSlice";
 
@@ -21,12 +21,12 @@ const protectedHOC = (Component: ComponentType<any>) => {
         } else {
           setTimeout(() => {
             dispatch(stopLoading());
-          }, 3500);
+          }, 2500);
         }
       } else {
         setTimeout(() => {
           dispatch(stopLoading());
-        }, 3500);
+        }, 2500);
       }
     }, [router, getAccessToken, loadToken, dispatch]);
 
@@ -55,12 +55,12 @@ const freeHOC = (Component: ComponentType<any>) => {
         } else {
           setTimeout(() => {
             dispatch(stopLoading());
-          }, 3500);
+          }, 2500);
         }
       } else {
         setTimeout(() => {
           dispatch(stopLoading());
-        }, 3500);
+        }, 2500);
       }
     }, [router, getAccessToken, loadToken, dispatch]);
 

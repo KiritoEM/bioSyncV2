@@ -1,4 +1,4 @@
-import { useLocalisation } from "@/core/contexts/useLocalisation";
+import { useLocalisation } from "@/core/contexts/localisationContext";
 import { FC, useEffect, useState } from "react";
 import { Map } from "../../map";
 

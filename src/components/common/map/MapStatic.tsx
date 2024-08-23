@@ -6,7 +6,7 @@ import { Imap } from "@/helpers/types";
 import { Image } from "@nextui-org/react";
 import path from "path";
 import { defaultIcon, ferIcon, plasticIcon } from "../icons/MapIcon";
-import { useLocalisation } from "@/core/contexts/useLocalisation";
+import { useLocalisation } from "@/core/contexts/localisationContext";
 import { MapSkeleton } from "@/components/UI/skeleton";
 import { RootState } from "@/core/redux/store.config";
 import { useSelector } from "react-redux";

@@ -44,7 +44,7 @@ interface IauthContext {
   loadToken: boolean;
   addAccessToken: (token: string) => void;
   addCurrentId: (id: string) => void;
-  logout: () => void;
+  logout: () => string;
   getAccessToken: () => "authentificated" | "unknown";
 }
 

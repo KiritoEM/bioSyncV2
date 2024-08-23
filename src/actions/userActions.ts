@@ -1,5 +1,6 @@
+import { useCallback } from "react";
 import { Toast } from "@/components/UI/toast";
-import { useAuth } from "@/core/contexts/useAuth";
+import { useAuth } from "@/core/contexts/authContext";
 import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
 import { getUser } from "@/core/redux/slices/userSlice";
 import axios from "axios";
@@ -10,7 +11,7 @@ const userActions = () => {
   const dispatch = useDispatch();
   const { addToast } = Toast();
 
-  const getCurrentUser = async () => {
+  const getCurrentUser = useCallback(async () => {
     try {
       if (getAccessToken() === "authentificated") {
         const response = await axios.get("/api/user/", {
@@ -20,23 +21,22 @@ const userActions = () => {
         });
 
         if (response.status === 200) {
-          if (response.status === 200) {
-            setTimeout(() => {
-              dispatch(getUser(response.data.user));
-            }, 3000); //await 1.5s
-          }
+          setTimeout(() => {
+            dispatch(getUser(response.data.user));
+          }, 3000); // 3 seconds delay
         }
       }
     } catch (err) {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Une erreur s'est produite",
         status: "error",
       });
     }
-  };
+  }, [accessToken, getAccessToken]);
 
   return { getCurrentUser };
 };
+
 export default userActions;

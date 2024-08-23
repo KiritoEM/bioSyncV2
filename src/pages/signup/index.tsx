@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { FC, Fragment } from "react";
 import { useSelector } from "react-redux";
 
-const signup: FC = (): JSX.Element => {
+const Signup: FC = (): JSX.Element => {
   const { submitEmail } = authActions();
   const loading = useSelector((state: RootState) => state.loading.loadingState);
   const router = useRouter();
@@ -68,4 +68,4 @@ const signup: FC = (): JSX.Element => {
   );
 };
 
-export default freeHOC(signup);
+export default freeHOC(Signup);

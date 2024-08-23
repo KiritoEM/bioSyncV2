@@ -16,7 +16,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 import userActions from "@/actions/userActions";
 import useLazyLoad from "@/core/hooks/useLazyLoad";
-import { useAuth } from "@/core/contexts/useAuth";
+import { useAuth } from "@/core/contexts/authContext";
 
 const DashboardNav: FC = (): JSX.Element => {
   const router = useRouter();
@@ -27,7 +27,13 @@ const DashboardNav: FC = (): JSX.Element => {
 
   useEffect(() => {
     getCurrentUser();
-  }, []);
+  }, [getCurrentUser]);
+
+  const handleLogout = async () => {
+    if (logout() === "can logout") {
+      router.replace("/");
+    }
+  };
 
   return (
     <nav className="dashboard__nav w-full overflow-hidden bg-white">
@@ -75,11 +81,7 @@ const DashboardNav: FC = (): JSX.Element => {
                     <Image src="/icons/chevron-down.svg" className="w-3" />
                   </DropdownTrigger>
                   <DropdownMenu>
-                    <DropdownItem
-                      onClick={() => {
-                        logout();
-                      }}
-                    >
+                    <DropdownItem onClick={handleLogout}>
                       <div className="flex items-center gap-2">
                         <Image
                           src="/icons/logout.svg"

@@ -1,5 +1,5 @@
 import { Toast } from "@/components/UI/toast";
-import { useAuth } from "@/core/contexts/useAuth";
+import { useAuth } from "@/core/contexts/authContext";
 import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
 import { setPost } from "@/core/redux/slices/postSlice";
 import { verifyTypePicture } from "@/helpers/uploadHelper";
@@ -135,7 +135,7 @@ const postActions = () => {
     } finally {
       dispatch(stopLoading());
     }
-  }, [dispatch]);
+  }, [getAccessToken, accessToken]);
 
   const likePost = async (postID: string) => {
     try {

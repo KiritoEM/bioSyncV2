@@ -7,7 +7,7 @@ import { Toast } from "@/components/UI/toast";
 import Title from "@/components/meta/Title";
 import { Stepper } from "@/components/UI/stepper";
 import { protectedHOC } from "@/core/HOC/authHOC";
-import { useLocalisation } from "@/core/contexts/useLocalisation";
+import { useLocalisation } from "@/core/contexts/localisationContext";
 import { Map } from "@/components/common/map";
 
 const Second: FC = (): JSX.Element => {

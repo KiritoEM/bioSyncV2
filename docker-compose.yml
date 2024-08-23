@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  # Démarrer en mode production
+  app-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: next-image
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    command: ["npm", "start"]
+
+  # Démarrer en mode développement
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    image: next-image
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+    command: ["npm", "run", "dev"]
