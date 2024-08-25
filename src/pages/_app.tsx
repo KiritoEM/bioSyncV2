@@ -8,19 +8,31 @@ import RootLayout from "@/layouts/RootLayout";
 import Loading from "@/components/common/SpinnerLoading";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
+import { NextWithLayout } from "@/helpers/types";
+import { Fragment } from "react";
 
-const AppLoading = () => {
-  const loading = useSelector((state: RootState) => state.loading.loadingState);
-  const type = useSelector((state: RootState) => state.loading.type);
-  return <>{loading && type === "spinner" && <Loading />}</>;
+type AppPropsWithLayout = AppProps & {
+  Component: NextWithLayout;
 };
 
-export default function App({ Component, pageProps }: AppProps) {
+const AppLoading = () => {
+  const { loadingState, type } = useSelector(
+    (state: RootState) => state.loading
+  );
+
+  return (
+    <Fragment>{loadingState && type === "spinner" && <Loading />}</Fragment>
+  );
+};
+
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <RootLayout>
       <ChakraProvider>
         <NextUIProvider>
-          <Component {...pageProps} />
+          {getLayout(<Component {...pageProps} />)}
           <AppLoading />
         </NextUIProvider>
       </ChakraProvider>

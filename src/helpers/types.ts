@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { NextPage } from "next";
+import { ReactElement, ReactNode } from "react";
 
 type IlandingMenuList = {
   label: string;
@@ -108,6 +109,10 @@ interface IprofileMenu {
   onLogout: () => void;
 }
 
+type NextWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+
 export type {
   IlandingMenuList,
   IfeaturesList,
@@ -122,4 +127,5 @@ export type {
   Iuser,
   ILocalisationContext,
   IprofileMenu,
+  NextWithLayout,
 };

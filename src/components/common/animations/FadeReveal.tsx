@@ -9,12 +9,16 @@ const FadeReveal: FC<Ifade> = ({
   delay = 0.54,
   className,
 }) => {
-  const { inView, ref } = useInView();
+  const { inView, ref } = useInView({
+    triggerOnce: false,
+  });
   const controls = useAnimation();
 
   useEffect(() => {
     if (inView) {
       controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
   }, [inView, controls]);
 
