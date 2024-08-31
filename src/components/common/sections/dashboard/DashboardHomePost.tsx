@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 import postActions from "@/actions/postActions";
 import { IpostCard } from "@/helpers/types";
-import { useAuth } from "@/core/contexts/authContext";
+import { useAuth } from "@/core/hooks/useAuth";
 import { PostSkeleton } from "@/components/UI/skeleton";
 import PostCard from "../../cards/PostCard";
 

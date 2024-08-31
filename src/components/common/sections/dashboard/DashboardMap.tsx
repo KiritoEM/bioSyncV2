@@ -1,9 +1,9 @@
-import { useLocalisation } from "@/core/contexts/localisationContext";
+import { useLocation } from "@/core/hooks/useLocation";
 import { FC, useEffect, useState } from "react";
 import { Map } from "../../map";
 
 const DashboardMap: FC = (): JSX.Element => {
-  const { coords } = useLocalisation();
+  const { coords } = useLocation();
   const [validCoords, setCoords] = useState<boolean>(false);
 
   useEffect(() => {

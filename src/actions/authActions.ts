@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
-import { useAuth } from "@/core/contexts/authContext";
+import { useAuth } from "@/core/hooks/useAuth";
 
 const authActions = () => {
   const router = useRouter();

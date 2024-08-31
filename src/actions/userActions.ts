@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Toast } from "@/components/UI/toast";
-import { useAuth } from "@/core/contexts/authContext";
+import { useAuth } from "@/core/hooks/useAuth";
 import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
 import { getUser } from "@/core/redux/slices/userSlice";
 import axios from "axios";

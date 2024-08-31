@@ -1,8 +1,8 @@
 import postActions from "@/actions/postActions";
 import { Map } from "@/components/common/map";
 import Title from "@/components/meta/Title";
-import { useLocalisation } from "@/core/contexts/localisationContext";
 import { protectedHOC } from "@/core/HOC/authHOC";
+import { useLocation } from "@/core/hooks/useLocation";
 import { RootState } from "@/core/redux/store.config";
 import { IpostCard } from "@/helpers/types";
 import DashboardLayout from "@/layouts/DashboardLayout";
@@ -12,7 +12,7 @@ import { FC, Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const DashboardMap: FC = (): JSX.Element => {
-  const { coords } = useLocalisation();
+  const { coords } = useLocation();
   const router = useRouter();
   const [validCoords, setCoords] = useState<boolean>(false);
   const posts = useSelector((state: RootState) => state.post.posts);

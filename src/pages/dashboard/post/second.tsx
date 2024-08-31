@@ -7,13 +7,13 @@ import { Toast } from "@/components/UI/toast";
 import Title from "@/components/meta/Title";
 import { Stepper } from "@/components/UI/stepper";
 import { protectedHOC } from "@/core/HOC/authHOC";
-import { useLocalisation } from "@/core/contexts/localisationContext";
 import { Map } from "@/components/common/map";
+import { useLocation } from "@/core/hooks/useLocation";
 
 const Second: FC = (): JSX.Element => {
   const router = useRouter();
   const { id } = router.query;
-  const { selectedCoords } = useLocalisation();
+  const { selectedCoords } = useLocation();
   const [validCoords, setCoords] = useState<boolean>(false);
   const [changeIndex, setIndex] = useState<boolean>(false);
   const { addLocation } = postActions();

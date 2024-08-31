@@ -6,10 +6,8 @@ import { Imap } from "@/helpers/types";
 import { Image } from "@nextui-org/react";
 import path from "path";
 import { defaultIcon, ferIcon, plasticIcon } from "../icons/MapIcon";
-import { useLocalisation } from "@/core/contexts/localisationContext";
+import { useLocation } from "@/core/hooks/useLocation";
 import { MapSkeleton } from "@/components/UI/skeleton";
-import { RootState } from "@/core/redux/store.config";
-import { useSelector } from "react-redux";
 import useLoadMap from "@/core/hooks/useLoadMap";
 
 const MapStatic: FC<Imap> = ({
@@ -20,10 +18,10 @@ const MapStatic: FC<Imap> = ({
   geolocalisation = true,
   events = false,
 }): JSX.Element => {
-  const { addCoords } = useLocalisation();
+  const { addCoords } = useLocation();
   const [markerPosition, setMarkerPosition] = useState(position);
-  const loading = useSelector((state: RootState) => state.loading.loadingState);
   const { stopMapLoad, mapLoaded } = useLoadMap();
+  console.log(mapLoaded);
 
   const MapEvents = () => {
     useMapEvents({
@@ -38,7 +36,7 @@ const MapStatic: FC<Imap> = ({
 
   return (
     <Fragment>
-      {loading ? (
+      {!mapLoaded ? (
         <MapSkeleton size={{ width: "full", height: "screen" }} />
       ) : (
         <MapContainer

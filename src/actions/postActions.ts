@@ -1,5 +1,5 @@
 import { Toast } from "@/components/UI/toast";
-import { useAuth } from "@/core/contexts/authContext";
+import { useAuth } from "@/core/hooks/useAuth";
 import { startLoading, stopLoading } from "@/core/redux/slices/loadingSlice";
 import { setPost } from "@/core/redux/slices/postSlice";
 import { verifyTypePicture } from "@/helpers/uploadHelper";
@@ -112,7 +112,7 @@ const postActions = () => {
   const getAllPosts = useCallback(async () => {
     try {
       if (getAccessToken() === "authentificated") {
-        dispatch(startLoading());
+        // dispatch(startLoading());
         const response = await axios.get("/api/post", {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -133,7 +133,7 @@ const postActions = () => {
         status: "error",
       });
     } finally {
-      dispatch(stopLoading());
+      // dispatch(stopLoading());
     }
   }, [getAccessToken, accessToken]);
 

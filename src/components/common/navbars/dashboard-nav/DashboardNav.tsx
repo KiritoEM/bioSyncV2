@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
 import userActions from "@/actions/userActions";
 import useLazyLoad from "@/core/hooks/useLazyLoad";
-import { useAuth } from "@/core/contexts/authContext";
+import { useAuth } from "@/core/hooks/useAuth";
 import NavMenu from "./NavMenu";
-import ProfileMenu from "../../headers/ProfileMenu";
+import ProfileMenu from "./ProfileMenu";
 import { SearchInput } from "@/components/UI/input";
 
 const DashboardNav: FC = (): JSX.Element => {

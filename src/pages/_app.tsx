@@ -26,13 +26,11 @@ const AppLoading = () => {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
-
   return (
     <RootLayout>
       <ChakraProvider>
         <NextUIProvider>
-          {getLayout(<Component {...pageProps} />)}
+          <Component {...pageProps} />
           <AppLoading />
         </NextUIProvider>
       </ChakraProvider>

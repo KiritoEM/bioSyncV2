@@ -4,15 +4,11 @@ import { createContext } from "react";
 
 const LocalisationContext = createContext<ILocalisationContext | null>(null);
 
-export const LocalisationProvider: FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+const LocalisationProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [coords, setCoords] = useState<[number, number]>([0, 0]);
   const [selectedCoords, setSelectedCoords] = useState<[number, number]>([
     0, 0,
   ]);
-
-  console.log(selectedCoords);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -43,12 +39,4 @@ export const LocalisationProvider: FC<{ children: ReactNode }> = ({
   );
 };
 
-//hooks exportation
-export const useLocalisation = () => {
-  const context = useContext(LocalisationContext);
-
-  if (!context) {
-    throw new Error("useLocalisation must be used in prodiver");
-  }
-  return context;
-};
+export { LocalisationContext, LocalisationProvider };

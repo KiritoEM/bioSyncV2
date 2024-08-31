@@ -1,12 +1,5 @@
 import { IauthContext } from "@/helpers/types";
-import {
-  createContext,
-  FC,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, FC, ReactNode, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { startLoading, stopLoading } from "../redux/slices/loadingSlice";
 import { useRouter } from "next/router";
@@ -15,7 +8,7 @@ const AuthContext = createContext<IauthContext | null>(null);
 export const storageKey = "@biosync_token";
 export const currentUserKey = "@biosync_current";
 
-export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
+const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [loadToken, setLoadToken] = useState<boolean>(true);
   const [currentUserId, setId] = useState<string | null>(null);
@@ -84,11 +77,4 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-// Exportation du hook
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("hooks useAuth must be used in provider");
-  }
-  return context;
-};
+export { AuthContext, AuthProvider };
