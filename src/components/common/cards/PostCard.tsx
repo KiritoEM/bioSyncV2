@@ -2,6 +2,7 @@ import postActions from "@/actions/postActions";
 import { Button } from "@/components/UI/button";
 import useLike from "@/core/hooks/useLike";
 import { timeAgo } from "@/helpers/date";
+import { getFileName } from "@/helpers/regex";
 import { IpostCard } from "@/helpers/types";
 import {
   Avatar,
@@ -16,7 +17,6 @@ import {
   Image,
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
-import path from "path";
 import { FC } from "react";
 
 export interface InewPostCard extends IpostCard {
@@ -39,7 +39,7 @@ const PostCard: FC<InewPostCard> = ({
   index,
   createdAt,
 }): JSX.Element => {
-  const postPicture = path.basename(picture.file_path);
+  const postPicture = getFileName(picture.file_path);
   const { deletePost } = postActions();
   const router = useRouter();
   const { currentLikes, handleLike, liked } = useLike({ _id, likers, id });
@@ -66,7 +66,15 @@ const PostCard: FC<InewPostCard> = ({
           <DropdownMenu>
             <DropdownItem
               key="delete"
-              onClick={() => deletePost(_id as string)}
+              onClick={() => {
+                const isPostDeleted = deletePost(_id as string);
+
+                if (!isPostDeleted) return;
+
+                setTimeout(() => {
+                  router.reload();
+                }, 1000);
+              }}
             >
               <div className="flex items-center gap-2">
                 <Image src="/icons/trash.svg" width={20} />{" "}

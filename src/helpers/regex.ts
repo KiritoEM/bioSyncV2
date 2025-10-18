@@ -4,4 +4,8 @@ const emailValid = (email: string) => {
   return emailRegex().test(email);
 };
 
-export { emailValid };
+const getFileName = (filePath: string): string => {
+  return filePath.split(/[\\/]/).pop() || filePath;
+};
+
+export { emailValid, getFileName };

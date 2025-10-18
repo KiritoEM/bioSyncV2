@@ -69,7 +69,7 @@ const authActions = () => {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Un erreur s' est produite",
         status: "error",
       });
     } finally {
@@ -103,7 +103,7 @@ const authActions = () => {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Un erreur s' est produite",
         status: "error",
       });
     } finally {

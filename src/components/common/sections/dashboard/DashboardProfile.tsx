@@ -1,13 +1,12 @@
-import userActions from "@/actions/userActions";
 import { UserCardSkeleton } from "@/components/UI/skeleton";
 import useFetchCurrentUser from "@/core/hooks/useFetchCurrentUser";
-import useResponsive from "@/core/hooks/useResponsive";
 import { RootState } from "@/core/redux/store.config";
 import {
   calculateLikes,
   getAllImages,
   totalPicture,
 } from "@/helpers/profilHelper";
+import { getFileName } from "@/helpers/regex";
 import { IpostCard } from "@/helpers/types";
 import {
   Card,
@@ -16,7 +15,7 @@ import {
   CardHeader,
   Divider,
 } from "@nextui-org/react";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export const ProfileDetailsItem: FC<{
@@ -33,9 +32,22 @@ export const ProfileDetailsItem: FC<{
 
 const DashboardProfile: FC = () => {
   const currentUser = useSelector((state: RootState) => state.user.user);
-  const posts = currentUser?.posts as IpostCard[] | undefined;
-  const { imageRef, imageWidth } = useResponsive();
+  const [allImages, setAllImages] = useState<string[]>([]);
   const { loading } = useFetchCurrentUser();
+
+  useEffect(() => {
+    console.log(currentUser?.posts);
+
+    if (currentUser?.posts) {
+      const images =
+        getAllImages(currentUser?.posts as IpostCard[])?.map((imagePath) => {
+          const fileName = getFileName(imagePath);
+          return `/uploads/${fileName}`;
+        }) || [];
+
+      setAllImages(images);
+    }
+  }, [currentUser]);
 
   return (
     <div className="dashboard-home__profile sticky top-0 w-[315px] 2xl:w-[370px] shrink-0 h-[calc(100vh-0.8rem)] rounded-lg overflow-x-hidden overflow-y-auto hidden lg:flex">
@@ -48,6 +60,7 @@ const DashboardProfile: FC = () => {
               <img
                 src={`https://ui-avatars.com/api/?name=${currentUser?.pseudo}&background=0D8ABC&color=fff`}
                 className="profile-picture w-[84px] h-[81px] rounded-full object-cover border-2 border-white"
+                alt={`${currentUser?.pseudo} avatar`}
               />
               <div className="flex flex-col items-center">
                 <h5 className="text-secondary font-calSans text-[18px]">
@@ -65,31 +78,36 @@ const DashboardProfile: FC = () => {
               />
               <ProfileDetailsItem
                 label="Likes"
-                stat={calculateLikes(posts as IpostCard[]) as number}
+                stat={
+                  calculateLikes(currentUser?.posts as IpostCard[]) as number
+                }
               />
               <ProfileDetailsItem
                 label="Photos"
-                stat={totalPicture(posts as IpostCard[]) as number}
+                stat={totalPicture(currentUser?.posts as IpostCard[]) as number}
               />
             </div>
           </CardBody>
           <CardFooter className="flex flex-col items-start">
             <Divider />
             <div className="profile-pictures mt-3 w-full">
-              {getAllImages(posts as IpostCard[])?.length !== 0 ? (
+              {allImages.length > 0 ? (
                 <>
-                  {" "}
                   <header>
                     <h5 className="font-medium">Vos photos</h5>
                   </header>
+
                   <div className="gallery grid grid-cols-3 mt-2 gap-1">
-                    {getAllImages(posts as IpostCard[])?.map((image, index) => (
+                    {allImages.map((image, index) => (
                       <img
                         key={index}
-                        ref={imageRef}
                         src={image}
-                        className="object-cover rounded-md"
-                        style={{ height: imageWidth, width: "100%" }}
+                        alt={`Photo ${index + 1}`}
+                        className="object-cover rounded-md w-full aspect-auto"
+                        onError={(e) => {
+                          console.error(`Erreur de chargement pour: ${image}`);
+                          e.currentTarget.src = "/icons/image-placeholder.png";
+                        }}
                       />
                     ))}
                   </div>

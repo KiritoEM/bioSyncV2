@@ -74,7 +74,7 @@ const postActions = () => {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Un erreur s' est produite",
         status: "error",
       });
     }
@@ -102,7 +102,7 @@ const postActions = () => {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Un erreur s' est produite",
         status: "error",
       });
       return null;
@@ -129,7 +129,7 @@ const postActions = () => {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Un erreur s' est produite",
         status: "error",
       });
     } finally {
@@ -158,7 +158,7 @@ const postActions = () => {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Un erreur s' est produite",
         status: "error",
       });
     }
@@ -185,7 +185,7 @@ const postActions = () => {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Un erreur s' est produite",
         status: "error",
       });
     }
@@ -203,18 +203,22 @@ const postActions = () => {
         if (response.status === 200) {
           addToast({
             title: "Publication",
-            description: "Publication postée avec succés",
+            description: "Publication supprimée avec succés",
             status: "success",
           });
+
+          return true;
         }
       }
     } catch (err) {
       console.error(err);
       addToast({
         title: "Erreur",
-        description: "Un erreur s' est produit",
+        description: "Un erreur s' est produitee",
         status: "error",
       });
+
+      return false;
     }
   };
 

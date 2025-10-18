@@ -16,7 +16,6 @@ const userActions = () => {
       });
 
       if (response.status === 200) {
-        console.log(response.data);
         dispatch(getUser(response.data.user));
       }
     }

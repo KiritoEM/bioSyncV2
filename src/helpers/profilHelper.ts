@@ -1,5 +1,6 @@
 import path from "path";
 import { IpostCard } from "./types";
+import { getFileName } from "./regex";
 
 const calculateLikes = (posts: IpostCard[]): number => {
   return posts.reduce((acc, post) => acc + post.likers.length, 0) as number;
@@ -10,9 +11,11 @@ const totalPicture = (posts: IpostCard[]): number => {
 };
 
 const getAllImages = (posts: IpostCard[]): string[] => {
-  return posts?.map(
-    (post) => `/uploads/${path.basename(post.picture.file_path)}`
+  const allPostsImages = posts?.map(
+    (post) => `/uploads/${getFileName(post.picture.file_path)}`
   );
+
+  return allPostsImages;
 };
 
 export { calculateLikes, totalPicture, getAllImages };
