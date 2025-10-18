@@ -14,11 +14,10 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Image,
-  Skeleton,
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import path from "path";
-import { FC, Suspense, useEffect, useState } from "react";
+import { FC } from "react";
 
 export interface InewPostCard extends IpostCard {
   id?: string;
@@ -49,7 +48,10 @@ const PostCard: FC<InewPostCard> = ({
     <Card radius="sm" className="post-card shadow-none p-1">
       <CardHeader className="flex justify-between">
         <div className="user flex items-center gap-3">
-          <Avatar src="/avatar.png" className="w-[48px] h-[48px]" />
+          <Avatar
+            src={`https://ui-avatars.com/api/?name=${poster?.pseudo}&background=0D8ABC&color=fff`}
+            className="w-[48px] h-[48px]"
+          />
           <div className="user__info flex flex-col gap-1">
             <h5 className="text-secondary font-semibold">{poster.pseudo}</h5>
             <p className="text-[13px] text-gray02">

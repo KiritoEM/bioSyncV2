@@ -21,7 +21,7 @@ const SignupFinalisation: NextWithLayout = (): JSX.Element => {
   const { email } = router.query;
   console.log(email);
   return (
-    <Fragment>
+    <SignupLayout>
       <Title title="Créez votre compte BioSync" />
       <SignupHeader title={`Finalisez la création de votre compte`} />
       <form
@@ -70,12 +70,8 @@ const SignupFinalisation: NextWithLayout = (): JSX.Element => {
           </Button>
         )}
       </form>
-    </Fragment>
+    </SignupLayout>
   );
 };
 
 export default freeHOC(SignupFinalisation);
-
-SignupFinalisation.getLayout = function getLayout(page: React.ReactElement) {
-  return <SignupLayout>{page}</SignupLayout>;
-};

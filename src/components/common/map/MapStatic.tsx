@@ -1,5 +1,5 @@
 import { Marker, TileLayer, useMapEvents } from "react-leaflet";
-import { FC, useState, useEffect, Fragment } from "react";
+import { FC, useState, Fragment } from "react";
 import { MapContainer, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Imap } from "@/helpers/types";
@@ -21,7 +21,6 @@ const MapStatic: FC<Imap> = ({
   const { addCoords } = useLocation();
   const [markerPosition, setMarkerPosition] = useState(position);
   const { stopMapLoad, mapLoaded } = useLoadMap();
-  console.log(mapLoaded);
 
   const MapEvents = () => {
     useMapEvents({
@@ -36,27 +35,38 @@ const MapStatic: FC<Imap> = ({
 
   return (
     <Fragment>
-      {!mapLoaded ? (
-        <MapSkeleton size={{ width: "full", height: "screen" }} />
-      ) : (
-        <MapContainer
-          center={markerPosition ? markerPosition : position}
-          zoom={zoom}
-          scrollWheelZoom={wheelZoom}
-          className="w-full h-full"
-          whenReady={() => stopMapLoad()}
-        >
-          <TileLayer url={process.env.NEXT_PUBLIC_OPEN_STREETMAP as string} />
-          {events && <MapEvents />}
-          {geolocalisation && (
-            <Marker
-              position={markerPosition as [number, number]}
-              icon={defaultIcon}
-            >
-              <Popup>Votre position actuelle</Popup>
-            </Marker>
-          )}
-          {posts?.map((post, index) => (
+      {!mapLoaded && <MapSkeleton size={{ width: "full", height: "screen" }} />}
+
+      <MapContainer
+        center={position}
+        zoom={zoom}
+        scrollWheelZoom={wheelZoom}
+        style={{ height: "100%", width: "100%", zIndex: 0 }}
+        className="w-full h-full"
+        whenReady={() => stopMapLoad()}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url={
+            process.env.NEXT_PUBLIC_OPEN_STREETMAP ??
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          }
+        />
+
+        {events && <MapEvents />}
+
+        {geolocalisation && (
+          <Marker
+            position={markerPosition as [number, number]}
+            icon={defaultIcon}
+          >
+            <Popup>Votre position actuelle</Popup>
+          </Marker>
+        )}
+
+        {posts &&
+          posts?.length > 0 &&
+          posts?.map((post, index) => (
             <Marker
               key={index}
               position={post.location}
@@ -90,8 +100,7 @@ const MapStatic: FC<Imap> = ({
               </Popup>
             </Marker>
           ))}
-        </MapContainer>
-      )}
+      </MapContainer>
     </Fragment>
   );
 };

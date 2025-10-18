@@ -1,6 +1,6 @@
 import userActions from "@/actions/userActions";
 import { UserCardSkeleton } from "@/components/UI/skeleton";
-import useLazyLoad from "@/core/hooks/useLazyLoad";
+import useFetchCurrentUser from "@/core/hooks/useFetchCurrentUser";
 import useResponsive from "@/core/hooks/useResponsive";
 import { RootState } from "@/core/redux/store.config";
 import {
@@ -32,26 +32,21 @@ export const ProfileDetailsItem: FC<{
 };
 
 const DashboardProfile: FC = () => {
-  const { getCurrentUser } = userActions();
   const currentUser = useSelector((state: RootState) => state.user.user);
-  const { loading } = useLazyLoad(getCurrentUser);
   const posts = currentUser?.posts as IpostCard[] | undefined;
   const { imageRef, imageWidth } = useResponsive();
+  const { loading } = useFetchCurrentUser();
 
   return (
-    <div className="dashboard-home__profile sticky top-0 w-[370px] h-[calc(100vh-0.8rem)] rounded-lg overflow-x-hidden overflow-y-auto hidden lg:flex">
+    <div className="dashboard-home__profile sticky top-0 w-[315px] 2xl:w-[370px] shrink-0 h-[calc(100vh-0.8rem)] rounded-lg overflow-x-hidden overflow-y-auto hidden lg:flex">
       {loading ? (
         <UserCardSkeleton />
       ) : (
         <Card className="w-full bg-white h-max rounded-lg p-1 mb-[20vh]">
           <CardHeader className="flex flex-col h-max">
-            <img
-              src="/cover.jpg"
-              className="cover object-cover w-full h-[154px] rounded-lg"
-            />
-            <div className="profile-content relative -mt-[44px] px-[30px] flex flex-col gap-3 items-center">
+            <div className="profile-content relative mt-4 px-[30px] flex flex-col gap-3 items-center">
               <img
-                src="/avatar.png"
+                src={`https://ui-avatars.com/api/?name=${currentUser?.pseudo}&background=0D8ABC&color=fff`}
                 className="profile-picture w-[84px] h-[81px] rounded-full object-cover border-2 border-white"
               />
               <div className="flex flex-col items-center">
@@ -81,23 +76,26 @@ const DashboardProfile: FC = () => {
           <CardFooter className="flex flex-col items-start">
             <Divider />
             <div className="profile-pictures mt-3 w-full">
-              <header>
-                <h5 className="font-medium">Vos photos</h5>
-              </header>
               {getAllImages(posts as IpostCard[])?.length !== 0 ? (
-                <div className="gallery grid grid-cols-3 mt-2 gap-1">
-                  {getAllImages(posts as IpostCard[])?.map((image, index) => (
-                    <img
-                      key={index}
-                      ref={imageRef}
-                      src={image}
-                      className="object-cover rounded-md"
-                      style={{ height: imageWidth, width: "100%" }}
-                    />
-                  ))}
-                </div>
+                <>
+                  {" "}
+                  <header>
+                    <h5 className="font-medium">Vos photos</h5>
+                  </header>
+                  <div className="gallery grid grid-cols-3 mt-2 gap-1">
+                    {getAllImages(posts as IpostCard[])?.map((image, index) => (
+                      <img
+                        key={index}
+                        ref={imageRef}
+                        src={image}
+                        className="object-cover rounded-md"
+                        style={{ height: imageWidth, width: "100%" }}
+                      />
+                    ))}
+                  </div>
+                </>
               ) : (
-                <h5 className="text-secondary01">Aucune image</h5>
+                <h5 className="text-secondary01">Aucune image publiée</h5>
               )}
             </div>
           </CardFooter>

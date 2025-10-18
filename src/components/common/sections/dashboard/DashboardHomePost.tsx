@@ -11,6 +11,7 @@ import PostCard from "../../cards/PostCard";
 const DashboardHomePost: FC = (): JSX.Element => {
   const posts = useSelector((state: RootState) => state.post.posts);
   const loading = useSelector((state: RootState) => state.loading.loadingState);
+  const currentUser = useSelector((state: RootState) => state.user.user);
   const { currentUserId } = useAuth();
   const { getAllPosts } = postActions();
 
@@ -33,8 +34,9 @@ const DashboardHomePost: FC = (): JSX.Element => {
   }, [loading, posts.length]);
 
   return (
-    <div className="dashboard-home__post w-full lg:w-[calc(100%-600px)] flex flex-col gap-10 mb-10">
-      <HomeBanner />
+    <div className="dashboard-home__post w-full xl:w-[calc(100%-600px)] flex flex-col gap-10 mb-10">
+      {currentUser && <HomeBanner username={currentUser.pseudo} />}
+
       {loading ? (
         Array.from({ length: 4 }).map((_, index) => (
           <PostSkeleton key={index} />

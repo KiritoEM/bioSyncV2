@@ -12,7 +12,7 @@ const DashboardHome: FC = (): JSX.Element => {
       <Title title="BioSync | Accueil" />
       <section className="dashboard-home bg-input h-screen overflow-x-hidden overflow-y-auto">
         <DashboardLayout addButton>
-          <div className="dashboard-home__container container mx-auto flex gap-9 mt-8 px-7 lg:px-0">
+          <div className="dashboard-home__container container mx-auto flex gap-9 mt-8 px-7">
             <DashboardMap />
             <DashboardHomePost />
             <DashboardProfile />

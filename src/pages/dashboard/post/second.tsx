@@ -7,8 +7,8 @@ import { Toast } from "@/components/UI/toast";
 import Title from "@/components/meta/Title";
 import { Stepper } from "@/components/UI/stepper";
 import { protectedHOC } from "@/core/HOC/authHOC";
-import { Map } from "@/components/common/map";
 import { useLocation } from "@/core/hooks/useLocation";
+import { Map } from "@/components/common/map/index";
 
 const Second: FC = (): JSX.Element => {
   const router = useRouter();

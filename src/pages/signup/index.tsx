@@ -18,8 +18,9 @@ const Signup: NextWithLayout = (): JSX.Element => {
   const router = useRouter();
 
   return (
-    <Fragment>
+    <SignupLayout>
       <Title title="Créez votre compte BioSync" />
+
       <SignupHeader
         title={`Créez un compte et rejoignez  <span class="text-primary font-calSans">BioSync</span>`}
       />
@@ -58,12 +59,8 @@ const Signup: NextWithLayout = (): JSX.Element => {
           </span>
         </p>
       </div>
-    </Fragment>
+    </SignupLayout>
   );
 };
 
 export default freeHOC(Signup);
-
-Signup.getLayout = function getLayout(page: React.ReactElement) {
-  return <SignupLayout>{page}</SignupLayout>;
-};

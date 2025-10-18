@@ -1,5 +1,5 @@
 import postActions from "@/actions/postActions";
-import { Map } from "@/components/common/map";
+import { Map } from "@/components/common/map/index";
 import Title from "@/components/meta/Title";
 import { protectedHOC } from "@/core/HOC/authHOC";
 import { useLocation } from "@/core/hooks/useLocation";
@@ -28,6 +28,20 @@ const DashboardMap: FC = (): JSX.Element => {
       setCoords(coords[0] !== 0 && coords[1] !== 0);
     }
   }, [coords]);
+
+  // Fonction pour obtenir la position du post sélectionné
+  const getMapPosition = (): [number, number] => {
+    if (posts.length > 0 && id !== undefined) {
+      const postIndex = Number(id);
+      const selectedPost = posts[postIndex] as IpostCard | undefined;
+
+      if (selectedPost && selectedPost.location) {
+        return selectedPost.location;
+      }
+    }
+    return [coords[0], coords[1]];
+  };
+
   return (
     <Fragment>
       <Title title="BioSync | map" />
@@ -48,14 +62,12 @@ const DashboardMap: FC = (): JSX.Element => {
             className="map w-screen h-screen relative"
             style={{ zIndex: 20 }}
           >
-            {validCoords && posts.length > 0 && (
+            {validCoords && (
               <Map
                 zoom={14}
                 wheelZoom
                 posts={posts}
-                position={
-                  (posts[(id as unknown as number) ?? 0] as IpostCard).location
-                }
+                position={getMapPosition()}
                 geolocalisation={false}
                 events={false}
               />

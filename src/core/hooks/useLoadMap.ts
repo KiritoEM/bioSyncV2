@@ -2,7 +2,6 @@ import { useState } from "react";
 
 const useLoadMap = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
-  console.log(mapLoaded)
 
   const stopMapLoad = () => {
     setTimeout(() => {

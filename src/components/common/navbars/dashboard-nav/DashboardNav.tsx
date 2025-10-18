@@ -1,25 +1,18 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import Logo from "../../Logo";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { RootState } from "@/core/redux/store.config";
-import userActions from "@/actions/userActions";
-import useLazyLoad from "@/core/hooks/useLazyLoad";
 import { useAuth } from "@/core/hooks/useAuth";
 import NavMenu from "./NavMenu";
 import ProfileMenu from "./ProfileMenu";
-import { SearchInput } from "@/components/UI/input";
+import useFetchCurrentUser from "@/core/hooks/useFetchCurrentUser";
 
 const DashboardNav: FC = (): JSX.Element => {
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user.user);
-  const { getCurrentUser } = userActions();
-  const { loading } = useLazyLoad(getCurrentUser);
   const { logout } = useAuth();
-
-  useEffect(() => {
-    getCurrentUser();
-  }, [getCurrentUser]);
+  const { loading } = useFetchCurrentUser();
 
   const handleLogout = async () => {
     if (logout() === "can logout") {
@@ -33,10 +26,11 @@ const DashboardNav: FC = (): JSX.Element => {
         <Logo />
         <NavMenu />
         <div className="actions flex items-center gap-7">
-          <SearchInput />
+          {/* <SearchInput />
           <div className="notif p-2 rounded-lg bg-input h-[48px] w-[48px] items-center justify-center hidden lg:flex">
             <img src="/icons/bell.svg" className="w-5" />
-          </div>
+          </div> */}
+
           <ProfileMenu loading={loading} onLogout={handleLogout} user={user} />
         </div>
       </div>

@@ -19,12 +19,16 @@ const ProfileMenu: FC<IprofileMenu> = ({
     <Fragment>
       {loading ? (
         <div className="profile flex items-center gap-3">
-          <Skeleton className="h-[39px] w-[39px] rounded-lg" />
-          <Skeleton className="h-[39px] w-[60px] rounded-lg" />
+          <Skeleton className="h-[39px] w-[39px] rounded-full" />
+          <Skeleton className="h-[39px] w-[64px] rounded-lg" />
         </div>
       ) : (
         <div className="profile flex items-center gap-3">
-          <Avatar src="/avatar.png" className="h-[39px] w-[39px]" />
+          <Avatar
+            src={`https://ui-avatars.com/api/?name=${user?.pseudo}&background=0D8ABC&color=fff`}
+            className="!h-[39px] !w-[39px]"
+          />
+
           <p className="text-secondary flex items-center gap-2">
             <span className="hidden md:flex">{user?.pseudo} </span>
             <Dropdown>
